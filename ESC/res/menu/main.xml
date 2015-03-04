@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.esc.MainActivity" >
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/action_settings"/>
+    
+    <item
+        android:id="@+id/btn_Search"
+        android:title="search"
+        android:showAsAction="always"/>
+    
+    <item
+        android:id="@+id/btn_Cart"
+        android:title="cart"
+        android:showAsAction= "always"/>"
+
+</menu>
