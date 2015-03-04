@@ -20,7 +20,7 @@ public class TestFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		View v = inflater.inflate(R.layout.fragment_testlist, container, false);
+		View v = inflater.inflate(R.layout.fragment_searchproduct, container, false);
 		m_listview = (ListView)v.findViewById(R.id.listview);
 		
 		items = new ArrayList<String>();

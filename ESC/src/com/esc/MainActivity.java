@@ -1,11 +1,8 @@
 package com.esc;
 
-import com.esc.printLocation.NavigationFragment;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.ListFragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
@@ -14,11 +11,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.esc.printLocation.NavigationFragment;
+import com.esc.productManager.ProductManager;
+import com.esc.productManager.ProductManagerFragment;
+
 public class MainActivity extends FragmentActivity {
 
 	private Fragment mMainFragment;
 	private FragmentManager mFragmentManager; 
 	private FragmentTransaction mFragmentTransaction;
+	private ProductManager productManager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,9 @@ public class MainActivity extends FragmentActivity {
 		mFragmentTransaction = mFragmentManager.beginTransaction();
 		mFragmentTransaction.replace(R.id.layout_fragment, mMainFragment);
 		mFragmentTransaction.commit();
+		
+		productManager = new ProductManager(this);
+		productManager.OpenSerialPort();
 	}
 	
 	@Override
@@ -44,6 +49,13 @@ public class MainActivity extends FragmentActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		productManager.CloseSerialPort();
 	}
 
 	/** 액션바 상품검색버튼, 장바구니버튼 구현 **/
@@ -76,6 +88,7 @@ public class MainActivity extends FragmentActivity {
 			fm = new NavigationFragment();
 			break;
 		case R.id.btn_product :
+			fm = new ProductManagerFragment(this.productManager);
 			break;
 		case R.id.btn_exit :
 			break;

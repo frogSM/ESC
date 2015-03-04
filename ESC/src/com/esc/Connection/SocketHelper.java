@@ -21,7 +21,7 @@ import android.util.Log;
 public class SocketHelper {
 	
 	/** ServerAddress & ServerPort define **/
-	private final String serverAddress = "125.149.82.233";
+	private final String serverAddress = "175.253.77.63";
 	private final int serverPort = 8081;
 	
 	private Context mContext;
@@ -72,14 +72,14 @@ public class SocketHelper {
 					outToServer.writeBytes(msg_json + '\n');
 					
 					getSentence = inFromServer.readLine();
-					
+					/*
 					if(mHandler != null) {
 						Message msg = new Message().obtain();
 						msg.what = Constants.THREAD_MESSAGE;
 						msg.obj = getSentence;
 						mHandler.sendMessage(msg);
 					}
-					
+					//*/
 					closeSocket();
 					
 					Thread.sleep(100);
