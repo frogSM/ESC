@@ -12,6 +12,7 @@ import com.perples.recosdk.RECOBeaconRegionState;
 import com.perples.recosdk.RECOMonitoringListener;
 import com.perples.recosdk.RECOServiceConnectListener;
 
+import android.app.Dialog;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -117,37 +118,31 @@ public class BeaconMonitoringService extends Service implements
 		// TODO Auto-generated method stub
 		// this.popupNotification("Inside of " + region.getUniqueIdentifier());
 
-//		switch (region.getUniqueIdentifier()) {
-//		case "Green Region":
-//			if (greenCnt != 1) { 
-//				intent = new Intent(this, RegionEnterActivity_Green.class);
-//				intent.putExtra("Enter", "비콘 영역에 들어왔습니다. ^0^");
-//				intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-//				startActivity(intent);
-//				greenCnt++;
-//			}
-//			break;
-//
-//		case "Yellow Region":
-//			if (yellowCnt != 1) {
-//				intent = new Intent(this, RegionEnterActivity_Yellow.class);
-//				intent.putExtra("Enter", "비콘 영역에 들어왔습니다. ^0^");
-//				intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-//				startActivity(intent);
-//				yellowCnt++;
-//			}
-//			break;
-//
-//		case "Red Region":
-//			if (redCnt != 1) {
-//				intent = new Intent(this, RegionEnterActivity_Red.class);
-//				intent.putExtra("Enter", "비콘 영역에 들어왔습니다. ^0^");
-//				intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-//				startActivity(intent);
-//				redCnt++;
-//			}
-//			break;
-//		}
+		switch (region.getUniqueIdentifier()) {
+		case "Green Region":
+			if (greenCnt != 1) { 
+				GreenDialog green = new GreenDialog(this);
+				green.show();
+				greenCnt++;
+			}
+			break;
+
+		case "Yellow Region":
+			if (yellowCnt != 1) {
+				YellowDialog yellow = new YellowDialog(this);
+				yellow.show();
+				yellowCnt++;
+			}
+			break;
+
+		case "Red Region":
+			if (redCnt != 1) {
+				RedDialog red = new RedDialog(this);
+				red.show();
+				redCnt++;
+			}
+			break;
+		}
 	}
 
 	@Override
