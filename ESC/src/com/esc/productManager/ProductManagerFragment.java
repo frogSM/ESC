@@ -87,7 +87,7 @@ public class ProductManagerFragment extends Fragment{
 	
 				/** 贸府何盒 **/
 				String str_json = jsonhelper.makeJsonMessage(Constants.Uid_Info, taggedUIDs);
-				mSocketHelper.sendMessage(mHandler, str_json);
+				//mSocketHelper.sendMessage(mHandler, str_json);
 				/**贸府何盒 **/
 			}
 			

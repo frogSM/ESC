@@ -24,6 +24,9 @@ public class ProductManager {
 	Context context;
 	
 	ArrayList<String> taggedUIDs;
+	private boolean isChangeCart;
+	private Object addProductCount;
+	private int subtractProductCount;
 	
 	//Constructor
 	public ProductManager( Context context ) {
@@ -99,32 +102,53 @@ public class ProductManager {
 		this.taggedUIDs = new ArrayList<String> ( );
 	
 		byte txBuffer [ ] = new byte [4];
-		byte rxBuffer [ ] = new byte [128];
+		byte currentRxBuffer [ ] = new byte [128];
 		
 		txBuffer[0] = 0x04;
 		txBuffer[1] = 0x00;
 		txBuffer[2] = 0x40;
 		txBuffer[3] = (byte)0xff;
 		
-		int numBytesRead = 0;
+		int numBytesCurrnetRead = 0;
+		int numBytesPreviousRead = 0;
 		
 		try { 
 			port.write( txBuffer, 1000 );
 			Thread.sleep(3000);
-			numBytesRead = port.read(rxBuffer, 1000) ;
+			numBytesCurrnetRead = port.read(currentRxBuffer, 1000) ;
 		} catch ( IOException | InterruptedException e ) {
 			e.printStackTrace();
 		}
 		
+		
+		
+		
+		//카트에 상품이 추가되었을때.
+		if( numBytesPreviousRead < numBytesCurrnetRead ) { 
+			this.addProductCount = ( numBytesCurrnetRead - numBytesPreviousRead ) / 12;
+			this.isChangeCart = true;
+		}
+		
+		//카트에서 상품을 뺐을때.
+		else if( numBytesPreviousRead > numBytesCurrnetRead ) { 
+			this.subtractProductCount = ( numBytesPreviousRead - numBytesCurrnetRead ) / 12;
+			this.isChangeCart = true;
+		}
+		
+		//카트 상품이 변함 없을
+		else if( numBytesPreviousRead == numBytesCurrnetRead ){
+			this.isChangeCart = false;
+		}
+	
 		byte[ ] [ ] dividedByteBuffer = new byte [20][12];
 		
 		int tagCount = 0;
 		int k = 0;
 		
-		for( int i = 0 ; i < numBytesRead ; i++ ) {
-			dividedByteBuffer[ tagCount ][ k ] = rxBuffer [ i ];
+		for( int i = 0 ; i < numBytesCurrnetRead ; i++ ) {
+			dividedByteBuffer[ tagCount ][ k ] = currentRxBuffer [ i ];
 			k++;
-			if ( rxBuffer [ i ] == (byte) 0xff ) { 
+			if ( currentRxBuffer [ i ] == (byte) 0xff ) { 
 				tagCount++;
 				k = 0;
 			}
