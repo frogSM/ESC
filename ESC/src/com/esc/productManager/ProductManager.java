@@ -126,13 +126,13 @@ public class ProductManager {
 		//카트에 상품이 추가되었을때.
 		if( numBytesPreviousRead < numBytesCurrnetRead ) { 
 			this.addProductCount = ( numBytesCurrnetRead - numBytesPreviousRead ) / 12;
-			this.isChangeCart = true;
+			this.isCartChanged = true;
 		}
 		
 		//카트에서 상품을 뺐을때.
 		else if( numBytesPreviousRead > numBytesCurrnetRead ) { 
 			this.subtractProductCount = ( numBytesPreviousRead - numBytesCurrnetRead ) / 12;
-			this.isChangeCart = true;
+			this.isCartChanged = true;
 		}
 		
 		//카트 상품이 변함 없을
