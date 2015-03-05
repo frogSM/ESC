@@ -24,8 +24,8 @@ public class ProductManager {
 	Context context;
 	
 	ArrayList<String> taggedUIDs;
-	private boolean isChangeCart;
-	private Object addProductCount;
+	private boolean isCartChanged;
+	private int addProductCount;
 	private int subtractProductCount;
 	
 	//Constructor
@@ -137,7 +137,7 @@ public class ProductManager {
 		
 		//카트 상품이 변함 없을
 		else if( numBytesPreviousRead == numBytesCurrnetRead ){
-			this.isChangeCart = false;
+			this.isCartChanged = false;
 		}
 	
 		byte[ ] [ ] dividedByteBuffer = new byte [20][12];
@@ -159,5 +159,17 @@ public class ProductManager {
 		}
 		
 		return this.taggedUIDs;
+	}
+	
+	public int GetAddProductCount ( ) { 
+		return this.addProductCount;
+	}
+	
+	public int GetSubtractCount ( ) { 
+		return this.subtractProductCount;
+	}
+	
+	public boolean GetIsCartChanged ( ) { 
+		return this.isCartChanged;
 	}
 }
