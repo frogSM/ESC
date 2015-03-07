@@ -9,12 +9,12 @@
         android:title="@string/action_settings"/>
     
     <item
-        android:id="@+id/btn_Search"
+        android:id="@+id/action_Search"
         android:title="search"
         android:showAsAction="always"/>
     
     <item
-        android:id="@+id/btn_Cart"
+        android:id="@+id/action_Cart"
         android:title="cart"
         android:showAsAction= "always"/>"
 

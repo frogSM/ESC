@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.esc.printLocation.NavigationFragment;
 import com.esc.productManager.ProductManager;
 import com.esc.productManager.ProductManagerFragment;
+import com.esc.searchProduct.SearchFragment;
 
 public class MainActivity extends FragmentActivity {
 
@@ -35,7 +36,7 @@ public class MainActivity extends FragmentActivity {
 		mFragmentTransaction.commit();
 		
 		productManager = new ProductManager(this);
-		productManager.OpenSerialPort();
+//		productManager.OpenSerialPort();
 	}
 	
 	@Override
@@ -67,8 +68,8 @@ public class MainActivity extends FragmentActivity {
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
-		} else if (id == R.id.btn_Search) {
-			Fragment fm = new TestFragment();
+		} else if (id == R.id.action_Search) {
+			Fragment fm = new SearchFragment();
 			mFragmentTransaction = mFragmentManager.beginTransaction();
 			mFragmentTransaction.replace(R.id.layout_fragment, fm);
 			mFragmentTransaction.commit();

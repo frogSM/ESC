@@ -40,7 +40,7 @@ public class StartActivity extends Activity {
 		}
 		
 		serviceIntent = new Intent(this, BeaconMonitoringService.class);
-//		startService(serviceIntent);
+		startService(serviceIntent);
 		
 	}
 	

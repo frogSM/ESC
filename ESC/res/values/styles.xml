@@ -17,11 +17,25 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
+    
+    <!-- ESC 프로젝트에서 쓰이는 액션바 디자인 -->
     <style name="escTheme" parent="@android:style/Theme.Holo.Light">
         <item name="android:actionBarStyle">@style/escThemeActionBar</item>
     </style>
     <style name="escThemeActionBar" parent="@android:style/Widget.Holo.ActionBar">
         <item name="android:displayOptions"></item>
+    </style>
+    
+    
+	<!-- Product 검색 후 상품 목록을 투명하게 나열하기 위한 Style -->    
+    <style name="Theme.Transparent" parent="android:Theme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
     </style>
 
 </resources>
