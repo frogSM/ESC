@@ -2,25 +2,19 @@ package com.esc.productManager;
 
 public class Product {
 
-	String uid ;
 	String name;
 	String price;
 	String type;
 	double x;
 	double y;
 	
-	public Product(String uid, String name, String price, String type, double x, double y) {
+	public Product( String name, String price, String type, double x, double y) {
 		// TODO Auto-generated constructor stub
-		this.uid = uid;
 		this.name = name;
 		this.price = price;
 		this.type = type;
 		this.x = x;
 		this.y = y;
-	}
-	
-	public void setUid(String uid) {
-		this.uid = uid;
 	}
 	
 	public void setName(String name) {
@@ -36,10 +30,7 @@ public class Product {
 		this.y = y;
 	}
 	
-	public String getUid() {
-		return uid;
-	}
-	
+
 	public String getName() {
 		return name;
 	}

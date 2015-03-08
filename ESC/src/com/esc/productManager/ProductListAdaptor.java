@@ -1,10 +1,11 @@
 package com.esc.productManager;
 
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -12,19 +13,19 @@ public class ProductListAdaptor extends BaseAdapter {
 
 	private Context mContext;
 	private LayoutInflater mLayoutInflater;
-	
+	private ArrayList<Product> products;
 	private ViewHolder viewHolder;
 	
-	public ProductListAdaptor(Context context) {
+	public ProductListAdaptor(Context context, ArrayList<Product> products ) {
 		// TODO Auto-generated constructor stub
 		mContext = context;
 		mLayoutInflater = LayoutInflater.from(context);
+		this.products = products;
 	}
 	
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.products.size(); 
 	}
 
 	@Override
