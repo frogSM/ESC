@@ -6,6 +6,7 @@ import java.util.List;
 import net.sf.json.*;
 
 import com.esc.Constants;
+import com.esc.productManager.Product;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
@@ -64,9 +65,9 @@ public class JsonHelper extends Observable {
 		switch(mType) {
 		case Constants.Uid_Info :
 			// List<Product>로 반환된 객체를 오브젝트로 변환후 다시 반환(가독성 위해)
-//			List<Product> products = new ArrayList<Product>();
-//			products = gson.fromJson(object.get("Object"), new TypeToken<List<Product>>(){}.getType());
-//			mObject = products;
+			List<Product> products = new ArrayList<Product>();
+			products = gson.fromJson(object.get("Object"), new TypeToken<List<Product>>(){}.getType());
+			mObject = products;
 			break;
 		}
 		

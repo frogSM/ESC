@@ -1,6 +1,7 @@
 package com.esc.productManager;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Fragment;
 import android.os.AsyncTask;
@@ -27,6 +28,7 @@ public class ProductManagerFragment extends Fragment{
 	ArrayList<Product> products;
 	ListView productList;
 	RenewHandler renewHandler;
+	JsonHelper jsonHelper;
 	
 	public ProductManagerFragment ( ProductManager productManager) {
 		this.productManager = productManager;
@@ -39,16 +41,17 @@ public class ProductManagerFragment extends Fragment{
 
 		View view = inflater.inflate(R.layout.fragment_productmanager, container, false);
 
+		jsonHelper = JsonHelper.getInstance(getActivity().getApplicationContext());
+		mSocketHelper = mSocketHelper.getInstance(getActivity().getApplicationContext());
+		
 		productList = (ListView)view.findViewById(R.id.productList);
 		products = new ArrayList<Product> ();
 	    productListAdapter = new ProductListAdaptor(getActivity().getApplicationContext(),products);
 	    productList.setAdapter(productListAdapter);
 	    
 	    renewHandler = new RenewHandler ();
-	    
-	    mSocketHelper = mSocketHelper.getInstance(getActivity().getApplicationContext());
-	   
 	    mSubAsyncTask = new subAsyncTask();
+
 	    mSubAsyncTask.execute();
 	    		
 		return view;
@@ -76,15 +79,13 @@ public class ProductManagerFragment extends Fragment{
 	
 
 	private class subAsyncTask extends AsyncTask<Void, Void, Void> {
-		
-		JsonHelper jsonhelper = JsonHelper.getInstance(getActivity().getApplicationContext());
 		protected Void doInBackground(Void... message) {
 			
 			while(true) {
 				ArrayList<String> taggedUIDs = new ArrayList<String>();
 				taggedUIDs = productManager.GetTaggedUIDs();
 	
-				String str_json = jsonhelper.makeJsonMessage(Constants.Uid_Info, taggedUIDs);
+				String str_json = jsonHelper.makeJsonMessage(Constants.Uid_Info, taggedUIDs);
 				mSocketHelper.sendMessage(renewHandler, str_json);
 				if(productListAdapter == null) {
 					break;
@@ -104,7 +105,7 @@ public class ProductManagerFragment extends Fragment{
              
             switch (msg.what) {
             case Constants.THREAD_MESSAGE:
-            	products = (ArrayList<Product> )msg.obj;
+            	products = (ArrayList<Product>)jsonHelper.parserJsonMessage(msg.obj.toString());
             	productListAdapter.notifyDataSetChanged();
 
             	break;
