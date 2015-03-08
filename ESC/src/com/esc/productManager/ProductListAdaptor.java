@@ -61,13 +61,11 @@ public class ProductListAdaptor extends BaseAdapter {
         	holder = (ViewHolder) convertView.getTag();
         }
      
-        Product product = this.products.get(position);
-     
-        holder.name.setText(product.getName());
-        holder.price.setText(product.getPrice());
-        holder.type.setText(product.getType());
-        holder.positionX.setText(product.getX());
-        holder.positionY.setText(product.getY());
+        holder.name.setText(this.products.get(position).getName());
+        holder.price.setText(this.products.get(position).getPrice());
+        holder.type.setText(this.products.get(position).getType());
+        holder.positionX.setText(this.products.get(position).getX());
+        holder.positionY.setText(this.products.get(position).getY());
 		
 		return convertView;
 	}

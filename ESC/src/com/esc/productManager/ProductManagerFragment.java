@@ -47,7 +47,6 @@ public class ProductManagerFragment extends Fragment{
 		productList = (ListView)view.findViewById(R.id.productList);
 		products = new ArrayList<Product> ();
 	    productListAdapter = new ProductListAdaptor(getActivity().getApplicationContext(),products);
-	    productList.setAdapter(productListAdapter);
 	    
 	    renewHandler = new RenewHandler ();
 	    mSubAsyncTask = new subAsyncTask();
@@ -79,6 +78,12 @@ public class ProductManagerFragment extends Fragment{
 	
 
 	private class subAsyncTask extends AsyncTask<Void, Void, Void> {
+		@Override
+		protected void onPreExecute() {
+			productList.setAdapter(productListAdapter);
+			// TODO Auto-generated method stub
+			super.onPreExecute();
+		}
 		protected Void doInBackground(Void... message) {
 			
 			while(true) {
@@ -87,11 +92,11 @@ public class ProductManagerFragment extends Fragment{
 	
 				String str_json = jsonHelper.makeJsonMessage(Constants.Uid_Info, taggedUIDs);
 				mSocketHelper.sendMessage(renewHandler, str_json);
-				if(productListAdapter == null) {
-					break;
-				}
+//				if(productListAdapter == null) {
+//					break;
+//				}
 			}
-			return null;
+		//	return null;
 		}
 		
 	}
