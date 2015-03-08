@@ -5,10 +5,10 @@ public class Product {
 	String name;
 	String price;
 	String type;
-	double x;
-	double y;
+	String x;
+	String y;
 	
-	public Product( String name, String price, String type, double x, double y) {
+	public Product( String name, String price, String type, String x, String y) {
 		// TODO Auto-generated constructor stub
 		this.name = name;
 		this.price = price;
@@ -25,7 +25,7 @@ public class Product {
 		this.price = price;
 	}
 	
-	public void setLocation(double x, double y) { 
+	public void setLocation(String x, String y) { 
 		this.x = x;
 		this.y = y;
 	}
@@ -41,10 +41,10 @@ public class Product {
 	public String getType( ) { 
 		return type;
 	}
-	public double getX() { 
+	public String getX() { 
 		return x;
 	}
-	public double getY() { 
+	public String getY() { 
 		return y;
 	}
 }

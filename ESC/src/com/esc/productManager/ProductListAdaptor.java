@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.esc.R;
+
 public class ProductListAdaptor extends BaseAdapter {
 
 	private Context mContext;
@@ -30,45 +32,52 @@ public class ProductListAdaptor extends BaseAdapter {
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.products.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return 0;
+		return position;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
-		View v = convertView;
-		/*
-		if(v == null) {
-			v = mLayoutInflater.inflate(R.layout.activity_test_item, parent, false);
-			
-			viewHolder = new ViewHolder();
-			viewHolder.tv_name = (TextView)v.findViewById(R.id.txtView_name);
-			viewHolder.tv_price = (TextView)v.findViewById(R.id.txtView_price);
-			viewHolder.tv_cnt = (TextView)v.findViewById(R.id.txtView_cnt);
-			viewHolder.tv_sum = (TextView)v.findViewById(R.id.txtView_sum);
-			
-			v.setTag(viewHolder);
-		} else {
-			viewHolder = (ViewHolder)v.getTag();
-		}
+	 	
+    	ViewHolder holder;
+        if (convertView == null) {
+            holder = new ViewHolder();
+     
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.fragment_productmanager, null);
+     
+            holder.name = (TextView) convertView.findViewById(R.id.name);
+            holder.price = (TextView) convertView.findViewById(R.id.price);
+            holder.type = (TextView) convertView.findViewById(R.id.type);
+            holder.positionX = (TextView) convertView.findViewById(R.id.positionX);
+            holder.positionY = (TextView) convertView.findViewById(R.id.positionY);
+     
+            convertView.setTag(holder);
+        } else{
+        	holder = (ViewHolder) convertView.getTag();
+        }
+     
+        Product product = this.products.get(position);
+     
+        holder.name.setText(product.getName());
+        holder.price.setText(product.getPrice());
+        holder.type.setText(product.getType());
+        holder.positionX.setText(product.getX());
+        holder.positionY.setText(product.getY());
 		
-		//*/
-		
-		return null;
+		return convertView;
 	}
 	
 	class ViewHolder {
-		TextView tv_name;
-		TextView tv_price;
-		TextView tv_cnt;
-		TextView tv_sum;
+		TextView name;
+		TextView price;
+		TextView type;
+		TextView positionX;
+		TextView positionY;
 	};
 
 }
