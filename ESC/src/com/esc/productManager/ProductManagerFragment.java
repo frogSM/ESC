@@ -36,7 +36,7 @@ public class ProductManagerFragment extends Fragment{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		View view = inflater.inflate(R.layout.fragment_productmanager, container, false);
 
 		productList = (ListView)view.findViewById(R.id.productList);
@@ -49,7 +49,7 @@ public class ProductManagerFragment extends Fragment{
 	    mSocketHelper = mSocketHelper.getInstance(getActivity().getApplicationContext());
 	   
 	    mSubAsyncTask = new subAsyncTask();
-	   // mSubAsyncTask.execute();
+	    mSubAsyncTask.execute();
 	    		
 		return view;
 	}
@@ -78,10 +78,6 @@ public class ProductManagerFragment extends Fragment{
 	private class subAsyncTask extends AsyncTask<Void, Void, Void> {
 		
 		JsonHelper jsonhelper = JsonHelper.getInstance(getActivity().getApplicationContext());
-		@Override
-		protected void onPreExecute() {
-			
-		};
 		protected Void doInBackground(Void... message) {
 			
 			while(true) {
@@ -89,9 +85,12 @@ public class ProductManagerFragment extends Fragment{
 				taggedUIDs = productManager.GetTaggedUIDs();
 	
 				String str_json = jsonhelper.makeJsonMessage(Constants.Uid_Info, taggedUIDs);
-				mSocketHelper.sendMessage(renewHandler, str_json);
+			//	mSocketHelper.sendMessage(renewHandler, str_json);
+				if(productListAdapter == null) {
+					break;
+				}
 			}
-			
+			return null;
 		}
 		
 	}
