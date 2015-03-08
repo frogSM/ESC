@@ -21,8 +21,8 @@ public class ProductManagerFragment extends Fragment{
 	
 	SocketHelper mSocketHelper;
 	subAsyncTask mSubAsyncTask;
-	
 	ProductManager productManager;
+	
 	ProductListAdaptor productListAdapter;
 	ArrayList<Product> products;
 	ListView productList;
@@ -39,7 +39,7 @@ public class ProductManagerFragment extends Fragment{
 		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.fragment_productmanager, container, false);
 
-		productList = (ListView)getActivity().findViewById(R.layout.fragment_productmanager);
+		productList = (ListView)view.findViewById(R.id.productList);
 		products = new ArrayList<Product> ();
 	    productListAdapter = new ProductListAdaptor(getActivity().getApplicationContext(),products);
 	    productList.setAdapter(productListAdapter);
@@ -49,7 +49,7 @@ public class ProductManagerFragment extends Fragment{
 	    mSocketHelper = mSocketHelper.getInstance(getActivity().getApplicationContext());
 	   
 	    mSubAsyncTask = new subAsyncTask();
-	    mSubAsyncTask.execute();
+	   // mSubAsyncTask.execute();
 	    		
 		return view;
 	}
