@@ -18,12 +18,15 @@ import com.esc.Connection.JsonHelper;
 import com.esc.Connection.SocketHelper;
 
 public class ProductManagerFragment extends Fragment{
-	ProductListAdaptor productListAdapter;
 	
 	SocketHelper mSocketHelper;
 	subAsyncTask mSubAsyncTask;
 	
 	ProductManager productManager;
+	ProductListAdaptor productListAdapter;
+	ArrayList<Product> products;
+	ListView productList;
+	RenewHandler renewHandler;
 	
 	public ProductManagerFragment ( ProductManager productManager) {
 		this.productManager = productManager;
@@ -36,14 +39,12 @@ public class ProductManagerFragment extends Fragment{
 		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.fragment_productmanager, container, false);
 
-	 
+		productList = (ListView)getActivity().findViewById(R.layout.fragment_productmanager);
+		products = new ArrayList<Product> ();
+	    productListAdapter = new ProductListAdaptor(getActivity().getApplicationContext(),products);
+	    productList.setAdapter(productListAdapter);
 	    
-	    ArrayList<String> test = new ArrayList ( ); 
-	    ListView listview = new ListView(getActivity().getApplicationContext());
-	    productListAdapter = new ProductListAdaptor(getActivity().getApplicationContext());
-	    listview.setAdapter(productListAdapter);
-	    
-	    //productManager.OpenSerialPort();
+	    renewHandler = new RenewHandler ();
 	    
 	    mSocketHelper = mSocketHelper.getInstance(getActivity().getApplicationContext());
 	   
@@ -78,33 +79,42 @@ public class ProductManagerFragment extends Fragment{
 		
 		JsonHelper jsonhelper = JsonHelper.getInstance(getActivity().getApplicationContext());
 		@Override
+		protected void onPreExecute() {
+			
+		};
 		protected Void doInBackground(Void... message) {
-			// TODO Auto-generated method stub
 			
 			while(true) {
 				ArrayList<String> taggedUIDs = new ArrayList<String>();
 				taggedUIDs = productManager.GetTaggedUIDs();
 	
-				/** 처리부분 **/
 				String str_json = jsonhelper.makeJsonMessage(Constants.Uid_Info, taggedUIDs);
-				mSocketHelper.sendMessage(mHandler, str_json);
-				/**처리부분 **/
+				mSocketHelper.sendMessage(renewHandler, str_json);
 			}
 			
 		}
 		
 	}
 	
-	Handler mHandler = new Handler() {
-		public void handleMessage(Message msg) {
-			if(msg.what == Constants.THREAD_MESSAGE) {
-				ArrayList<Product> test = (ArrayList<Product>)msg.obj;
-				// Product객체를 List로 받아온 것을 이용해서 baseAdapter이용해야함.
-				
-			}
-		}
-	};
-	
+    // Handler 클래스
+    class RenewHandler extends Handler {
+         
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+             
+            switch (msg.what) {
+            case Constants.THREAD_MESSAGE:
+            	products = (ArrayList<Product> )msg.obj;
+            	productListAdapter.notifyDataSetChanged();
+
+            	break;
+            default:
+                break;
+            }
+        }
+         
+    };
 	
 
 }

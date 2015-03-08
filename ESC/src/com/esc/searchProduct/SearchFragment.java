@@ -57,16 +57,16 @@ public class SearchFragment extends Fragment implements OnQueryTextListener, OnI
 	/** 임시데이터 가정 **/
 	public void dataLoding() {
 		products = new ArrayList<Product>();
-		Product p1 = new Product("AAAA-AAAA-AAAA", 	"과자1", 	"1000", "과자류", 100, 100);
-		Product p2 = new Product("BBBB-BBBB-BBBB", 		"과자2", 	"2000", "과자류", 100, 100);
-		Product p3 = new Product("CCCC-CCCC-CCCC", 		"과자3", 	"3000", "과자류", 100, 100);
-		Product p4 = new Product("DDDD-DDDD-DDDD",		"과자4", 	"4000", "과자류", 100, 100);
-		Product p5 = new Product("EEEE-EEEE-EEEE", 			"과자5", 	"5000", "과자류", 100, 100);
-		Product p6 = new Product("FFFF-FFFF-FFFF", 			"과자6", 	"6000", "과자류", 100, 100);
-		Product p7 = new Product("GGGG-GGGG-GGGG", 	"과자7", 	"7000", "과자류", 100, 100);
-		Product p8 = new Product("HHHH-HHHH-HHHH", 	"과자8", 	"8000", "과자류", 100, 100);
-		Product p9 = new Product("IIII-IIII-IIII", 				"과자9", 	"9000", "과자류", 100, 100);
-		Product p10 = new Product("JJJJ-JJJJ-JJJJ", 			"과자10", 	"10000", "과자류", 100, 100);
+		Product p1 = new Product( "과자1", 	"1000", "과자류", "100", "100");
+		Product p2 = new Product( "과자2", 	"2000", "과자류", "100", "100");
+		Product p3 = new Product( "과자3", 	"3000", "과자류", "100", "100");
+		Product p4 = new Product( "과자4", 	"4000", "과자류", "100", "100");
+		Product p5 = new Product( "과자5", 	"5000", "과자류", "100", "100");
+		Product p6 = new Product( "과자6", 	"6000", "과자류","100", "100");
+		Product p7 = new Product( "과자7", 	"7000", "과자류", "100", "100");
+		Product p8 = new Product( "과자8", 	"8000", "과자류","100", "100");
+		Product p9 = new Product( "과자9", 	"9000", "과자류", "100", "100");
+		Product p10 = new Product( "과자10", 	"10000", "과자류", "100", "100");
 		
 		products.add(p1);
 		products.add(p2);

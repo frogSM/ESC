@@ -72,7 +72,7 @@ public class SocketHelper {
 					outToServer.writeBytes(msg_json + '\n');
 					
 					getSentence = inFromServer.readLine();
-					/*
+					
 					if(mHandler != null) {
 						Message msg = new Message().obtain();
 						msg.what = Constants.THREAD_MESSAGE;
