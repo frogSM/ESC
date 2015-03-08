@@ -46,7 +46,8 @@ public class ProductManagerFragment extends Fragment{
 		
 		productList = (ListView)view.findViewById(R.id.productList);
 		products = new ArrayList<Product> ();
-	    productListAdapter = new ProductListAdaptor(getActivity().getApplicationContext(),products);
+	    
+		productListAdapter = new ProductListAdaptor(getActivity().getApplicationContext(),products);
 	    
 	    renewHandler = new RenewHandler ();
 	    mSubAsyncTask = new subAsyncTask();
@@ -111,6 +112,7 @@ public class ProductManagerFragment extends Fragment{
             switch (msg.what) {
             case Constants.THREAD_MESSAGE:
             	products = (ArrayList<Product>)jsonHelper.parserJsonMessage(msg.obj.toString());
+            	productListAdapter.updateProducts(products);
             	productListAdapter.notifyDataSetChanged();
 
             	break;
