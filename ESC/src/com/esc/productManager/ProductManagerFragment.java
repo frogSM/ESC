@@ -85,7 +85,7 @@ public class ProductManagerFragment extends Fragment{
 				taggedUIDs = productManager.GetTaggedUIDs();
 	
 				String str_json = jsonhelper.makeJsonMessage(Constants.Uid_Info, taggedUIDs);
-			//	mSocketHelper.sendMessage(renewHandler, str_json);
+				mSocketHelper.sendMessage(renewHandler, str_json);
 				if(productListAdapter == null) {
 					break;
 				}
