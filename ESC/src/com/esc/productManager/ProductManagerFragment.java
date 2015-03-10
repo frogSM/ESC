@@ -114,7 +114,6 @@ public class ProductManagerFragment extends Fragment{
             	products = (ArrayList<Product>)jsonHelper.parserJsonMessage(msg.obj.toString());
             	productListAdapter.updateProducts(products);
             	productListAdapter.notifyDataSetChanged();
-
             	break;
             default:
                 break;
