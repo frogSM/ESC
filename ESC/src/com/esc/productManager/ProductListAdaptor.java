@@ -59,6 +59,8 @@ public class ProductListAdaptor extends BaseAdapter {
             holder.type = (TextView) convertView.findViewById(R.id.type);
             holder.positionX = (TextView) convertView.findViewById(R.id.positionX);
             holder.positionY = (TextView) convertView.findViewById(R.id.positionY);
+            holder.description = (TextView)  convertView.findViewById(R.id.description);
+            holder.manufacturer = (TextView)  convertView.findViewById(R.id.manufacturer);
      
             convertView.setTag(holder);
         } else{
@@ -70,6 +72,8 @@ public class ProductListAdaptor extends BaseAdapter {
         holder.type.setText(this.products.get(position).getType());
         holder.positionX.setText(this.products.get(position).getX());
         holder.positionY.setText(this.products.get(position).getY());
+        holder.description.setText(this.products.get(position).getDescription());
+        holder.manufacturer.setText(this.products.get(position).getManufacturer() );
 		
 		return convertView;
 	}
@@ -80,6 +84,8 @@ public class ProductListAdaptor extends BaseAdapter {
 		TextView type;
 		TextView positionX;
 		TextView positionY;
+		TextView description;
+		TextView manufacturer;
 	};
 
 }
