@@ -81,7 +81,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 		mView = getLayoutInflater().inflate(R.layout.dialog_searchviewflipper, null);
 		setContentView(mView);
 		
-		mViewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper1);
+		mViewFlipper = (ViewFlipper) findViewById(R.id.main_viewflipper);
 		mButtonLeft = (Button) findViewById(R.id.btn_left);
 		mButtonRight = (Button) findViewById(R.id.btn_right);
 		

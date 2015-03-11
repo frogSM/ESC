@@ -1,15 +1,22 @@
 package com.esc;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.widget.ViewFlipper;
 
 import com.esc.printLocation.NavigationFragment;
 import com.esc.productManager.ProductManager;
@@ -77,6 +84,32 @@ public class MainActivity extends FragmentActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+		dialog.setTitle("종료 대화상자");
+		dialog.setMessage("정말 종료하시겠습니까?");
+		dialog.setPositiveButton("네", new OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
+		dialog.setNegativeButton("아니요", new OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				return ;
+			}
+		});
+		AlertDialog ad = dialog.create();
+		ad.show();
+	}
+	
 	/** 메인액티비티 하단 각 기능 버튼 구현 **/
 	public void onButtonClick(View v) {
 		Fragment fm = null;
@@ -100,13 +133,61 @@ public class MainActivity extends FragmentActivity {
 	}
 	
 	public class mainFragment extends Fragment {
+		
+		/** inflater한 fragment레이아웃 정보 **/
+		private View mView;
+		
+		private ViewFlipper mViewFlipper;
+		private int m_nPreTouchPosX = 0;
+		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
-			View v = inflater.inflate(R.layout.fragment_main, container, false);
+			mView = inflater.inflate(R.layout.fragment_main, container, false);
 			
-			return v;
+			mViewFlipper = (ViewFlipper)mView.findViewById(R.id.main_viewflipper);
+			mViewFlipper.setOnTouchListener(MyTouchListener);
+			
+			return mView;
 		}
+		
+		private void MoveNextView() {
+			mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
+					R.anim.appear_from_right));
+			mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
+					R.anim.disappear_to_left));
+			mViewFlipper.showNext();
+		}
+
+		private void MovewPreviousView() {
+			mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
+					R.anim.appear_from_left));
+			mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
+					R.anim.disappear_to_right));
+			mViewFlipper.showPrevious();
+		}
+
+		View.OnTouchListener MyTouchListener = new View.OnTouchListener() {
+			public boolean onTouch(View v, MotionEvent event) {
+				if (event.getAction() == MotionEvent.ACTION_DOWN) {
+					m_nPreTouchPosX = (int) event.getX();
+				}
+
+				if (event.getAction() == MotionEvent.ACTION_UP) {
+					int nTouchPosX = (int) event.getX();
+
+					if (nTouchPosX < m_nPreTouchPosX) {
+						MoveNextView();
+					} else if (nTouchPosX > m_nPreTouchPosX) {
+						MovewPreviousView();
+					}
+
+					m_nPreTouchPosX = nTouchPosX;
+				}
+
+				return true;
+			}
+		};
 	}
 }
