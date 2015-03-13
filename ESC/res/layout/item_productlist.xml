@@ -1,54 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/AbsoluteLayout1"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="fill_vertical|top" >
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:src="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/manufacturer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="71dp"
-        android:layout_y="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="9dp"
+        android:layout_toRightOf="@+id/image"
+        android:layout_x="107dp"
+        android:layout_y="6dp"
         android:text="TextView" />
 
     <TextView
-        android:id="@+id/name"
-        android:layout_width="72dp"
+        android:id="@+id/price"
+        android:layout_width="84dp"
         android:layout_height="30dp"
-        android:layout_x="95dp"
-        android:layout_y="31dp"
+        android:layout_below="@+id/manufacturer"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@+id/description"
+        android:layout_x="417dp"
+        android:layout_y="46dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="213dp"
-        android:layout_y="31dp"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/name"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="72dp"
+        android:layout_height="30dp"
+        android:layout_alignBaseline="@+id/price"
+        android:layout_alignBottom="@+id/price"
+        android:layout_alignLeft="@+id/manufacturer"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="wrap_content"
+        android:layout_width="167dp"
         android:layout_height="wrap_content"
-        android:layout_x="311dp"
-        android:layout_y="34dp"
+        android:layout_alignBottom="@+id/name"
+        android:layout_below="@+id/manufacturer"
+        android:layout_marginLeft="44dp"
+        android:layout_toRightOf="@+id/name"
         android:text="TextView" />
 
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="406dp"
-        android:layout_y="34dp"
-        android:text="TextView" />
-
-</AbsoluteLayout>
+</RelativeLayout>
