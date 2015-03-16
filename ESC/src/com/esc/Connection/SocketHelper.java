@@ -67,7 +67,7 @@ public class SocketHelper {
 							clientSocket.getOutputStream());
 					
 					BufferedReader inFromServer = new BufferedReader(
-							new InputStreamReader(clientSocket.getInputStream()));
+							new InputStreamReader(clientSocket.getInputStream(), "EUC_KR"));
 					
 					outToServer.writeBytes(msg_json + '\n');
 					
