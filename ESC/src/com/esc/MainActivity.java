@@ -39,7 +39,7 @@ public class MainActivity extends FragmentActivity {
 		mMainFragment = new mainFragment();
 		mFragmentManager = getFragmentManager();
 		mFragmentTransaction = mFragmentManager.beginTransaction();
-		mFragmentTransaction.replace(R.id.layout_fragment, mMainFragment);
+		mFragmentTransaction.replace(R.id.Button, mMainFragment);
 		mFragmentTransaction.commit();
 		
 		productManager = new ProductManager(this);
@@ -78,7 +78,7 @@ public class MainActivity extends FragmentActivity {
 		} else if (id == R.id.action_Search) {
 			Fragment fm = new SearchFragment();
 			mFragmentTransaction = mFragmentManager.beginTransaction();
-			mFragmentTransaction.replace(R.id.layout_fragment, fm);
+			mFragmentTransaction.replace(R.id.Button, fm);
 			mFragmentTransaction.commit();
 		}
 		return super.onOptionsItemSelected(item);
@@ -128,7 +128,7 @@ public class MainActivity extends FragmentActivity {
 			break;
 		}
 		mFragmentTransaction = mFragmentManager.beginTransaction();
-		mFragmentTransaction.replace(R.id.layout_fragment, fm);
+		mFragmentTransaction.replace(R.id.Button, fm);
 		mFragmentTransaction.commit();
 	}
 	
