@@ -4,21 +4,24 @@ public class Product {
 
 	String name;
 	String price;
+	String description;
+	String manufacturer;
+	String imgURL;
 	String type;
 	String x;
 	String y;
-	String description;
-	String manufacturer;
 	
-	public Product( String name, String price, String type, String x, String y, String description, String manufacturer) {
+	public Product( String name, String price, String description, String manufacturer, String imgURL,
+			String type, String x, String y) {
 		// TODO Auto-generated constructor stub
 		this.name = name;
 		this.price = price;
+		this.description = description;
+		this.manufacturer = manufacturer;
+		this.imgURL = imgURL;
 		this.type = type;
 		this.x = x;
 		this.y = y;
-		this.description = description;
-		this.manufacturer = manufacturer;
 	}
 	
 	public void setName(String name) {
@@ -29,11 +32,6 @@ public class Product {
 		this.price = price;
 	}
 	
-	public void setLocation(String x, String y) { 
-		this.x = x;
-		this.y = y;
-	}
-	
 	public void setDescription( String description ) {
 		this.description = description;
 	}
@@ -42,6 +40,18 @@ public class Product {
 		this.manufacturer = manufacturer;
 	}
 	
+	public void setImgURL( String imgURL ) {
+		this.imgURL = imgURL;
+	}
+	
+	public void setType( String type ) {
+		this.type = type;
+	}
+	
+	public void setLocation(String x, String y) { 
+		this.x = x;
+		this.y = y;
+	}
 
 	public String getName() {
 		return name;
@@ -50,18 +60,6 @@ public class Product {
 	public String getPrice() {
 		return price;
 	}
-
-	public String getType( ) { 
-		return type;
-	}
-	
-	public String getX() { 
-		return x;
-	}
-	
-	public String getY() { 
-		return y;
-	}
 	
 	public String getDescription( ) {
 		return this.description;
@@ -69,5 +67,21 @@ public class Product {
 	
 	public String getManufacturer ( ) {
 		return this.manufacturer;
+	}
+	
+	public String getImgURL( ) {
+		return this.imgURL;
+	}
+
+	public String getType( ) { 
+		return this.type;
+	}
+	
+	public String getX() { 
+		return this.x;
+	}
+	
+	public String getY() { 
+		return this.y;
 	}
 }

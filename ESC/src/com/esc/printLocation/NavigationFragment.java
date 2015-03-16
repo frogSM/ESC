@@ -70,7 +70,7 @@ public class NavigationFragment extends Fragment implements RECORangingListener 
 		
 //		mPositionCalculation = new PositionCalculation();
 		mapLayout = (AbsoluteLayout)mView.findViewById(R.id.AbsoluteLayout1);
-		mMarker = (ImageView)mView.findViewById(R.id.imageView1);
+		mMarker = (ImageView)mView.findViewById(R.id.iv_productpicture);
 		
 		Drawable alpha = ((ImageView)mView.findViewById(R.id.imageView2)).getDrawable();
 		alpha.setAlpha(100);

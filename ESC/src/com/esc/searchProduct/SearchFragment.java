@@ -56,36 +56,36 @@ public class SearchFragment extends Fragment implements OnQueryTextListener, OnI
 	
 	/** 임시데이터 가정 **/
 	public void dataLoding() {
-		products = new ArrayList<Product>();
-		Product p1 = new Product( "과자1", 	"1000", "과자류", "100", "100", "질소과자", "질소회사");
-		Product p2 = new Product( "과자2", 	"2000", "과자류", "100", "100", "외국과자", "외국회사");
-		Product p3 = new Product( "과자3", 	"3000", "과자류", "100", "100", "질소과지", "질소회사");
-		Product p4 = new Product( "과자4", 	"4000", "과자류", "100", "100", "외국과자", "외국회사");
-		Product p5 = new Product( "과자5", 	"5000", "과자류", "100", "100", "질소과지", "질소회사");
-		Product p6 = new Product( "과자6", 	"6000", "과자류","100", "100", "질소과지", "질소회사");
-		Product p7 = new Product( "과자7", 	"7000", "과자류", "100", "100", "질소과지", "질소회사");
-		Product p8 = new Product( "과자8", 	"8000", "과자류","100", "100", "질소과지", "질소회사");
-		Product p9 = new Product( "과자9", 	"9000", "과자류", "100", "100", "질소과지", "질소회사");
-		Product p10 = new Product( "과자10", 	"10000", "과자류", "100", "100", "질소과지", "질소회사");
-		
-		products.add(p1);
-		products.add(p2);
-		products.add(p3);
-		products.add(p4);
-		products.add(p5);
-		products.add(p6);
-		products.add(p7);
-		products.add(p8);
-		products.add(p9);
-		products.add(p10);
-		
-		searchProducts = new ArrayList<Product>();
-		
-		mProductsName = new String[products.size()];
-		for(int i=0 ; i<products.size() ; i++) {
-			mProductsName[i] = products.get(i).getName();
-			searchProducts.add(products.get(i));
-		}
+//		products = new ArrayList<Product>();
+//		Product p1 = new Product( "과자1", 	"1000", "과자류", "100", "100", "질소과자", "질소회사");
+//		Product p2 = new Product( "과자2", 	"2000", "과자류", "100", "100", "외국과자", "외국회사");
+//		Product p3 = new Product( "과자3", 	"3000", "과자류", "100", "100", "질소과지", "질소회사");
+//		Product p4 = new Product( "과자4", 	"4000", "과자류", "100", "100", "외국과자", "외국회사");
+//		Product p5 = new Product( "과자5", 	"5000", "과자류", "100", "100", "질소과지", "질소회사");
+//		Product p6 = new Product( "과자6", 	"6000", "과자류","100", "100", "질소과지", "질소회사");
+//		Product p7 = new Product( "과자7", 	"7000", "과자류", "100", "100", "질소과지", "질소회사");
+//		Product p8 = new Product( "과자8", 	"8000", "과자류","100", "100", "질소과지", "질소회사");
+//		Product p9 = new Product( "과자9", 	"9000", "과자류", "100", "100", "질소과지", "질소회사");
+//		Product p10 = new Product( "과자10", 	"10000", "과자류", "100", "100", "질소과지", "질소회사");
+//		
+//		products.add(p1);
+//		products.add(p2);
+//		products.add(p3);
+//		products.add(p4);
+//		products.add(p5);
+//		products.add(p6);
+//		products.add(p7);
+//		products.add(p8);
+//		products.add(p9);
+//		products.add(p10);
+//		
+//		searchProducts = new ArrayList<Product>();
+//		
+//		mProductsName = new String[products.size()];
+//		for(int i=0 ; i<products.size() ; i++) {
+//			mProductsName[i] = products.get(i).getName();
+//			searchProducts.add(products.get(i));
+//		}
 	}
 
 	/** SearchView의 변화를 감지하는 메소드 **/

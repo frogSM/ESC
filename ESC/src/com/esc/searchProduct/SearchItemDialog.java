@@ -15,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -44,6 +45,8 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	/** 애니메이션을 위한변수(처음 터치위치 저장) **/
 	private int m_nPreTouchPosX = 0;
 	
+	private String tempUrl = "@drawable/main_ad1";
+	
 	public SearchItemDialog(Context context, ArrayList<Product> data, int position) {
 		super(context);
 		// TODO Auto-generated constructor stub
@@ -62,6 +65,11 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 			LinearLayout ll = (LinearLayout)mLayoutInflater.inflate(R.layout.item_productinfo, null);
 			TextView mTextViewName= (TextView)ll.findViewById(R.id.tv_name);
 			TextView mTextViewPrice= (TextView)ll.findViewById(R.id.tv_price);
+			
+			ImageView mImageView = (ImageView)ll.findViewById(R.id.iv_productpicture);
+			
+			int id = mContext.getResources().getIdentifier(tempUrl, "drawable", mContext.getPackageName());
+			mImageView.setImageResource(id);
 			
 			mTextViewName.setText(receiveData.get(i).getName());
 			mTextViewPrice.setText(String.valueOf(receiveData.get(i).getPrice()));
