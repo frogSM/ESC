@@ -1,17 +1,16 @@
 package com.esc.productManager;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.esc.R;
-import com.perples.recosdk.RECOBeacon;
 
 public class ProductListAdaptor extends BaseAdapter {
 
@@ -54,24 +53,22 @@ public class ProductListAdaptor extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.item_productlist,parent, false);
      
+            holder.image = (ImageView) convertView.findViewById(R.id.image);
             holder.name = (TextView) convertView.findViewById(R.id.name);
             holder.price = (TextView) convertView.findViewById(R.id.price);
             holder.type = (TextView) convertView.findViewById(R.id.type);
-            holder.positionX = (TextView) convertView.findViewById(R.id.positionX);
-            holder.positionY = (TextView) convertView.findViewById(R.id.positionY);
             holder.description = (TextView)  convertView.findViewById(R.id.description);
             holder.manufacturer = (TextView)  convertView.findViewById(R.id.manufacturer);
      
             convertView.setTag(holder);
         } else{
         	holder = (ViewHolder) convertView.getTag();
-        }
-     
+        }	
+        int imageURL = mContext.getResources().getIdentifier(this.products.get(position).getImgURL(), "drawable", mContext.getPackageName());
+		holder.image.setImageResource(imageURL);
         holder.name.setText(this.products.get(position).getName());
         holder.price.setText(this.products.get(position).getPrice());
         holder.type.setText(this.products.get(position).getType());
-        holder.positionX.setText(this.products.get(position).getX());
-        holder.positionY.setText(this.products.get(position).getY());
         holder.description.setText(this.products.get(position).getDescription());
         holder.manufacturer.setText(this.products.get(position).getManufacturer() );
 		
@@ -79,11 +76,10 @@ public class ProductListAdaptor extends BaseAdapter {
 	}
 	
 	static class ViewHolder {
+		ImageView image;
 		TextView name;
 		TextView price;
 		TextView type;
-		TextView positionX;
-		TextView positionY;
 		TextView description;
 		TextView manufacturer;
 	};
