@@ -66,6 +66,7 @@ public class ProductListAdaptor extends BaseAdapter {
         }	
         int imageURL = mContext.getResources().getIdentifier(this.products.get(position).getImgURL(), "drawable", mContext.getPackageName());
 		holder.image.setImageResource(imageURL);
+		holder.image.setScaleType(ImageView.ScaleType.FIT_XY);
         holder.name.setText(this.products.get(position).getName());
         holder.price.setText(this.products.get(position).getPrice());
         holder.type.setText(this.products.get(position).getType());
