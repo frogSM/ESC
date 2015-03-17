@@ -1,4 +1,4 @@
-package com.esc.CustomService;
+package com.esc.CustomerService;
 
 public class NoticeFragment {
 

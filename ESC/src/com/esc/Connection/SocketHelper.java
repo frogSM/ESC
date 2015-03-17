@@ -21,7 +21,7 @@ import android.util.Log;
 public class SocketHelper {
 	
 	/** ServerAddress & ServerPort define **/
-	private final String serverAddress = "58.231.74.57";
+	private final String serverAddress = "58.231.74.66";
 	private final int serverPort = 8081;
 	
 	private Context mContext;

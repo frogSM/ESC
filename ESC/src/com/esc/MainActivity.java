@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ViewFlipper;
 
+import com.esc.CustomerService.CustomerServiceFragment;
 import com.esc.printLocation.NavigationFragment;
 import com.esc.productManager.ProductManager;
 import com.esc.productManager.ProductManagerFragment;
@@ -125,6 +126,7 @@ public class MainActivity extends FragmentActivity {
 			fm = new ProductManagerFragment(this.productManager);
 			break;
 		case R.id.btn_exit :
+			fm = new CustomerServiceFragment();
 			break;
 		}
 		mFragmentTransaction = mFragmentManager.beginTransaction();

@@ -47,12 +47,12 @@
             android:text="상품관리" />
 
         <Button
-            android:id="@+id/btn_exit"
+            android:id="@+id/btn_customerService"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onButtonClick"
-            android:text="쇼핑종료" />
+            android:text="고객센터" />
 
     </LinearLayout>
 
