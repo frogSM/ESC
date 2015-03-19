@@ -1,5 +1,7 @@
 package com.esc.CustomerService;
 
-public class CustomerNoiseFragment {
+import android.app.Fragment;
+
+public class CustomerNoiseFragment extends Fragment {
 
 }

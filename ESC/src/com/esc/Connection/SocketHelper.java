@@ -4,24 +4,29 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.LinkedHashMap;
 
 import com.esc.Constants;
+import com.esc.MainActivity;
 
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
 /** SocketHelper 클래스.**/
 /** AsyncTask를 이용하여 구현한것을 Thread - Handler방식으로 변경 **/
 public class SocketHelper {
 	
 	/** ServerAddress & ServerPort define **/
-	private final String serverAddress = "58.231.74.66";
+	private final String serverAddress = "192.168.25.2";
 	private final int serverPort = 8081;
 	
 	private Context mContext;
@@ -34,6 +39,7 @@ public class SocketHelper {
 	
 	private String getSentence ;
 	private Handler mHandler;
+	private Thread mThread;
 	
 	/** Contex 가져오는 부분 **/
 	public static synchronized SocketHelper getInstance(Context mContext) {
@@ -55,7 +61,7 @@ public class SocketHelper {
 		
 		this.mHandler = handler;
 		
-		Thread thread = new Thread(new Runnable() {
+		mThread = new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
@@ -96,9 +102,9 @@ public class SocketHelper {
 				
 			}
 		});
-		thread.setDaemon(true);
-		thread.start();
-		thread.interrupt();
+		mThread.setDaemon(true);
+		mThread.start();
+		mThread.interrupt();
 		
 	}
 	
@@ -106,19 +112,26 @@ public class SocketHelper {
 		return getSentence;
 	}
 	
+	public Thread getThread() {
+		return mThread;
+	}
+	
 	/** 소켓 열기 **/
 	private void openSocket() {
 		
 		if (connectCheck == true) {
 			try {
-				clientSocket = new Socket(serverAddress, serverPort);
-				clientSocket.setSoTimeout(3000);
+				SocketAddress adr = new InetSocketAddress(serverAddress, serverPort);
+				
+				clientSocket = new Socket();
+				clientSocket.connect(adr, 3000);
 				Log.e("SocketHelper", "socket open success!");
-			} catch (UnknownHostException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
+				Log.e("SocketHelper", "openSocket IOException");
+				e.printStackTrace();
+			} catch (RuntimeException e) {
+				Log.e("SocketHelper", "openSocket RuntimeException");
 				e.printStackTrace();
 			}
 		}

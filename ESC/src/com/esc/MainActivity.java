@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ViewFlipper;
 
-import com.esc.CustomerService.CustomerServiceFragment;
+import com.esc.CustomerService.CustomerServiceMainFragment;
 import com.esc.printLocation.NavigationFragment;
 import com.esc.productManager.ProductManager;
 import com.esc.productManager.ProductManagerFragment;
@@ -44,7 +44,7 @@ public class MainActivity extends FragmentActivity {
 		mFragmentTransaction.commit();
 		
 		productManager = new ProductManager(this);
-		productManager.OpenSerialPort();
+//		productManager.OpenSerialPort();
 	}
 	
 	@Override
@@ -125,8 +125,8 @@ public class MainActivity extends FragmentActivity {
 		case R.id.btn_product :
 			fm = new ProductManagerFragment(this.productManager);
 			break;
-		case R.id.btn_exit :
-			fm = new CustomerServiceFragment();
+		case R.id.btn_customerService :
+			fm = new CustomerServiceMainFragment();
 			break;
 		}
 		mFragmentTransaction = mFragmentManager.beginTransaction();

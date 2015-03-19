@@ -3,7 +3,8 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:layout_gravity="fill_vertical|top" >
+    android:layout_gravity="fill_vertical|top"
+    android:orientation="horizontal" >
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -48,12 +49,14 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="0.97" >
+        android:layout_weight="0.66" >
 
         <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
             android:text="TextView" />
     </LinearLayout>
 
@@ -65,8 +68,8 @@
             android:id="@+id/price"
             android:layout_width="84dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="43dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="50dp"
             android:text="TextView" />
     </LinearLayout>
 

@@ -45,6 +45,9 @@ public class BeaconHelper implements RECOServiceConnectListener {
 	
 	public ArrayList<BeaconInfo> getBeaconInfo(Collection<RECOBeacon> beacons) {
 		ArrayList<BeaconInfo> classifiedBeacons = new ArrayList<BeaconInfo>();
+		classifiedBeacons.add(0, null);
+		classifiedBeacons.add(1, null);
+		classifiedBeacons.add(2, null);
 		
 		updateAllBeacons(beacons);
 		
@@ -52,19 +55,18 @@ public class BeaconHelper implements RECOServiceConnectListener {
 			switch(recoBeacon.getMinor()) {
 			case 18001 :
 				GreenBeacon = new BeaconInfo(recoBeacon.getMajor(), recoBeacon.getMinor(), recoBeacon.getRssi(), revisionAccuracy(recoBeacon));
+				classifiedBeacons.add(0, GreenBeacon);
 				break;
 			case 18002 :
 				YellowBeacon = new BeaconInfo(recoBeacon.getMajor(), recoBeacon.getMinor(), recoBeacon.getRssi(), revisionAccuracy(recoBeacon));
+				classifiedBeacons.add(1, YellowBeacon);
 				break;
 			case 18003 :
 				RedBeacon = new BeaconInfo(recoBeacon.getMajor(), recoBeacon.getMinor(), recoBeacon.getRssi(), revisionAccuracy(recoBeacon));
+				classifiedBeacons.add(2, RedBeacon);
 				break;
 			}
 		}
-		
-		classifiedBeacons.add(0, GreenBeacon);
-		classifiedBeacons.add(1, YellowBeacon);
-		classifiedBeacons.add(2, RedBeacon);
 
 		Log.i("BeaconHelper", "getBeaconInfo");
 		

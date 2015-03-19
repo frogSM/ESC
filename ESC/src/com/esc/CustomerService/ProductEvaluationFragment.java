@@ -1,5 +1,7 @@
 package com.esc.CustomerService;
 
-public class ProductEvaluationFragment {
+import android.app.Fragment;
+
+public class ProductEvaluationFragment extends Fragment {
 
 }

@@ -47,6 +47,10 @@ public class JsonHelper extends Observable {
 
 			jsonObj.put("uid", castingData);
 			break;
+			
+		case Constants.All_Product_Info :
+			jsonObj.put("type", "All_Product_Info");
+			break;
 		}
 
 		return jsonObj.toString();
@@ -68,6 +72,12 @@ public class JsonHelper extends Observable {
 			List<Product> products = new ArrayList<Product>();
 			products = gson.fromJson(object.get("Object"), new TypeToken<List<Product>>(){}.getType());
 			mObject = products;
+			break;
+			
+		case Constants.All_Product_Info :
+			List<Product> allProducts = new ArrayList<Product>();
+			allProducts = gson.fromJson(object.get("Object"), new TypeToken<List<Product>>(){}.getType());
+			mObject = allProducts;
 			break;
 		}
 		

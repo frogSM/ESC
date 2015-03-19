@@ -1,5 +1,7 @@
 package com.esc.CustomerService;
 
-public class NoticeFragment {
+import android.app.Fragment;
+
+public class NoticeFragment extends Fragment {
 
 }
