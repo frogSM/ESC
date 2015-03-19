@@ -44,7 +44,7 @@ public class MainActivity extends FragmentActivity {
 		mFragmentTransaction.commit();
 		
 		productManager = new ProductManager(this);
-//		productManager.OpenSerialPort();
+		productManager.OpenSerialPort();
 	}
 	
 	@Override
