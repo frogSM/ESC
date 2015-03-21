@@ -1,0 +1,57 @@
+package com.esc.shoppingBasket;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+
+import com.esc.productManager.Product;
+
+public class BasketManager {
+	
+	/** Basket 싱글톤 인스턴스 **/
+	private static BasketManager instance;
+	
+	/** 장바구니에 담긴 상품들 **/
+	private ArrayList<Product> mBasket;
+
+	public static BasketManager getInstance() {
+		if (instance == null) {
+			instance = new BasketManager();
+		}
+		return instance;
+	}
+	
+	public BasketManager() {
+		// TODO Auto-generated constructor stub
+		mBasket = new ArrayList<Product>();
+	}
+	
+	public void addBasketProduct(Product product) {
+		mBasket.add(product);
+		removeDuplicationElement();
+	}
+	
+	public void removeBasketProduct(Product product) {
+		mBasket.remove(product);
+	}
+	
+	public ArrayList<Product> getBasket() {
+		return mBasket;
+	}
+	
+	private void removeDuplicationElement() {
+		/** ArrayList<Product> -> HashSet<Product> -> ArrayList<Product>를 이용한 중복제거 **/
+//		HashSet<Product> hs = new HashSet<Product>(mBasket);
+//		mBasket = new ArrayList<Product>(hs);
+		
+		for(int i=0 ; i<mBasket.size() ; i++) {
+			for(int j=0 ; j<i ; j++) {
+				if(mBasket.get(i).getName().equals(mBasket.get(j).getName())) {
+					mBasket.remove(mBasket.get(j));
+					i--;
+					break;
+				}
+			}
+		}
+		
+	}
+}

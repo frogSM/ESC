@@ -18,18 +18,25 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ViewFlipper;
 
+import com.esc.Connection.JsonHelper;
+import com.esc.Connection.SocketHelper;
 import com.esc.CustomerService.CustomerServiceMainFragment;
 import com.esc.printLocation.NavigationFragment;
 import com.esc.productManager.ProductManager;
 import com.esc.productManager.ProductManagerFragment;
 import com.esc.searchProduct.SearchFragment;
+import com.esc.shoppingBasket.BasketManager;
+import com.esc.shoppingBasket.ShoppingBasketFragment;
 
 public class MainActivity extends FragmentActivity {
 
+	/** fragment를 위한 멤버변수 **/
 	private Fragment mMainFragment;
 	private FragmentManager mFragmentManager; 
 	private FragmentTransaction mFragmentTransaction;
+	
 	private ProductManager productManager;
+	private BasketManager mBasketManager;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +47,10 @@ public class MainActivity extends FragmentActivity {
 		mMainFragment = new mainFragment();
 		mFragmentManager = getFragmentManager();
 		mFragmentTransaction = mFragmentManager.beginTransaction();
-		mFragmentTransaction.replace(R.id.Button, mMainFragment);
+		mFragmentTransaction.replace(R.id.layout_fragment, mMainFragment);
 		mFragmentTransaction.commit();
 		
+		mBasketManager = BasketManager.getInstance();
 		productManager = new ProductManager(this);
 		productManager.OpenSerialPort();
 	}
@@ -65,6 +73,7 @@ public class MainActivity extends FragmentActivity {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		productManager.CloseSerialPort();
+		mBasketManager.getBasket().clear();
 	}
 
 	/** 액션바 상품검색버튼, 장바구니버튼 구현 **/
@@ -77,9 +86,16 @@ public class MainActivity extends FragmentActivity {
 		if (id == R.id.action_settings) {
 			return true;
 		} else if (id == R.id.action_Search) {
+			setTitle("상품검색");
 			Fragment fm = new SearchFragment();
 			mFragmentTransaction = mFragmentManager.beginTransaction();
-			mFragmentTransaction.replace(R.id.Button, fm);
+			mFragmentTransaction.replace(R.id.layout_fragment, fm);
+			mFragmentTransaction.commit();
+		} else if (id == R.id.action_Cart) {
+			setTitle("장바구니");
+			Fragment fm = new ShoppingBasketFragment();
+			mFragmentTransaction = mFragmentManager.beginTransaction();
+			mFragmentTransaction.replace(R.id.layout_fragment, fm);
 			mFragmentTransaction.commit();
 		}
 		return super.onOptionsItemSelected(item);
@@ -130,7 +146,7 @@ public class MainActivity extends FragmentActivity {
 			break;
 		}
 		mFragmentTransaction = mFragmentManager.beginTransaction();
-		mFragmentTransaction.replace(R.id.Button, fm);
+		mFragmentTransaction.replace(R.id.layout_fragment, fm);
 		mFragmentTransaction.commit();
 	}
 	
@@ -149,6 +165,7 @@ public class MainActivity extends FragmentActivity {
 			mView = inflater.inflate(R.layout.fragment_main, container, false);
 			
 			mViewFlipper = (ViewFlipper)mView.findViewById(R.id.main_viewflipper);
+			mViewFlipper.setDisplayedChild( (int)(Math.random()*6) );
 			mViewFlipper.setOnTouchListener(MyTouchListener);
 			
 			return mView;

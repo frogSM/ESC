@@ -9,6 +9,7 @@ import com.esc.Connection.SocketHelper;
 import com.esc.productManager.Product;
 import com.google.gson.annotations.JsonAdapter;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	/** 소켓 및 Json 도우미**/
 	private SocketHelper mSocketHelper;
 	private JsonHelper mJsonHelper;
+	
 	/** 리스트에 보여줄 상품들 이름 **/
 	private String[] mProductsName;
 	/** DB에서 불러올 전체 상품 **/

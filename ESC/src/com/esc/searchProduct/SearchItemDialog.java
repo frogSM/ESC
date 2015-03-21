@@ -18,10 +18,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.esc.R;
 import com.esc.productManager.Product;
+import com.esc.shoppingBasket.BasketManager;
 
 public class SearchItemDialog extends Dialog implements OnClickListener{
 
@@ -35,6 +37,9 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	
 	private LayoutInflater mLayoutInflater;
 	
+	/** 장바구니 객체 **/
+	private BasketManager mBasketManager;
+	
 	/** SearchFragment로부터 전달받은 데이터 **/
 	private ArrayList<Product> receiveData;
 	
@@ -44,8 +49,6 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	
 	/** 애니메이션을 위한변수(처음 터치위치 저장) **/
 	private int m_nPreTouchPosX = 0;
-	
-	private String tempUrl = "@drawable/main_ad1";
 	
 	public SearchItemDialog(Context context, ArrayList<Product> data, int position) {
 		super(context);
@@ -59,29 +62,14 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setting();
-
-		for(int i=0 ; i<receiveData.size() ; i++) {
-			LinearLayout ll = (LinearLayout)mLayoutInflater.inflate(R.layout.item_productinfo, null);
-			TextView mTextViewName= (TextView)ll.findViewById(R.id.tv_name);
-			TextView mTextViewPrice= (TextView)ll.findViewById(R.id.tv_price);
-			
-			ImageView mImageView = (ImageView)ll.findViewById(R.id.iv_productpicture);
-			
-			int id = mContext.getResources().getIdentifier(tempUrl, "drawable", mContext.getPackageName());
-			mImageView.setImageResource(id);
-			
-			mTextViewName.setText(receiveData.get(i).getName());
-			mTextViewPrice.setText(String.valueOf(receiveData.get(i).getPrice()));
-			
-			mViewFlipper.addView(ll);
-		}
 		
-		mViewFlipper.setDisplayedChild(selectNum);
-		mViewFlipper.setOnTouchListener(MyTouchListener);
+		mBasketManager = BasketManager.getInstance();
+		
+		dialogSetting();
+		addDynamicViewFlipper();
 	}
 	
-	public void setting() {
+	private void dialogSetting() {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 		getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
@@ -97,6 +85,46 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 		mButtonRight.setOnClickListener(this);
 		
 		mLayoutInflater = (LayoutInflater)mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
+	}
+	
+	private void addDynamicViewFlipper() {
+		for(int i=0 ; i<receiveData.size() ; i++) {
+			LinearLayout ll = (LinearLayout)mLayoutInflater.inflate(R.layout.item_productinfo, null);
+			TextView mTextViewName= (TextView)ll.findViewById(R.id.tv_name);
+			TextView mTextViewPrice= (TextView)ll.findViewById(R.id.tv_price);
+			ImageView mImageView = (ImageView)ll.findViewById(R.id.iv_productpicture);
+			Button mButtonBasketAdd = (Button)ll.findViewById(R.id.btn_basket_add);
+			Button mButtonPositionConfirm = (Button)ll.findViewById(R.id.btn_position_confirm);
+			
+			mTextViewName.setText(receiveData.get(i).getName());
+			mTextViewPrice.setText(String.valueOf(receiveData.get(i).getPrice()));
+			
+			int id = mContext.getResources().getIdentifier(receiveData.get(i).getImgURL(), "drawable", mContext.getPackageName());
+			mImageView.setImageResource(id);
+			
+			final int loopValue = i;
+			mButtonBasketAdd.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					mBasketManager.addBasketProduct(receiveData.get(loopValue));
+					Toast.makeText(getContext(), "장바구니에 추가되었습니다.", Toast.LENGTH_SHORT).show();
+				}
+			});
+			
+			mButtonPositionConfirm.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+			
+			mViewFlipper.addView(ll);
+		}
+		
+		mViewFlipper.setDisplayedChild(selectNum);
+		mViewFlipper.setOnTouchListener(MyTouchListener);
 	}
 	
 	@Override
