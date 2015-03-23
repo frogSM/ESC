@@ -3,15 +3,17 @@ package com.esc.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.json.*;
-
-import com.esc.Constants;
-import com.esc.productManager.Product;
-import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
-
+import net.sf.json.JSONObject;
 import android.content.Context;
 import android.database.Observable;
+
+import com.esc.Constants;
+import com.esc.CustomerNotice.Notice;
+import com.esc.productManager.Product;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 public class JsonHelper extends Observable {
 	private static JsonHelper instance;
@@ -51,7 +53,12 @@ public class JsonHelper extends Observable {
 		case Constants.All_Product_Info :
 			jsonObj.put("type", "All_Product_Info");
 			break;
+
+		case Constants.requestNoticeDB :
+			jsonObj.put("type", "requestNoticeDB");
+			break;
 		}
+		
 
 		return jsonObj.toString();
 	}
@@ -79,6 +86,10 @@ public class JsonHelper extends Observable {
 			allProducts = gson.fromJson(object.get("Object"), new TypeToken<List<Product>>(){}.getType());
 			mObject = allProducts;
 			break;
+		case Constants.requestNoticeDB :
+			List<Notice> notices = new ArrayList<Notice> ( );
+			notices = gson.fromJson(object.get("Object"), new TypeToken<List<Notice>>(){}.getType());
+			mObject = notices;
 		}
 		
 		return mObject;
