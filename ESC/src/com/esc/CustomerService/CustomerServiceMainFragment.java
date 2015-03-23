@@ -3,6 +3,7 @@ package com.esc.CustomerService;
 import java.util.ArrayList;
 
 import com.esc.R;
+import com.esc.CustomerNotice.CustomerNoticeFragment;
 import com.esc.MainActivity.mainFragment;
 import com.esc.printLocation.NavigationFragment;
 import com.esc.productManager.ProductManagerFragment;
@@ -28,7 +29,7 @@ public class CustomerServiceMainFragment extends Fragment {
 
 		this.view = inflater.inflate(R.layout.fragment_customerservice, container, false);
 	    		
-		fragment = new CustomerNoiseFragment();
+		fragment = new CustomerNoticeFragment();
 		mFragmentManager = getFragmentManager();
 		mFragmentTransaction = mFragmentManager.beginTransaction();
 		mFragmentTransaction.replace(R.id.FRAGMENT_CUSTOMERSERVICE, fragment);
@@ -42,7 +43,7 @@ public class CustomerServiceMainFragment extends Fragment {
 		
 		switch(v.getId()) {
 		case R.id.BUTTON_NOTICE :
-			fm  = new CustomerNoiseFragment();
+			fm  = new CustomerNoticeFragment();
 			break;
 		case R.id.BUTTON_QNA :
 			fm = new QuestionAndAnswerFragment();
@@ -51,7 +52,7 @@ public class CustomerServiceMainFragment extends Fragment {
 			fm = new ProductEvaluationFragment();
 			break;
 		case R.id.BUTTON_CUSTOMERNOISE :
-			fm = new CustomerNoiseFragment();
+			fm = new CustomerMessageFragment();
 			break;
 		}
 		mFragmentTransaction = mFragmentManager.beginTransaction();
