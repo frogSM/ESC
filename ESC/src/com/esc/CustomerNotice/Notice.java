@@ -4,17 +4,18 @@ import java.util.ArrayList;
 
 public class Notice {
 	
-	String title;
-	String logo;
-	String date;
 	String number;
+	String logo;
+	String title;
+	String date;
 	ArrayList<String> content;
 	
-	public Notice( String title, String logo, String date, String number, ArrayList<String> content ) {
-		this.title = title;
-		this.logo = logo;
-		this.date = date;
+	
+	public Notice( String number, String logo, String title, String date, ArrayList<String> content ) {
 		this.number = number;
+		this.logo = logo;
+		this.title = title;
+		this.date = date;
 		this.content = content;
 	}
 	

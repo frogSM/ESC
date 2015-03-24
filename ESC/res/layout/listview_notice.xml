@@ -14,7 +14,7 @@
             android:layout_height="15dp" >
 
             <ImageView
-                android:id="@+id/imageView1"
+                android:id="@+id/IMAGEVIEW_LOGO"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_launcher" />
@@ -32,7 +32,7 @@
                 android:layout_weight="3.34" >
 
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/TEXTVIEW_TITLE"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -46,7 +46,7 @@
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/TEXTVIEW_DATE"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"

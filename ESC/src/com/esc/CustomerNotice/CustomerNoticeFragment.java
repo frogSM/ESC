@@ -15,6 +15,7 @@ import com.esc.Constants;
 import com.esc.R;
 import com.esc.Connection.JsonHelper;
 import com.esc.Connection.SocketHelper;
+import com.esc.productManager.Product;
 
 public class CustomerNoticeFragment extends Fragment {
 
@@ -43,7 +44,6 @@ public class CustomerNoticeFragment extends Fragment {
 		
 		getDBHandler = new GetDBHandler();
 		
-		noticeListView.setAdapter(noticeListAdpater);
 		
 		/**서버에 NoticeDB를 요청할 JSON문장 만들기**/
 		String requestNoticeDB = jsonHelper.makeJsonMessage(Constants.requestNoticeDB, null);
@@ -61,6 +61,11 @@ public class CustomerNoticeFragment extends Fragment {
              
             switch (msg.what) {
             case Constants.THREAD_MESSAGE:
+
+            	notices = (ArrayList<Notice>)jsonHelper.parserJsonMessage(msg.obj.toString());
+            	noticeListAdpater.UpdateNoticeListAdapter(notices);
+            	noticeListView.setAdapter(noticeListAdpater);
+            	noticeListAdpater.notifyDataSetChanged();
             	break;
             default:
                 break;
