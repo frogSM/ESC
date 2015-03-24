@@ -107,7 +107,12 @@ public class SocketHelper {
 		mThread.interrupt();
 		
 	}
-	
+
+	/** 소켓통신으로 서버에게 Database 요청 **/
+	public void sendMessage( final String message ) {
+		
+		
+	}
 	public String getMessage() {
 		return getSentence;
 	}
