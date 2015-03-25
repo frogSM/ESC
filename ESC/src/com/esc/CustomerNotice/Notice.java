@@ -8,15 +8,14 @@ public class Notice {
 	String logo;
 	String title;
 	String date;
-	ArrayList<String> contents;
-	
-	
-	public Notice( String number, String logo, String title, String date, ArrayList<String> contents) {
+	String content;
+
+	public Notice( String number, String logo, String title, String date, String content) {
 		this.number = number;
 		this.logo = logo;
 		this.title = title;
 		this.date = date;
-		this.contents = contents;
+		this.content = content;
 	}
 	
 	public void setNumber(String number) {
@@ -35,10 +34,10 @@ public class Notice {
 		this.date = date;
 	}
 	
-	public void setContents(Object contents) {
-		this.contents = (ArrayList<String>) this.contents;
+	public void setContents(String content) {
+		this.content = content;
 	}
-	
+
 	public String getNumber() {
 		return this.number;
 	}
@@ -55,8 +54,8 @@ public class Notice {
 		return this.date;
 	}
 	
-	public ArrayList<String> getContent( ) {
-		return this.contents;
+	public String getContent( ) {
+		return this.content;
 	}
 	 
 

@@ -18,6 +18,7 @@ public class NoticeListAdapter extends BaseExpandableListAdapter {
 	private Context context;
 	private ArrayList<Notice> notices;
 	private ViewHolder viewHolder;
+	private ArrayList<ArrayList<String>> contents = new ArrayList<ArrayList<String>> ();
 
 
 	public NoticeListAdapter ( Context context, ArrayList<Notice> notices ){ 
@@ -42,7 +43,7 @@ public class NoticeListAdapter extends BaseExpandableListAdapter {
 	
 	@Override
 	public int getChildrenCount(int groupPosition) {
-		return this.notices.get(groupPosition).getContent().size();
+		return this.contents.get(groupPosition).size();
 	}
 
    @Override
@@ -66,13 +67,6 @@ public class NoticeListAdapter extends BaseExpandableListAdapter {
         	viewHolder = (ViewHolder)v.getTag();
         }
          
-//        // 그룹을 펼칠때와 닫을때 아이콘을 변경해 준다.
-//        if(isExpanded){
-//            viewHolder.iv_image.setBackgroundColor(Color.GREEN);
-//        }else{
-//            viewHolder.iv_image.setBackgroundColor(Color.WHITE);
-//        }
-         
         int logoIntegerValue = context.getResources().getIdentifier(this.notices.get(groupPosition).getLogo(),"drawable",context.getPackageName() ); 
         viewHolder.logo.setImageResource(logoIntegerValue);
         viewHolder.logo.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -84,7 +78,7 @@ public class NoticeListAdapter extends BaseExpandableListAdapter {
 
 	@Override
 	public Object getChild(int groupPosition, int childPosition) {
-		return this.notices.get(groupPosition).getContent().get(childPosition);
+		return this.contents.get(groupPosition).get(childPosition);
 	}
 
 
@@ -111,8 +105,8 @@ public class NoticeListAdapter extends BaseExpandableListAdapter {
             viewHolder = (ViewHolder)v.getTag();
         }
          
-        int StringIntegerImageValue = context.getResources().getIdentifier(this.notices.get(groupPosition).getContent().get(childPosition),"drawable",context.getPackageName() ); 
-        viewHolder.content.setImageResource(StringIntegerImageValue);
+        int contentIntegerValue = context.getResources().getIdentifier( this.contents.get(groupPosition).get(childPosition),"drawable",context.getPackageName() ); 
+        viewHolder.content.setImageResource(contentIntegerValue);
         viewHolder.content.setScaleType(ImageView.ScaleType.FIT_XY);        
          
         return v;
@@ -130,7 +124,15 @@ public class NoticeListAdapter extends BaseExpandableListAdapter {
 	}
 	
 	public void UpdateNoticeListAdapter( ArrayList<Notice> renewdNotices ) {
+
 		this.notices = renewdNotices;
+
+		/**차일드 뷰 반환을 위해 notices객체에서 content값 뽑아오기**/
+		for(int i = 0 ; i < notices.size() ; i ++ ) { 
+			ArrayList<String> content = new ArrayList<String> ( ) ;
+			content.add(notices.get(i).getContent() );
+			contents.add(content);
+		}
 	}
 	
 	class ViewHolder {
