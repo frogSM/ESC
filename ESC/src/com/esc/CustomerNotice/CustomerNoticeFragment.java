@@ -38,12 +38,13 @@ public class CustomerNoticeFragment extends Fragment {
 		jsonHelper = JsonHelper.getInstance(getActivity().getApplicationContext());
 		socketHelper = SocketHelper.getInstance(getActivity().getApplicationContext());
 		
-		noticeListView = (ExpandableListView)getActivity().findViewById(R.id.EXPANDABLELISTVIEW_NOTICE);
+		noticeListView = (ExpandableListView)view.findViewById(R.id.EXPANDABLELISTVIEW_NOTICE);
 		notices = new ArrayList<Notice> ();
 		noticeListAdpater = new NoticeListAdapter(getActivity().getApplicationContext(), notices);
 		
+		noticeListView.setAdapter(noticeListAdpater);
+
 		getDBHandler = new GetDBHandler();
-		
 		
 		/**서버에 NoticeDB를 요청할 JSON문장 만들기**/
 		String requestNoticeDB = jsonHelper.makeJsonMessage(Constants.requestNoticeDB, null);
@@ -64,15 +65,11 @@ public class CustomerNoticeFragment extends Fragment {
 
             	notices = (ArrayList<Notice>)jsonHelper.parserJsonMessage(msg.obj.toString());
             	noticeListAdpater.UpdateNoticeListAdapter(notices);
-            	noticeListView.setAdapter(noticeListAdpater);
             	noticeListAdpater.notifyDataSetChanged();
             	break;
             default:
                 break;
             }
         }
-         
     };
-	
-
 }

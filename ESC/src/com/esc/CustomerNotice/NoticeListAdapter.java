@@ -42,7 +42,7 @@ public class NoticeListAdapter extends BaseExpandableListAdapter {
 	
 	@Override
 	public int getChildrenCount(int groupPosition) {
-		return this.notices.get(groupPosition).GetContent().size();
+		return this.notices.get(groupPosition).getContent().size();
 	}
 
    @Override
@@ -73,18 +73,18 @@ public class NoticeListAdapter extends BaseExpandableListAdapter {
 //            viewHolder.iv_image.setBackgroundColor(Color.WHITE);
 //        }
          
-        int logoIntegerValue = context.getResources().getIdentifier(this.notices.get(groupPosition).GetLogo(),"drawable",context.getPackageName() ); 
+        int logoIntegerValue = context.getResources().getIdentifier(this.notices.get(groupPosition).getLogo(),"drawable",context.getPackageName() ); 
         viewHolder.logo.setImageResource(logoIntegerValue);
         viewHolder.logo.setScaleType(ImageView.ScaleType.FIT_XY);
-        viewHolder.title.setText(notices.get(groupPosition).GetTitle());
-        viewHolder.date.setText(notices.get(groupPosition).GetDate());
+        viewHolder.title.setText(notices.get(groupPosition).getTitle());
+        viewHolder.date.setText(notices.get(groupPosition).getDate());
         
         return v;
     }
 
 	@Override
 	public Object getChild(int groupPosition, int childPosition) {
-		return this.notices.get(groupPosition).GetContent().get(childPosition);
+		return this.notices.get(groupPosition).getContent().get(childPosition);
 	}
 
 
@@ -111,7 +111,7 @@ public class NoticeListAdapter extends BaseExpandableListAdapter {
             viewHolder = (ViewHolder)v.getTag();
         }
          
-        int StringIntegerImageValue = context.getResources().getIdentifier(this.notices.get(groupPosition).GetContent().get(childPosition),"drawable",context.getPackageName() ); 
+        int StringIntegerImageValue = context.getResources().getIdentifier(this.notices.get(groupPosition).getContent().get(childPosition),"drawable",context.getPackageName() ); 
         viewHolder.content.setImageResource(StringIntegerImageValue);
         viewHolder.content.setScaleType(ImageView.ScaleType.FIT_XY);        
          
