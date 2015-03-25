@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 public class Notice {
 	
-	String number;
-	String logo;
-	String title;
-	String date;
-	ArrayList<String> content;
+	private String number;
+	private String logo;
+	private String title;
+	private String date;
+	private ArrayList<String> contents;
 	
 	
-	public Notice( String number, String logo, String title, String date, ArrayList<String> content ) {
+	public Notice( String number, String logo, String title, String date, ArrayList<String> contents  ) {
 		this.number = number;
 		this.logo = logo;
 		this.title = title;
 		this.date = date;
-		this.content = content;
+		this.contents = contents;
 	}
 	
 	public String GetTitle( ) {
@@ -31,13 +31,13 @@ public class Notice {
 		return this.date;
 	}
 	
-	public ArrayList<String> GetContent( ) { 
-		return this.content;
-	}
-	
 	public String GetNumber( ) { 
 		return this.number;
 	}
 	
+	public ArrayList<String> GetContent( ) {
+		return this.contents;
+	}
+	 
 
 }

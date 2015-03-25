@@ -111,8 +111,8 @@ public class NoticeListAdapter extends BaseExpandableListAdapter {
             viewHolder = (ViewHolder)v.getTag();
         }
          
-        int noticeContentIntegerImageValue = context.getResources().getIdentifier(this.notices.get(groupPosition).GetContent().get(childPosition),"drawable",context.getPackageName() ); 
-        viewHolder.content.setImageResource(noticeContentIntegerImageValue);
+        int StringIntegerImageValue = context.getResources().getIdentifier(this.notices.get(groupPosition).GetContent().get(childPosition),"drawable",context.getPackageName() ); 
+        viewHolder.content.setImageResource(StringIntegerImageValue);
         viewHolder.content.setScaleType(ImageView.ScaleType.FIT_XY);        
          
         return v;
