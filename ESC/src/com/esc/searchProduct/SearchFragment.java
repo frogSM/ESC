@@ -121,7 +121,19 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 		// TODO Auto-generated method stub
 		if (TextUtils.isEmpty(newText)) {
 			
-			adapter.getFilter().filter(null);
+			adapter.getFilter().filter(newText, new FilterListener() {
+
+				/** 필터링이 완료 된후 갱신된 Adapter , 중복처리된거 알고있음 **/
+				@Override
+				public void onFilterComplete(int count) {
+					// TODO Auto-generated method stub
+					searchProducts.clear();
+					for (int i = 0; i < adapter.getCount(); i++) {
+						Log.e("SearchFragment", adapter.getItem(i));
+					}
+					updateSearchProducts(adapter);
+				}
+			});
 			
 		} else {
 			
