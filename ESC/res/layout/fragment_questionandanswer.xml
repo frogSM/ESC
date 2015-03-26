@@ -33,17 +33,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="38dp"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
 
+	    <Spinner
+	        android:id="@+id/spinner1"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1" />
 
 	    <SearchView
 	        android:id="@+id/searchView1"
-	        android:layout_width="match_parent"
+	        android:layout_width="460dp"
 	        android:layout_height="wrap_content"
-	        android:imeOptions="flagNoExtractUi"
 	        android:iconifiedByDefault="false"
+	        android:imeOptions="flagNoExtractUi"
 	        android:queryHint="검색어를 입력하세요." >
-	
 	    </SearchView>
 
     </LinearLayout>
@@ -53,10 +57,11 @@
         android:layout_height="36dp"
         android:orientation="vertical" >
 
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="84dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher" />
 
     </LinearLayout>
 
@@ -64,6 +69,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
+
+        <ExpandableListView
+            android:id="@+id/expandableListView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ExpandableListView>
+
     </LinearLayout>
 
 </LinearLayout>
