@@ -52,7 +52,7 @@ public class MainActivity extends FragmentActivity {
 		
 		mBasketManager = BasketManager.getInstance();
 		productManager = new ProductManager(this);
-	//	productManager.OpenSerialPort();
+		//OpenSerialPort();
 	}
 	
 	@Override
