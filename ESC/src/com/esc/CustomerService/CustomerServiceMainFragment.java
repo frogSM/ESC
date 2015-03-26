@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.esc.R;
 import com.esc.CustomerNotice.CustomerNoticeFragment;
+import com.esc.CustomerQuestionAndAnswer.QuestionAndAnswerFragment;
 import com.esc.MainActivity.mainFragment;
 import com.esc.printLocation.NavigationFragment;
 import com.esc.productManager.ProductManagerFragment;
