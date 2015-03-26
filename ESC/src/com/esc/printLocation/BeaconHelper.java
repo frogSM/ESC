@@ -55,15 +55,15 @@ public class BeaconHelper implements RECOServiceConnectListener {
 			switch(recoBeacon.getMinor()) {
 			case 18001 :
 				GreenBeacon = new BeaconInfo(recoBeacon.getMajor(), recoBeacon.getMinor(), recoBeacon.getRssi(), revisionAccuracy(recoBeacon));
-				classifiedBeacons.add(0, GreenBeacon);
+				classifiedBeacons.set(0, GreenBeacon);
 				break;
 			case 18002 :
 				YellowBeacon = new BeaconInfo(recoBeacon.getMajor(), recoBeacon.getMinor(), recoBeacon.getRssi(), revisionAccuracy(recoBeacon));
-				classifiedBeacons.add(1, YellowBeacon);
+				classifiedBeacons.set(1, YellowBeacon);
 				break;
 			case 18003 :
 				RedBeacon = new BeaconInfo(recoBeacon.getMajor(), recoBeacon.getMinor(), recoBeacon.getRssi(), revisionAccuracy(recoBeacon));
-				classifiedBeacons.add(2, RedBeacon);
+				classifiedBeacons.set(2, RedBeacon);
 				break;
 			}
 		}
