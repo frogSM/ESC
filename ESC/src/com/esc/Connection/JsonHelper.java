@@ -9,6 +9,7 @@ import android.database.Observable;
 
 import com.esc.Constants;
 import com.esc.CustomerNotice.Notice;
+import com.esc.CustomerQuestionAndAnswer.QuestionAndAnswer;
 import com.esc.productManager.Product;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -74,6 +75,7 @@ public class JsonHelper extends Observable {
 		
 		mType = gson.fromJson(object.get("type"), String.class);
 		switch(mType) {
+		
 		case Constants.Uid_Info :
 			// List<Product>로 반환된 객체를 오브젝트로 변환후 다시 반환(가독성 위해)
 			List<Product> products = new ArrayList<Product>();
@@ -86,10 +88,24 @@ public class JsonHelper extends Observable {
 			allProducts = gson.fromJson(object.get("Object"), new TypeToken<List<Product>>(){}.getType());
 			mObject = allProducts;
 			break;
+		
 		case Constants.requestNoticeDB :
 			List<Notice> notices = new ArrayList<Notice> ( );
 			notices = gson.fromJson(object.get("Object"), new TypeToken<List<Notice>>(){}.getType());
 			mObject = notices;
+			break;
+		
+		case Constants.requestBest5QADB :
+			List<QuestionAndAnswer> questionAndAndswers = new ArrayList<QuestionAndAnswer> ( ) ;
+			questionAndAndswers = gson.fromJson(object.get("Object"), new TypeToken<List<QuestionAndAnswer>>(){}.getType());
+			mObject = questionAndAndswers;
+			break;
+		
+		
+		
+		
+		
+		
 		}
 		
 		return mObject;

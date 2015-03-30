@@ -12,39 +12,11 @@
         android:layout_marginTop="5dp"
         android:orientation="vertical" >
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <LinearLayout
-                android:layout_width="38dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical" >
-
-                <ImageButton
-                    android:id="@+id/imageButton1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/background" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="vertical" >
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/background" />
-
-            </LinearLayout>
-
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:src="@drawable/background" />
 
     </LinearLayout>
 
@@ -62,7 +34,7 @@
             android:orientation="vertical" >
 
             <Spinner
-                android:id="@+id/spinner1"
+                android:id="@+id/SPINNER_CATEGORIES"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
