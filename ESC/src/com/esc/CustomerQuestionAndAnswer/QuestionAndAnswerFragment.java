@@ -42,13 +42,13 @@ public class QuestionAndAnswerFragment extends Fragment{
 		categories.add("결제");
 		categories.add("마트이용");
 		
-		ArrayAdapter<String> adaper = new ArrayAdapter( getActivity(), android.R.layout.simple_spinner_dropdown_item, categories );
+		ArrayAdapter<String> spinnerAdaper = new ArrayAdapter( getActivity(), android.R.layout.simple_spinner_dropdown_item, categories );
 		spinner = (Spinner)view.findViewById(R.id.SPINNER_CATEGORIES);
-		spinner.setAdapter(adaper);
+		spinner.setAdapter(spinnerAdaper);
 		//기본 디폴트 값으로 BEST 5로 지정.
 		spinner.setSelection(0);
 		
-		/** 2.DB를 요청할 JSON문장을 만들고 서버에 전송한다. **/
+		/** 2. Best5 DB를 요청할 JSON문장을 만들고 서버에 전송한다. **/
 		
 		String requestBest5QADB = jsonHelper.makeJsonMessage(Constants.requestBest5QADB, null);
 		socketHelper.sendMessage( getDBHandler, requestBest5QADB);
