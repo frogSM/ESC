@@ -56,22 +56,22 @@ public class QuestionAndAnswerListAdapter extends BaseExpandableListAdapter {
         	viewHolder = new ViewHolder();
 
         	LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        	v = inflater.inflate(R.layout.listview_notice, parent, false);
+        	v = inflater.inflate(R.layout.listview_question, parent, false);
             
-        	viewHolder.logo = (ImageView)v.findViewById(R.id.IMAGEVIEW_LOGO);
-        	viewHolder.title = (TextView) v.findViewById(R.id.TEXTVIEW_TITLE);
-        	viewHolder.date = (TextView) v.findViewById(R.id.TEXTVIEW_DATE);
+        	viewHolder.questionImage = (ImageView)v.findViewById(R.id.IMAGEVIEW_QUESTION);
+        	viewHolder.questionTitle = (TextView)v.findViewById(R.id.TEXTVIEW_TITLE);
+        	viewHolder.answerImage = (ImageView)v.findViewById(R.id.IMAGEVIEW_ANSWER);
+        	viewHolder.answerContent = (TextView)v.findViewById(R.id.TEXTVIEW_ANSWERCONTENT);
         	
         	v.setTag(viewHolder);
         } else{
         	viewHolder = (ViewHolder)v.getTag();
         }
-         
-        int logoIntegerValue = context.getResources().getIdentifier(this.questionAndAnswers.get(groupPosition).getLogo(),"drawable",context.getPackageName() ); 
-        viewHolder.logo.setImageResource(logoIntegerValue);
-        viewHolder.logo.setScaleType(ImageView.ScaleType.FIT_XY);
-        viewHolder.title.setText(questionAndAnswers.get(groupPosition).getTitle());
-        viewHolder.date.setText(questionAndAnswers.get(groupPosition).getDate());
+
+        viewHolder.questionImage.setImageResource(R.drawable.img_question);
+        viewHolder.questionTitle.setText(questionAndAnswers.get(groupPosition).getQuestionTitle());
+        viewHolder.answerImage.setImageResource(R.drawable.img_answer);
+        viewHolder.answerContent.setText(questionAndAnswers.get(groupPosition).getAnswerContent());
         
         return v;
     }
@@ -136,10 +136,10 @@ public class QuestionAndAnswerListAdapter extends BaseExpandableListAdapter {
 	}
 	
 	class ViewHolder {
-		ImageView logo;
-		TextView title;
-		TextView date;
-		ImageView content;
+		ImageView questionImage;
+		TextView questionTitle;
+		ImageView answerImage;
+		TextView answerContent;
 	}
 
 }
