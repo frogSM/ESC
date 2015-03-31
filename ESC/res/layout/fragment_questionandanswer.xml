@@ -83,7 +83,7 @@
         android:orientation="vertical" >
 
         <ExpandableListView
-            android:id="@+id/expandableListView1"
+            android:id="@+id/EXPANDABLELISTVIEW_QUESTIONANDANSWER"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp" >

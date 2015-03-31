@@ -97,17 +97,18 @@ public class QuestionAndAnswerListAdapter extends BaseExpandableListAdapter {
         	viewHolder = new ViewHolder();
 
         	LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        	v = inflater.inflate(R.layout.imageview_noticecontent, parent, false);
+        	v = inflater.inflate(R.layout.listview_answer, parent, false);
             
-            viewHolder.content = (ImageView) v.findViewById(R.id.IMAGEVIEW_NOTICECONTENT);
+            viewHolder.answerImage = (ImageView) v.findViewById(R.id.IMAGEVIEW_ANSWER);
+            viewHolder.answerContent = (TextView) v.findViewById(R.id.TEXTVIEW_ANSWERCONTENT);
             v.setTag(viewHolder);
         }else{
             viewHolder = (ViewHolder)v.getTag();
         }
          
         int contentIntegerValue = context.getResources().getIdentifier( this.contents.get(groupPosition).get(childPosition),"drawable",context.getPackageName() ); 
-        viewHolder.content.setImageResource(contentIntegerValue);
-        viewHolder.content.setScaleType(ImageView.ScaleType.FIT_XY);        
+        viewHolder.answerImage.setImageResource(R.drawable.img_answer);
+        viewHolder.answerContent.setText(this.contents.get(groupPosition).get(childPosition));   
          
         return v;
     }
@@ -123,15 +124,15 @@ public class QuestionAndAnswerListAdapter extends BaseExpandableListAdapter {
 		return true;
 	}
 	
-	public void UpdateNoticeListAdapter( ArrayList<Notice> renewdquestionAndAnswers ) {
+	public void UpdateNoticeListAdapter( ArrayList<QuestionAndAnswer> renewdQuestionAndAnswers ) {
 
-		this.questionAndAnswers = renewdquestionAndAnswers;
+		this.questionAndAnswers = renewdQuestionAndAnswers;
 
 		/**차일드 뷰 반환을 위해 questionAndAnswers객체에서 content값 뽑아오기**/
 		for(int i = 0 ; i < questionAndAnswers.size() ; i ++ ) { 
 			ArrayList<String> content = new ArrayList<String> ( ) ;
-			content.add(questionAndAnswers.get(i).getContent() );
-			contents.add(content);
+			content.add(questionAndAnswers.get(i).getAnswerContent() );
+			this.contents.add(content);
 		}
 	}
 	
