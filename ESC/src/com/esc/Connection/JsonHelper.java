@@ -58,6 +58,10 @@ public class JsonHelper extends Observable {
 		case Constants.requestNoticeDB :
 			jsonObj.put("type", "requestNoticeDB");
 			break;
+		case Constants.requestBest5QADB :
+			jsonObj.put("type", "requestBest5QADB");
+			break;
+		
 		}
 		
 

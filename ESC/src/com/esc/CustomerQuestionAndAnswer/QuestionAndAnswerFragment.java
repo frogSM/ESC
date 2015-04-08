@@ -42,7 +42,7 @@ public class QuestionAndAnswerFragment extends Fragment{
 		jsonHelper = JsonHelper.getInstance(getActivity().getApplicationContext());
 		socketHelper = SocketHelper.getInstance(getActivity().getApplicationContext());
 		getDBHandler = new GetDBHandler( );
-		
+		categories = new ArrayList<String> ( );
 		qaListView = (ExpandableListView) view.findViewById(R.id.EXPANDABLELISTVIEW_QUESTIONANDANSWER);
 		questionAndAnswers = new ArrayList<QuestionAndAnswer> ( );
 		questionAndAnswerListAdapter = new QuestionAndAnswerListAdapter(getActivity().getApplicationContext(), questionAndAnswers);
@@ -59,6 +59,7 @@ public class QuestionAndAnswerFragment extends Fragment{
 		spinner.setAdapter(spinnerAdaper);
 		//기본 디폴트 값으로 BEST 5로 지정.
 		spinner.setSelection(0);
+		
 		
 		/** 2. Best5 DB를 요청할 JSON문장을 만들고 서버에 전송한다. **/
 		
