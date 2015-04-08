@@ -49,7 +49,7 @@ public class CustomerServiceMainFragment extends Fragment implements OnClickList
 //		mFragmentTransaction.add(R.id.FRAGMENT_CUSTOMERSERVICE, fragment).commit();
 		
 
-		fragment = new CustomerNoticeFragment();
+		fragment = new QuestionAndAnswerFragment();
 		mFragmentManager = getFragmentManager();
 		mFragmentTransaction = mFragmentManager.beginTransaction();
 		mFragmentTransaction.replace(R.id.FRAGMENT_CUSTOMERSERVICE, fragment);
@@ -65,9 +65,8 @@ public class CustomerServiceMainFragment extends Fragment implements OnClickList
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		
-		Log.d("logFragment", "view id : " + v.getId());
+//		Log.d("logFragment", "view id : " + v.getId());
 	
 		FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
 		fragmentTransaction = getChildFragmentManager().beginTransaction();
@@ -83,15 +82,34 @@ public class CustomerServiceMainFragment extends Fragment implements OnClickList
 		case R.id.BUTTON_PRODUCTEVALUATION :
 			fm = new ProductEvaluationFragment();
 			break;
-		case R.id.BUTTON_CUSTOMERNOISE :
+		case R.id.BUTTON_CUSTOMERNOISE : 
 			fm = new CustomerMessageFragment();
 			break;
 		}
-		fragmentTransaction.add(R.id.FRAGMENT_CUSTOMERSERVICE, fm).commit();
+//		Log.e("logFragment", "current Activity status : " + getActivity());
+//		fragmentTransaction.add(R.id.FRAGMENT_CUSTOMERSERVICE, fm).commit();
 		
-
-//		fragmentTransaction.replace(R.id.FRAGMENT_CUSTOMERSERVICE, fm);
-//		fragmentTransaction.commit();
+		fragmentTransaction.replace(R.id.FRAGMENT_CUSTOMERSERVICE, fm);
+		fragmentTransaction.commit();
+		Log.i("logFragment", "current Fragment status : " + fm.toString());
+	}
+	
+	@Override
+	public void onDetach() {
+		Log.i("logFragment","onDatachCalled");
+		super.onDetach();
+	}
+	
+	@Override
+	public void onDestroyView() {
+		Log.i("logFragment","onDestroyViewCalled");
+		super.onDestroyView();
+	}
+	
+	@Override
+	public void onDestroy() {
+		Log.i("logFragment","onDestroyCalled");
+		super.onDestroy();
 	}
 }
 

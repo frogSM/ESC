@@ -69,6 +69,8 @@ public class QuestionAndAnswerFragment extends Fragment{
 		return super.onCreateView(inflater, container, savedInstanceState);
 	}
 	
+	
+	
 	class GetDBHandler extends Handler {
 		
 		@Override
