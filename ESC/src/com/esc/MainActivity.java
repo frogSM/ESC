@@ -2,14 +2,12 @@ package com.esc;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,8 +17,6 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ViewFlipper;
 
-import com.esc.Connection.JsonHelper;
-import com.esc.Connection.SocketHelper;
 import com.esc.CustomerService.CustomerServiceMainFragment;
 import com.esc.printLocation.NavigationFragment;
 import com.esc.productManager.ProductManager;
