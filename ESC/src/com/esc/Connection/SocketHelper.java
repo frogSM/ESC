@@ -88,17 +88,18 @@ public class SocketHelper {
 					//*/
 					closeSocket();
 					
-					Thread.sleep(100);
+//					Thread.sleep(100);
 					
 				} catch (SocketException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 
+				}
+//				catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				} 
 				
 			}
 		});

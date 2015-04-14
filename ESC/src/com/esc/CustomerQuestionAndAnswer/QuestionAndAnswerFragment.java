@@ -66,7 +66,7 @@ public class QuestionAndAnswerFragment extends Fragment{
 		String requestBest5QADB = jsonHelper.makeJsonMessage(Constants.requestBest5QADB, null);
 		socketHelper.sendMessage( getDBHandler, requestBest5QADB);
 		
-		return super.onCreateView(inflater, container, savedInstanceState);
+		return view;
 	}
 	
 	

@@ -1,5 +1,6 @@
 package com.esc;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
@@ -28,7 +29,7 @@ import com.esc.searchProduct.SearchFragment;
 import com.esc.shoppingBasket.BasketManager;
 import com.esc.shoppingBasket.ShoppingBasketFragment;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends Activity {
 
 	/** fragment를 위한 멤버변수 **/
 	private Fragment mMainFragment;

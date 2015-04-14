@@ -44,15 +44,18 @@ public class CustomerServiceMainFragment extends Fragment implements OnClickList
 		btn2.setOnClickListener(this);
 		btn3.setOnClickListener(this);
 		btn4.setOnClickListener(this);
+		
 //		fragment = new CustomerNoticeFragment();
 //		mFragmentTransaction = getChildFragmentManager().beginTransaction();
 //		mFragmentTransaction.add(R.id.FRAGMENT_CUSTOMERSERVICE, fragment).commit();
+		Log.d("logFragment", "childFragment is "+ getChildFragmentManager());
 		
 
 		fragment = new QuestionAndAnswerFragment();
 		mFragmentManager = getFragmentManager();
 		mFragmentTransaction = mFragmentManager.beginTransaction();
 		mFragmentTransaction.replace(R.id.FRAGMENT_CUSTOMERSERVICE, fragment);
+		mFragmentTransaction.addToBackStack(null);
 		mFragmentTransaction.commit();
 		
 //		mFragmentTransaction.replace(R.id.FRAGMENT_CUSTOMERSERVICE, fragment);
@@ -66,12 +69,12 @@ public class CustomerServiceMainFragment extends Fragment implements OnClickList
 	@Override
 	public void onClick(View v) {
 		
-//		Log.d("logFragment", "view id : " + v.getId());
+		this.view = v;
+		
+		Log.d("logFragment", "main frament view id : " + this.view.getId());
 	
-		FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-		fragmentTransaction = getChildFragmentManager().beginTransaction();
 		Fragment fm = null ;
-		switch (v.getId()) {
+		switch (this.view.getId()) {
 		
 		case R.id.BUTTON_NOTICE:
 			fm = new CustomerNoticeFragment();
@@ -86,12 +89,17 @@ public class CustomerServiceMainFragment extends Fragment implements OnClickList
 			fm = new CustomerMessageFragment();
 			break;
 		}
-//		Log.e("logFragment", "current Activity status : " + getActivity());
-//		fragmentTransaction.add(R.id.FRAGMENT_CUSTOMERSERVICE, fm).commit();
 		
-		fragmentTransaction.replace(R.id.FRAGMENT_CUSTOMERSERVICE, fm);
-		fragmentTransaction.commit();
-		Log.i("logFragment", "current Fragment status : " + fm.toString());
+		Log.e("logFragment", "current child fragment view status : " + view.getId() );
+
+		mFragmentTransaction  = getChildFragmentManager().beginTransaction();
+		mFragmentTransaction.add(R.id.FRAGMENT_CUSTOMERSERVICE, fm).commit();
+//		mFragmentTransaction.replace(R.id.FRAGMENT_CUSTOMERSERVICE, fm);
+//		mFragmentTransaction.addToBackStack(null);
+//		mFragmentTransaction.commit();
+		
+		
+//		Log.i("logFragment", "current Fragment status : " + fm.toString());
 	}
 	
 	@Override
@@ -102,6 +110,12 @@ public class CustomerServiceMainFragment extends Fragment implements OnClickList
 	
 	@Override
 	public void onDestroyView() {
+		if ( this.view != null ) {
+	        ViewGroup parent = (ViewGroup)this.view.getParent();
+	        if(parent!=null){
+	            parent.removeView(this.view);
+	        }
+	    }
 		Log.i("logFragment","onDestroyViewCalled");
 		super.onDestroyView();
 	}
