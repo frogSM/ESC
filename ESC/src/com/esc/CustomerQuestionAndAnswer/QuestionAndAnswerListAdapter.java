@@ -60,8 +60,6 @@ public class QuestionAndAnswerListAdapter extends BaseExpandableListAdapter {
             
         	viewHolder.questionImage = (ImageView)v.findViewById(R.id.IMAGEVIEW_QUESTION);
         	viewHolder.questionTitle = (TextView)v.findViewById(R.id.TEXTVIEW_TITLE);
-        	viewHolder.answerImage = (ImageView)v.findViewById(R.id.IMAGEVIEW_ANSWER);
-        	viewHolder.answerContent = (TextView)v.findViewById(R.id.TEXTVIEW_ANSWERCONTENT);
         	
         	v.setTag(viewHolder);
         } else{
@@ -70,8 +68,6 @@ public class QuestionAndAnswerListAdapter extends BaseExpandableListAdapter {
 
         viewHolder.questionImage.setImageResource(R.drawable.img_question);
         viewHolder.questionTitle.setText(questionAndAnswers.get(groupPosition).getQuestionTitle());
-        viewHolder.answerImage.setImageResource(R.drawable.img_answer);
-        viewHolder.answerContent.setText(questionAndAnswers.get(groupPosition).getAnswerContent());
         
         return v;
     }
@@ -102,11 +98,11 @@ public class QuestionAndAnswerListAdapter extends BaseExpandableListAdapter {
             viewHolder.answerImage = (ImageView) v.findViewById(R.id.IMAGEVIEW_ANSWER);
             viewHolder.answerContent = (TextView) v.findViewById(R.id.TEXTVIEW_ANSWERCONTENT);
             v.setTag(viewHolder);
+            
         }else{
             viewHolder = (ViewHolder)v.getTag();
         }
          
-        int contentIntegerValue = context.getResources().getIdentifier( this.contents.get(groupPosition).get(childPosition),"drawable",context.getPackageName() ); 
         viewHolder.answerImage.setImageResource(R.drawable.img_answer);
         viewHolder.answerContent.setText(this.contents.get(groupPosition).get(childPosition));   
          

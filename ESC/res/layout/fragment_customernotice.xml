@@ -7,34 +7,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="36dp"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/IMAGEVIEW_NOTICETITLE"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/BUTTON_HOME"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HOME" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/TEXTVIEW_NOTICE"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                android:text="공지사항" />
-
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/background" />
 
     </LinearLayout>
 

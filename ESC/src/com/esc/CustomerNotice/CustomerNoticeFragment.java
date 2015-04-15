@@ -14,13 +14,12 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import com.esc.Constants;
 import com.esc.R;
 import com.esc.Connection.JsonHelper;
 import com.esc.Connection.SocketHelper;
-import com.esc.productManager.Product;
 
 public class CustomerNoticeFragment extends Fragment {
 
@@ -39,6 +38,9 @@ public class CustomerNoticeFragment extends Fragment {
 			Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.fragment_customernotice, container, false);
+		
+		ImageView noticeTitle = (ImageView)view.findViewById(R.id.IMAGEVIEW_NOTICETITLE);
+		noticeTitle.setImageResource(R.drawable.img_noticetitle);
 
 		jsonHelper = JsonHelper.getInstance(getActivity().getApplicationContext());
 		socketHelper = SocketHelper.getInstance(getActivity().getApplicationContext());

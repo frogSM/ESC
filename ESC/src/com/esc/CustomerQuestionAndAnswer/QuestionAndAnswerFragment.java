@@ -10,15 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 
 import com.esc.Constants;
 import com.esc.R;
 import com.esc.Connection.JsonHelper;
 import com.esc.Connection.SocketHelper;
-import com.esc.CustomerNotice.Notice;
-import com.esc.CustomerNotice.NoticeListAdapter;
 
 public class QuestionAndAnswerFragment extends Fragment{
 	
@@ -26,13 +27,15 @@ public class QuestionAndAnswerFragment extends Fragment{
 	JsonHelper jsonHelper;
 	GetDBHandler getDBHandler;
 
-	Spinner spinner;
 	ArrayList<String> categories;
-	
 	ArrayList<QuestionAndAnswer> questionAndAnswers;
+	
 	QuestionAndAnswerListAdapter questionAndAnswerListAdapter;
 	
+	Spinner spinner;
 	ExpandableListView qaListView;
+	ImageView layoutTitle;
+	Button searchButton;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,9 +46,17 @@ public class QuestionAndAnswerFragment extends Fragment{
 		socketHelper = SocketHelper.getInstance(getActivity().getApplicationContext());
 		getDBHandler = new GetDBHandler( );
 		categories = new ArrayList<String> ( );
+		
 		qaListView = (ExpandableListView) view.findViewById(R.id.EXPANDABLELISTVIEW_QUESTIONANDANSWER);
 		questionAndAnswers = new ArrayList<QuestionAndAnswer> ( );
 		questionAndAnswerListAdapter = new QuestionAndAnswerListAdapter(getActivity().getApplicationContext(), questionAndAnswers);
+		qaListView.setAdapter(questionAndAnswerListAdapter);
+		
+		layoutTitle = (ImageView)view.findViewById(R.id.IMAGEVIEW_QNATITLE);
+		layoutTitle.setImageResource(R.drawable.img_qnatitle);
+		searchButton = (Button)view.findViewById(R.id.BUTTON_SEARCHBUTTON);
+		
+		
 				
 		/** 1. 스피너에 분류값을 추가한다. **/
 		
@@ -90,4 +101,8 @@ public class QuestionAndAnswerFragment extends Fragment{
 			}
 		}
 	};
+	
+	public void setLayout( ) {
+		
+	}
 }
