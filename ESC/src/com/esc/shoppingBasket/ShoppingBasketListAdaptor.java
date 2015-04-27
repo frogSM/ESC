@@ -77,7 +77,7 @@ public class ShoppingBasketListAdaptor extends BaseAdapter {
 				.getIdentifier(nowProduct.getImgURL(), "drawable",
 						mContext.getPackageName()));
 		mViewHolder.name.setText(nowProduct.getName());
-		mViewHolder.price.setText(nowProduct.getPrice());
+		mViewHolder.price.setText(nowProduct.getPriceNow());
 		mViewHolder.manufacturer.setText(nowProduct.getManufacturer());
 		mViewHolder.type.setText(nowProduct.getType());
 		

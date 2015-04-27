@@ -3,7 +3,11 @@ package com.esc.productManager;
 public class Product {
 
 	String name;
-	String price;
+	String priceNow;
+	String priceBeforeOne;
+	String priceBeforeTwo;
+	String priceBeforeThree;
+	String priceBeforeSix;
 	String description;
 	String manufacturer;
 	String imgURL;
@@ -11,11 +15,15 @@ public class Product {
 	String x;
 	String y;
 	
-	public Product( String name, String price, String description, String manufacturer, String imgURL,
-			String type, String x, String y) {
+	public Product( String name, String price_now, String priceBeforeOne, String priceBeforeTwo, String priceBeforeThree,
+			String priceBeforeSix, String description, String manufacturer, String imgURL, String type, String x, String y) {
 		// TODO Auto-generated constructor stub
 		this.name = name;
-		this.price = price;
+		this.priceNow = price_now;
+		this.priceBeforeOne = priceBeforeOne;
+		this.priceBeforeTwo = priceBeforeTwo;
+		this.priceBeforeThree = priceBeforeThree;
+		this.priceBeforeSix = priceBeforeSix;
 		this.description = description;
 		this.manufacturer = manufacturer;
 		this.imgURL = imgURL;
@@ -28,8 +36,24 @@ public class Product {
 		this.name = name;
 	}
 	
-	public void setPrice(String price) {
-		this.price = price;
+	public void setPriceNow(String price_now) {
+		this.priceNow = price_now;
+	}
+	
+	public void setPriceBeforeOne(String priceBeforeOne) {
+		this.priceBeforeOne = priceBeforeOne;
+	}
+	
+	public void setPriceBeforeTwo(String priceBeforeTwo) {
+		this.priceBeforeTwo = priceBeforeTwo;
+	}
+	
+	public void setPriceBeforeThree(String priceBeforeThree) {
+		this.priceBeforeThree = priceBeforeThree;
+	}
+	
+	public void setPriceBeforeSix(String price_before_six) {
+		this.priceBeforeSix = price_before_six;
 	}
 	
 	public void setDescription( String description ) {
@@ -57,8 +81,24 @@ public class Product {
 		return name;
 	}
 
-	public String getPrice() {
-		return price;
+	public String getPriceNow() {
+		return priceNow;
+	}
+	
+	public String getPriceBeforeOne() {
+		return priceBeforeOne;
+	}
+	
+	public String getPriceBeforeTwo() {
+		return priceBeforeTwo;
+	}
+	
+	public String getPriceBeforeThree() {
+		return priceBeforeThree;
+	}
+	
+	public String getPriceBeforeSix() {
+		return priceBeforeSix;
 	}
 	
 	public String getDescription( ) {
@@ -84,4 +124,5 @@ public class Product {
 	public String getY() { 
 		return this.y;
 	}
+	
 }

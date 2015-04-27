@@ -97,7 +97,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 			Button mButtonPositionConfirm = (Button)ll.findViewById(R.id.btn_position_confirm);
 			
 			mTextViewName.setText(receiveData.get(i).getName());
-			mTextViewPrice.setText(String.valueOf(receiveData.get(i).getPrice()));
+			mTextViewPrice.setText(String.valueOf(receiveData.get(i).getPriceNow()));
 			
 			int id = mContext.getResources().getIdentifier(receiveData.get(i).getImgURL(), "drawable", mContext.getPackageName());
 			mImageView.setImageResource(id);

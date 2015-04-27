@@ -105,7 +105,7 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 		}
 		
 		for(Product p : searchProducts) {
-			Log.e("SearchFragment", "이름 : " +  p.getName() + " 가격 : " + p.getPrice());
+			Log.e("SearchFragment", "이름 : " +  p.getName() + " 가격 : " + p.getPriceNow());
 		}
 	}
 
