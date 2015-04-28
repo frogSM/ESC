@@ -72,9 +72,6 @@ public class NavigationFragment extends Fragment implements RECORangingListener 
 		mapLayout = (AbsoluteLayout)mView.findViewById(R.id.AbsoluteLayout1);
 		mMarker = (ImageView)mView.findViewById(R.id.iv_productpicture);
 		
-		Drawable alpha = ((ImageView)mView.findViewById(R.id.imageView2)).getDrawable();
-		alpha.setAlpha(100);
-		
 		drawMaker();
 		
 		return mView;
@@ -140,23 +137,36 @@ public class NavigationFragment extends Fragment implements RECORangingListener 
 		float markerX;
 		float markerY;
 		
+		DisplayMetrics dm = new DisplayMetrics();
+		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+		
+		mMarker.setLayoutParams(new AbsoluteLayout.LayoutParams(250, 150, 0, 0));
+		
 		mMarker.setVisibility(View.INVISIBLE);
 		
 		ArrayList<BeaconInfo> mTemp = new ArrayList<BeaconInfo>();
 		mTemp = mBeaconHelper.getBeaconInfo(beacons);
 		
-		if((-75 <= mTemp.get(0).getRssi()) && (mTemp.get(0).getRssi() <= -50)) {
-			markerX = 1755;
-			markerY = 600;
+		if(mTemp.get(0) != null && (-75 <= mTemp.get(0).getRssi()) && (mTemp.get(0).getRssi() <= -5)) {
+			markerX = 907;
+			markerY = 8;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);
 		}
-		if((-75 <= mTemp.get(1).getRssi()) && (mTemp.get(1).getRssi() <= -50)) {
-			
+		else if(mTemp.get(1) != null && (-75 <= mTemp.get(1).getRssi()) && (mTemp.get(1).getRssi() <= -5)) {
+			markerX = 1657;
+			markerY = 8;
+			mMarker.setX(markerX);
+			mMarker.setY(markerY);
+			mMarker.setVisibility(View.VISIBLE);
 		}
-		if((-75 <= mTemp.get(2).getRssi()) && (mTemp.get(2).getRssi() <= -50)) {
-			
+		else if(mTemp.get(2) != null  && (-75 <= mTemp.get(2).getRssi()) && (mTemp.get(2).getRssi() <= -5)) {
+			markerX = 1261;
+			markerY = 700;
+			mMarker.setX(markerX);
+			mMarker.setY(markerY);
+			mMarker.setVisibility(View.VISIBLE);
 		}
 			
 	}

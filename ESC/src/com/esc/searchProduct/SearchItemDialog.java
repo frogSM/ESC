@@ -7,6 +7,7 @@ import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
 import org.achartengine.chart.BarChart.Type;
 import org.achartengine.model.CategorySeries;
+import org.achartengine.model.RangeCategorySeries;
 import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
@@ -34,6 +35,7 @@ import android.widget.ViewFlipper;
 import com.esc.R;
 import com.esc.productManager.Product;
 import com.esc.shoppingBasket.BasketManager;
+import com.perples.recosdk.v;
 
 
 public class SearchItemDialog extends Dialog implements OnClickListener{
@@ -98,56 +100,60 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 		mLayoutInflater = (LayoutInflater)mContext.getSystemService(mContext.LAYOUT_INFLATER_SERVICE);
 	}
 	
-	private GraphicalView getGraph(String priceBeforeOne, String priceBeforeTwo, 
-			String priceBeforeThree, String priceBeforeSix) {
+	private GraphicalView getGraph(String priceBeforeOne, String priceBeforeTwo, String priceBeforeThree, 
+			String priceBeforeFour, String priceBeforeFive, String priceBeforeSix) {
 		List<double[]> values = new ArrayList<double[]>();
-		values.add(new double[] { 14230, 12300, 14240, 15244, 15900, 19200,
-				22030, 21200, 19500, 15500, 12600, 14000 });
+		values.add(new double[] {
+				Double.valueOf(priceBeforeOne), Double.valueOf(priceBeforeTwo),
+				Double.valueOf(priceBeforeThree), Double.valueOf(priceBeforeFour),
+				Double.valueOf(priceBeforeFive), Double.valueOf(priceBeforeSix)
+		});
 
 		/** 그래프 출력을 위한 그래픽 속성 지정객체 */
 		XYMultipleSeriesRenderer renderer = new XYMultipleSeriesRenderer();
 
 		// 상단 표시 제목과 글자 크기
-		renderer.setChartTitle("2011년도 판매량");
-		renderer.setChartTitleTextSize(20);
+		renderer.setChartTitle("최근 6개월내의 상품가격");
+		renderer.setChartTitleTextSize(40);
 
 		// 분류에 대한 이름
-		String[] titles = new String[] { "월별 판매량" };
+		String[] titles = new String[] { "개월 전 가격" };
 
 		// 항목을 표시하는데 사용될 색상값
 		int[] colors = new int[] { Color.RED };
 
 		// 분류명 글자 크기 및 각 색상 지정
-		renderer.setLegendTextSize(15);
+		renderer.setLegendTextSize(20);
 		int length = colors.length;
 		for (int i = 0; i < length; i++) {
 			SimpleSeriesRenderer r = new SimpleSeriesRenderer();
 			r.setColor(colors[i]);
 			r.setDisplayChartValues(true);
+			r.setChartValuesTextSize(20);
 			renderer.addSeriesRenderer(r);
 		}
 
 		// X,Y축 항목이름과 글자 크기
-		renderer.setXTitle("월");
-		renderer.setYTitle("판매량");
-		renderer.setAxisTitleTextSize(12);
+		renderer.setXTitle("개월 전");
+		renderer.setYTitle("상품가격(원)");
+		renderer.setAxisTitleTextSize(30);
 
 		// 수치값 글자 크기 / X축 최소,최대값 / Y축 최소,최대값
-		renderer.setLabelsTextSize(10);
+		renderer.setLabelsTextSize(20);
 		renderer.setXAxisMin(0.5);
-		renderer.setXAxisMax(12.5);
+		renderer.setXAxisMax(6.5);
 		renderer.setYAxisMin(0);
-		renderer.setYAxisMax(24000);
+		renderer.setYAxisMax(10000);
 
 		// X,Y축 라인 색상
-		renderer.setAxesColor(Color.WHITE);
+		renderer.setAxesColor(Color.BLACK);
 		// 상단제목, X,Y축 제목, 수치값의 글자 색상
 		renderer.setLabelsColor(Color.RED);
 
 		// X축의 표시 간격
-		renderer.setXLabels(12);
+		renderer.setXLabels(6);
 		// Y축의 표시 간격
-		renderer.setYLabels(5);
+		renderer.setYLabels(0);
 
 		// X,Y축 정렬방향
 		renderer.setXLabelsAlign(Align.LEFT);
@@ -176,16 +182,12 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 			}
 			dataset.addSeries(series.toXYSeries());
 		}
-		
+
 		// 그래프 객체 생성
 		GraphicalView gv = ChartFactory.getBarChartView(mContext, dataset,
 				renderer, Type.STACKED);
 		
 		return gv;
-
-//		// 그래프를 LinearLayout에 추가
-//		LinearLayout llBody = (LinearLayout)ll.findViewById(R.id.ll_graph);
-//		llBody.addView(gv);
 	}
 	
 	private void addDynamicViewFlipper() {
@@ -208,7 +210,8 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 			mTextViewDescription.setText(receiveData.get(i).getDescription());
 			
 			mGraph.addView(getGraph(receiveData.get(i).getPriceBeforeOne(), receiveData.get(i).getPriceBeforeTwo(),
-					receiveData.get(i).getPriceBeforeThree(), receiveData.get(i).getPriceBeforeSix()));
+					receiveData.get(i).getPriceBeforeThree(), receiveData.get(i).getPriceBeforeFour(),
+					receiveData.get(i).getPriceBeforeFive(), receiveData.get(i).getPriceBeforeSix()));
 			
 			int id = mContext.getResources().getIdentifier(receiveData.get(i).getImgURL(), "drawable", mContext.getPackageName());
 			mImageView.setImageResource(id);
@@ -219,6 +222,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					mBasketManager.addBasketProduct(receiveData.get(loopValue));
+					dismiss();
 					Toast.makeText(getContext(), "장바구니에 추가되었습니다.", Toast.LENGTH_SHORT).show();
 				}
 			});

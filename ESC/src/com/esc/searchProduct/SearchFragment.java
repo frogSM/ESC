@@ -33,7 +33,7 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	private View mView;
 	private SearchView mSearchView;
 	private ListView mListView;
-	private ArrayAdapter<String> adapter;
+//	private ArrayAdapter<String> adapter;
 	
 	/** 소켓 및 Json 도우미**/
 	private SocketHelper mSocketHelper;
@@ -45,6 +45,9 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	private ArrayList<Product> products;
 	/** SearchView에 입력하여 필터링된 상품들 **/
 	private ArrayList<Product> searchProducts;
+	
+	/** 15.04.29 ArrayAdapter -> SearchListAdaptor로 변경작업 중 **/
+	private SearchListAdapter adapter;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,7 +90,9 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 			searchProducts.add(products.get(i));
 		}
 		
-		adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, mProductsName);
+//		adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, mProductsName);
+		adapter = new SearchListAdapter(getActivity().getApplicationContext(), products);
+		
 		mListView.setAdapter(adapter);
 		mListView.setTextFilterEnabled(true);
 		
@@ -96,10 +101,12 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	}
 	
 	/** SearchProducts 배열 갱신시키는 메소드 **/
-	public void updateSearchProducts(ArrayAdapter<String> updateAdapter) {
+//	public void updateSearchProducts(ArrayAdapter<String> updateAdapter) {
+	public void updateSearchProducts(SearchListAdapter updateAdapter) {
 		for(int i=0 ; i<updateAdapter.getCount() ; i++) {
 			for(int j=0 ; j<products.size() ; j++) {
-				if(updateAdapter.getItem(i) == products.get(j).getName())
+//				if(updateAdapter.getItem(i) == products.get(j).getName())
+				if(updateAdapter.getItem(i).getName() == products.get(j).getName())
 					searchProducts.add(products.get(j));
 			}
 		}
@@ -129,14 +136,14 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 					// TODO Auto-generated method stub
 					searchProducts.clear();
 					for (int i = 0; i < adapter.getCount(); i++) {
-						Log.e("SearchFragment", adapter.getItem(i));
+//						Log.e("SearchFragment", adapter.getItem(i));
+						Log.e("SearchFragment", adapter.getItem(i).getName());
 					}
 					updateSearchProducts(adapter);
 				}
 			});
 			
 		} else {
-			
 			adapter.getFilter().filter(newText, new FilterListener() {
 
 				/** 필터링이 완료 된후 갱신된 Adapter **/
@@ -145,7 +152,8 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 					// TODO Auto-generated method stub
 					searchProducts.clear();
 					for (int i = 0; i < adapter.getCount(); i++) {
-						Log.e("SearchFragment", adapter.getItem(i));
+//						Log.e("SearchFragment", adapter.getItem(i));
+						Log.e("SearchFragment", adapter.getItem(i).getName());
 					}
 					updateSearchProducts(adapter);
 				}

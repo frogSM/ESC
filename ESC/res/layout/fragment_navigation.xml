@@ -3,14 +3,8 @@
     android:id="@+id/AbsoluteLayout1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/maptest2" >
-
-    <ImageView
-        android:id="@+id/iv_productpicture"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:src="@drawable/mapmarker"
-        android:visibility="invisible" />
+    android:background="@drawable/img_map"
+    android:visibility="visible" >
 
     <TextView
         android:id="@+id/testTxt"
@@ -21,33 +15,11 @@
         android:gravity="center_vertical|center_horizontal"
         android:textColor="#000000" />
 
-    <TextView
-        android:id="@+id/txtViewX"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_x="0dp"
-        android:layout_y="128dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="TextView"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/txtViewY"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_x="0dp"
-        android:layout_y="183dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="TextView"
-        android:textColor="#000000" />
-
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/iv_productpicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="41dp"
-        android:layout_y="4dp"
-        android:background="#00000000"
-        android:src="@drawable/img_test" />
+        android:src="@drawable/img_maparea"
+        android:visibility="invisible" />
 
 </AbsoluteLayout>
