@@ -14,6 +14,7 @@ import android.widget.Button;
 import com.esc.R;
 import com.esc.CustomerNotice.CustomerNoticeFragment;
 import com.esc.CustomerQuestionAndAnswer.QuestionAndAnswerFragment;
+import com.esc.CustomerVoice.CustomerVoiceFragment;
 
 public class CustomerServiceMainFragment extends Fragment implements OnClickListener {
 	
@@ -38,7 +39,7 @@ public class CustomerServiceMainFragment extends Fragment implements OnClickList
 		noticeButton = (Button)view.findViewById(R.id.BUTTON_NOTICE);
 		qnaButton = (Button)view.findViewById(R.id.BUTTON_QNA);
 		productEvaluationButton = (Button)view.findViewById(R.id.BUTTON_PRODUCTEVALUATION);
-		customerNoiseButton = (Button)view.findViewById(R.id.BUTTON_CUSTOMERNOISE);
+		customerNoiseButton = (Button)view.findViewById(R.id.BUTTON_CUSTOMERVOICE);
 		
 		noticeButton.setOnClickListener(this);
 		qnaButton.setOnClickListener(this);
@@ -73,8 +74,8 @@ public class CustomerServiceMainFragment extends Fragment implements OnClickList
 		case R.id.BUTTON_PRODUCTEVALUATION :
 			fm = new ProductEvaluationFragment();
 			break;
-		case R.id.BUTTON_CUSTOMERNOISE : 
-			fm = new CustomerMessageFragment();
+		case R.id.BUTTON_CUSTOMERVOICE : 
+			fm = new CustomerVoiceFragment();
 			break;
 		}
 		
