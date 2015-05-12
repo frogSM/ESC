@@ -56,7 +56,7 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 		mView = inflater.inflate(R.layout.fragment_searchproduct, container, false);
 		
 		mSearchView = (SearchView) mView.findViewById(R.id.searchView1);
-		mListView = (ListView) mView.findViewById(R.id.listView1);
+		mListView = (ListView) mView.findViewById(R.id.list);
 
 		products = new ArrayList<Product>();
 

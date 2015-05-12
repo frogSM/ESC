@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import android.app.Fragment;
+import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.widget.ListView;
 import com.esc.R;
 import com.esc.productManager.Product;
 
-public class ShoppingBasketFragment extends Fragment {
+public class ShoppingBasketFragment extends ListFragment {
 	
 	/** 프레그먼트 레이아웃 정보 **/
 	private View mView;
@@ -32,7 +33,7 @@ public class ShoppingBasketFragment extends Fragment {
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		mView = inflater.inflate(R.layout.fragment_shoppingbasket, container, false);
-		mListView = (ListView)mView.findViewById(R.id.listView1);
+		mListView = (ListView)mView.findViewById(android.R.id.list);
 		
 		mBasketManager = BasketManager.getInstance();
 		dataLoding();

@@ -1,7 +1,5 @@
 package com.esc;
 
-import com.esc.getDiscountInfo.BeaconMonitoringService;
-
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
@@ -12,6 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+
+import com.esc.getDiscountInfo.BeaconMonitoringService;
 
 public class StartActivity extends Activity {
 
@@ -20,6 +21,7 @@ public class StartActivity extends Activity {
 
 	private BluetoothManager mBluetoothManager;
 	private BluetoothAdapter mBluetoothAdapter;
+	private Button mStart;
 	
 	/** 비콘 서비스 인텐트 **/
 	private Intent serviceIntent;
@@ -29,6 +31,10 @@ public class StartActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_start);
+		
+		mStart = (Button)findViewById(R.id.btn_Start);
+		mStart.setX(960);
+		mStart.setY(600);
 		
 		mBluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
 		mBluetoothAdapter = mBluetoothManager.getAdapter();
