@@ -36,7 +36,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onButtonClick"
-            android:text="네비게이션" />
+            android:text="지도" />
 
         <Button
             android:id="@+id/btn_product"
@@ -44,7 +44,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onButtonClick"
-            android:text="상품관리" />
+            android:text="카트" />
 
         <Button
             android:id="@+id/btn_customerService"

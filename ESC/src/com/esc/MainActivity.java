@@ -51,7 +51,7 @@ public class MainActivity extends Activity {
 		
 		mBasketManager = BasketManager.getInstance();
 		productManager = new ProductManager(this);
-		//OpenSerialPort();
+		productManager.OpenSerialPort();
 	}
 	
 	@Override
