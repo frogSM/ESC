@@ -162,8 +162,6 @@ public class MainActivity extends Activity {
 		/** inflater한 fragment레이아웃 정보 **/
 		private View mView;
 		
-		private ViewFlipper mViewFlipper;
-		private int m_nPreTouchPosX = 0;
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -171,49 +169,8 @@ public class MainActivity extends Activity {
 			// TODO Auto-generated method stub
 			mView = inflater.inflate(R.layout.fragment_main, container, false);
 			
-			mViewFlipper = (ViewFlipper)mView.findViewById(R.id.main_viewflipper);
-			mViewFlipper.setDisplayedChild( (int)(Math.random()*6) );
-			mViewFlipper.setOnTouchListener(MyTouchListener);
-			
 			return mView;
 		}
-		
-		private void MoveNextView() {
-			mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
-					R.anim.appear_from_right));
-			mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
-					R.anim.disappear_to_left));
-			mViewFlipper.showNext();
-		}
-
-		private void MovewPreviousView() {
-			mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
-					R.anim.appear_from_left));
-			mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(getActivity().getApplicationContext(),
-					R.anim.disappear_to_right));
-			mViewFlipper.showPrevious();
-		}
-
-		View.OnTouchListener MyTouchListener = new View.OnTouchListener() {
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_DOWN) {
-					m_nPreTouchPosX = (int) event.getX();
-				}
-
-				if (event.getAction() == MotionEvent.ACTION_UP) {
-					int nTouchPosX = (int) event.getX();
-
-					if (nTouchPosX < m_nPreTouchPosX) {
-						MoveNextView();
-					} else if (nTouchPosX > m_nPreTouchPosX) {
-						MovewPreviousView();
-					}
-
-					m_nPreTouchPosX = nTouchPosX;
-				}
-
-				return true;
-			}
-		};
+	
 	}
 }
