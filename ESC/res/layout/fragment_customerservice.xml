@@ -26,13 +26,6 @@
             android:text="자주하는 질문" />
 
         <Button
-            android:id="@+id/BUTTON_PRODUCTEVALUATION"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="상품평" />
-
-        <Button
             android:id="@+id/BUTTON_CUSTOMERVOICE"
             android:layout_width="120dp"
             android:layout_height="match_parent"

@@ -9,8 +9,7 @@
     <LinearLayout
         android:id="@+id/layout_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="30"
+        android:layout_height="420dp"
         android:orientation="vertical" >
 
     </LinearLayout>
@@ -18,8 +17,7 @@
     <LinearLayout
         android:id="@+id/layout_tab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="56dp"
         android:gravity="center" >
 
         <Button
@@ -28,7 +26,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="onButtonClick"
-            android:text="메인" />
+            android:text="ESC몰" />
 
         <Button
             android:id="@+id/btn_navi"

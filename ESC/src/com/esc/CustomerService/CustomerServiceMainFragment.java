@@ -38,12 +38,10 @@ public class CustomerServiceMainFragment extends Fragment implements OnClickList
 	    		
 		noticeButton = (Button)view.findViewById(R.id.BUTTON_NOTICE);
 		qnaButton = (Button)view.findViewById(R.id.BUTTON_QNA);
-		productEvaluationButton = (Button)view.findViewById(R.id.BUTTON_PRODUCTEVALUATION);
 		customerNoiseButton = (Button)view.findViewById(R.id.BUTTON_CUSTOMERVOICE);
 		
 		noticeButton.setOnClickListener(this);
 		qnaButton.setOnClickListener(this);
-		productEvaluationButton.setOnClickListener(this);
 		customerNoiseButton.setOnClickListener(this);
 
 		fragment = new CustomerNoticeFragment();
@@ -70,9 +68,6 @@ public class CustomerServiceMainFragment extends Fragment implements OnClickList
 			break;
 		case R.id.BUTTON_QNA:
 			fm = new QuestionAndAnswerFragment();
-			break;
-		case R.id.BUTTON_PRODUCTEVALUATION :
-			fm = new ProductEvaluationFragment();
 			break;
 		case R.id.BUTTON_CUSTOMERVOICE : 
 			fm = new CustomerVoiceFragment();

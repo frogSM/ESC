@@ -8,7 +8,6 @@ import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,7 +15,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.LinearLayout;
 import android.widget.ViewFlipper;
 
 import com.esc.CustomerService.CustomerServiceMainFragment;
@@ -47,11 +45,12 @@ public class MainActivity extends Activity {
 		mFragmentManager = getFragmentManager();
 		mFragmentTransaction = mFragmentManager.beginTransaction();
 		mFragmentTransaction.replace(R.id.layout_fragment, mMainFragment);
-		mFragmentTransaction.commit();
+		mFragmentTransaction.commit();	
 		
 		mBasketManager = BasketManager.getInstance();
 		productManager = new ProductManager(this);
-		productManager.OpenSerialPort();
+//		productManager.OpenSerialPort();
+		
 	}
 	
 	@Override
