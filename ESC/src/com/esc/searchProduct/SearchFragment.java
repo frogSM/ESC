@@ -73,7 +73,7 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	private Handler mHandler = new Handler() {
 		
 		@Override
-		public void handleMessage(android.os.Message msg) {
+		public void handleMessage(android.os.Message msg) throws NullPointerException {
 			if(msg.what == Constants.THREAD_MESSAGE) {
 				searchProducts = new ArrayList<Product>();
 				products = (ArrayList<Product>)mJsonHelper.parserJsonMessage(msg.obj.toString());

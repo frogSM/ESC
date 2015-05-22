@@ -12,8 +12,11 @@ import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Paint.Align;
 import android.graphics.drawable.ColorDrawable;
@@ -231,7 +234,25 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					
+					AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+					dialog.setTitle("TEST 대화상자");
+					dialog.setMessage("상품정보 다이얼로그 위에 다이얼로그를 표시할 수 있는지 확인하는 다이얼로그입니다.");
+					dialog.setPositiveButton("네", new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+						}
+					});
+					dialog.setNegativeButton("아니요", new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+						}
+					});
+					AlertDialog ad = dialog.create();
+					ad.show();
 				}
 			});
 			

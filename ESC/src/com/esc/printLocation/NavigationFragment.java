@@ -140,30 +140,34 @@ public class NavigationFragment extends Fragment implements RECORangingListener 
 		DisplayMetrics dm = new DisplayMetrics();
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 		
-		mMarker.setLayoutParams(new AbsoluteLayout.LayoutParams(250, 150, 0, 0));
-		
+		/** 현재 위치 표시하는 원 342*342 생성 후 INVISIBLE 처리. **/
+		mMarker.setLayoutParams(new AbsoluteLayout.LayoutParams(342, 342, 0, 0));
 		mMarker.setVisibility(View.INVISIBLE);
+		
+		/** 반투명 효과 적용 **/
+		Drawable alpha = mMarker.getDrawable();
+		alpha.setAlpha(100);
 		
 		ArrayList<BeaconInfo> mTemp = new ArrayList<BeaconInfo>();
 		mTemp = mBeaconHelper.getBeaconInfo(beacons);
 		
 		if(mTemp.get(0) != null && (-75 <= mTemp.get(0).getRssi()) && (mTemp.get(0).getRssi() <= -5)) {
-			markerX = 907;
-			markerY = 8;
+			markerX = 124;
+			markerY = 503;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);
 		}
 		else if(mTemp.get(1) != null && (-75 <= mTemp.get(1).getRssi()) && (mTemp.get(1).getRssi() <= -5)) {
-			markerX = 1657;
-			markerY = 8;
+			markerX = 567;
+			markerY = 503;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);
 		}
 		else if(mTemp.get(2) != null  && (-75 <= mTemp.get(2).getRssi()) && (mTemp.get(2).getRssi() <= -5)) {
-			markerX = 1261;
-			markerY = 700;
+			markerX = 1011;
+			markerY = 503;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);
