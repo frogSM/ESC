@@ -8,14 +8,14 @@ import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.widget.ViewFlipper;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.esc.CustomerService.CustomerServiceMainFragment;
 import com.esc.printLocation.NavigationFragment;
@@ -169,6 +169,18 @@ public class MainActivity extends Activity {
 			// TODO Auto-generated method stub
 			mView = inflater.inflate(R.layout.fragment_main, container, false);
 			
+//			final LinearLayout layout = (LinearLayout) findViewById(R.id.main_ad_haed1);
+			final ImageView layout = (ImageView)mView.findViewById(R.id.main_ad_haed1);
+			layout.post(new Runnable() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					Log.e("MainActivity", String.valueOf(layout.getWidth()));
+					Log.e("MainActivity", String.valueOf(layout.getHeight()));
+				}
+			});
+
 			return mView;
 		}
 	

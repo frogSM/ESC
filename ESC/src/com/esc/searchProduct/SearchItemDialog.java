@@ -66,6 +66,14 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	/** 애니메이션을 위한변수(처음 터치위치 저장) **/
 	private int m_nPreTouchPosX = 0;
 	
+	/** 추가 시킬 상품 추천 데이터 변수 **/
+	//
+	//
+	//
+	//
+	//
+	
+	
 	public SearchItemDialog(Context context, ArrayList<Product> data, int position) {
 		super(context);
 		// TODO Auto-generated constructor stub
