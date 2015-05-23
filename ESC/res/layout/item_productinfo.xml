@@ -386,13 +386,17 @@
                 android:id="@+id/btn_basket_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="장바구니 추가" />
+                android:background="@android:drawable/btn_default"
+                android:text="장바구니 추가"
+                android:textColor="@android:color/holo_blue_light" />
 
             <Button
                 android:id="@+id/btn_position_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="위치정보 확인" />
+                android:background="@android:drawable/btn_default"
+                android:text="위치정보 확인"
+                android:textColor="@android:color/holo_blue_light" />
 
         </LinearLayout>
     </LinearLayout>

@@ -2,16 +2,9 @@ package com.esc.searchProduct;
 
 import java.util.ArrayList;
 
-import com.esc.Constants;
-import com.esc.R;
-import com.esc.Connection.JsonHelper;
-import com.esc.Connection.SocketHelper;
-import com.esc.productManager.Product;
-import com.google.gson.annotations.JsonAdapter;
-
-import android.app.Activity;
-import android.app.Dialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -20,19 +13,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Filter.FilterListener;
+import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
+
+import com.esc.Constants;
+import com.esc.R;
+import com.esc.Connection.JsonHelper;
+import com.esc.Connection.SocketHelper;
+import com.esc.productManager.Product;
 
 public class SearchFragment extends Fragment implements OnItemClickListener, OnQueryTextListener {
 	
 	private View mView;
+	private Context mContext;
 	private SearchView mSearchView;
 	private ListView mListView;
+	private ProgressDialog mProgressDialog;
 //	private ArrayAdapter<String> adapter;
 	
 	/** 소켓 및 Json 도우미**/
@@ -49,6 +48,11 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	/** 15.04.29 ArrayAdapter -> SearchListAdaptor로 변경작업 중 **/
 	private SearchListAdapter adapter;
 	
+	
+	public SearchFragment(Context context) {
+		// TODO Auto-generated constructor stub
+		this.mContext = context;
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -64,6 +68,7 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 		mJsonHelper = JsonHelper.getInstance(getActivity().getApplication().getApplicationContext());
 
 		String str_json = mJsonHelper.makeJsonMessage(Constants.All_Product_Info, null);
+		mProgressDialog = ProgressDialog.show(mContext, "Loding..", "데이터를 받는 중입니다....");
 		mSocketHelper.sendMessage(mHandler, str_json);
 		
 		return mView;
@@ -98,6 +103,8 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 		
 		mListView.setOnItemClickListener(this);
 		mSearchView.setOnQueryTextListener(this);
+		
+		mProgressDialog.dismiss();
 	}
 	
 	/** SearchProducts 배열 갱신시키는 메소드 **/

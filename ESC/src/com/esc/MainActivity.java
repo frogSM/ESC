@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 			return true;
 		} else if (id == R.id.action_Search) {
 			setTitle("상품검색");
-			Fragment fm = new SearchFragment();
+			Fragment fm = new SearchFragment(this);
 			mFragmentTransaction = mFragmentManager.beginTransaction();
 			mFragmentTransaction.replace(R.id.layout_fragment, fm);
 			mFragmentTransaction.addToBackStack(null);
