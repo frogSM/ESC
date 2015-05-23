@@ -1,17 +1,19 @@
 package com.esc.shoppingBasket;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.esc.R;
+import com.esc.printLocation.MapDialog;
 import com.esc.productManager.Product;
 
 public class ShoppingBasketListAdaptor extends BaseAdapter {
@@ -65,6 +67,7 @@ public class ShoppingBasketListAdaptor extends BaseAdapter {
 			mViewHolder.price = (TextView)convertView.findViewById(R.id.tv_basket_product_price);
 			mViewHolder.manufacturer = (TextView)convertView.findViewById(R.id.tv_basket_product_manufacturer);
 			mViewHolder.type = (TextView)convertView.findViewById(R.id.tv_basket_product_type);
+			mViewHolder.location = (Button)convertView.findViewById(R.id.btn_basket_product_positon);
 			
 			convertView.setTag(mViewHolder);
 		} else {
@@ -81,6 +84,16 @@ public class ShoppingBasketListAdaptor extends BaseAdapter {
 		mViewHolder.manufacturer.setText(nowProduct.getManufacturer());
 		mViewHolder.type.setText(nowProduct.getType());
 		
+		final String type = nowProduct.getType();
+		mViewHolder.location.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				MapDialog map = new MapDialog(mContext, type);
+				map.show();
+			}
+		});
+		
 		return convertView;
 	}
 	
@@ -90,6 +103,7 @@ public class ShoppingBasketListAdaptor extends BaseAdapter {
 		TextView price;
 		TextView manufacturer;
 		TextView type;
+		Button location;
 	}
 
 }

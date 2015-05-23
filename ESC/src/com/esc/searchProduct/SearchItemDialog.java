@@ -242,11 +242,8 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 			mButtonPositionConfirm.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-				    
-					// 작성해야할 부분
 					MapDialog map = new MapDialog(mContext, type);
 					map.show();
-
 				}
 			});
 			

@@ -9,14 +9,13 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AbsoluteLayout;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.esc.R;
 import com.perples.recosdk.RECOBeacon;
@@ -37,6 +36,7 @@ public class MapDialog extends Dialog implements OnClickListener, RECORangingLis
 	/** 맵 관련 변수 **/
 	private ImageView mMap;
 	private ImageView mMarker;				//마커 그림
+	private Button mBtnExit;
 	
 	/** 제품별로 맵을 다르게 그리기 위한 변수 **/
 	private String mProductType;
@@ -67,6 +67,8 @@ public class MapDialog extends Dialog implements OnClickListener, RECORangingLis
 		mMap = (ImageView)mView.findViewById(R.id.iv_map);
 		mMarker = (ImageView)mView.findViewById(R.id.iv_productpicture2);
 		drawMap();
+		mBtnExit = (Button)mView.findViewById(R.id.btn_map_exit);
+		mBtnExit.setOnClickListener(this);
 		
 	}
 	
@@ -138,7 +140,7 @@ public class MapDialog extends Dialog implements OnClickListener, RECORangingLis
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
+		dismiss();
 	}
 
 
