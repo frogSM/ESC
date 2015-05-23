@@ -34,7 +34,7 @@ public class ShoppingBasketListAdaptor extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public Product getItem(int position) {
 		// TODO Auto-generated method stub
 		return mBasket.get(position);
 	}

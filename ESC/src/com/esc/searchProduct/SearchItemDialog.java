@@ -233,7 +233,6 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					mBasketManager.addBasketProduct(receiveData.get(loopValue));
-					dismiss();
 					Toast.makeText(getContext(), "장바구니에 추가되었습니다.", Toast.LENGTH_SHORT).show();
 				}
 			});
@@ -241,26 +240,9 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 			mButtonPositionConfirm.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
-					dialog.setTitle("TEST 대화상자");
-					dialog.setMessage("상품정보 다이얼로그 위에 다이얼로그를 표시할 수 있는지 확인하는 다이얼로그입니다.");
-					dialog.setPositiveButton("네", new OnClickListener() {
+				    
+					// 작성해야할 부분
 
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-						}
-					});
-					dialog.setNegativeButton("아니요", new OnClickListener() {
-
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-						}
-					});
-					AlertDialog ad = dialog.create();
-					ad.show();
 				}
 			});
 			

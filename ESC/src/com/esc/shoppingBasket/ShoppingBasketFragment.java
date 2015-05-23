@@ -1,15 +1,14 @@
 package com.esc.shoppingBasket;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
-import android.app.Fragment;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.esc.R;
 import com.esc.productManager.Product;
@@ -19,12 +18,16 @@ public class ShoppingBasketFragment extends ListFragment {
 	/** 프레그먼트 레이아웃 정보 **/
 	private View mView;
 	private ListView mListView;
+	private TextView mPredictPrice;
 	
 	/** BasketManager 인스턴스**/
 	private BasketManager mBasketManager;
 	
 	/** 현재 장바구니에 담겨져있는 상품 목록 **/
 	private ArrayList<Product> mBasket;
+	
+	/** 장바구니 총 예상 금액 **/
+	private int mSumPrice = 0;
 	
 	private ShoppingBasketListAdaptor mAdapter;
 	
@@ -34,6 +37,7 @@ public class ShoppingBasketFragment extends ListFragment {
 		// TODO Auto-generated method stub
 		mView = inflater.inflate(R.layout.fragment_shoppingbasket, container, false);
 		mListView = (ListView)mView.findViewById(android.R.id.list);
+		mPredictPrice = (TextView)mView.findViewById(R.id.tv_predictprice);
 		
 		mBasketManager = BasketManager.getInstance();
 		dataLoding();
@@ -58,6 +62,9 @@ public class ShoppingBasketFragment extends ListFragment {
 		                    @Override
 		                    public void onDismiss(ListView listView, int[] reverseSortedPositions) {
 		                        for (int position : reverseSortedPositions) {
+		                        	mSumPrice -= Integer.parseInt(mAdapter.getItem(position).getPriceNow());
+		                        	mPredictPrice.setText(String.valueOf(mSumPrice));
+		                        	
 		                            mAdapter.remove(mAdapter.getItem(position));
 		                        }
 		                        mAdapter.notifyDataSetChanged();
@@ -65,5 +72,11 @@ public class ShoppingBasketFragment extends ListFragment {
 		                });
 		mListView.setOnTouchListener(touchListener);
 		mListView.setOnScrollListener(touchListener.makeScrollListener());
+		
+		
+		for(int i=0 ; i<mAdapter.getCount() ; i++) {
+			mSumPrice += Integer.parseInt(mAdapter.getItem(i).getPriceNow());
+		}
+		mPredictPrice.setText(String.valueOf(mSumPrice));
 	}
 }
