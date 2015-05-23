@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/AbsoluteLayout1"
-    android:layout_width="1900dp"
-    android:layout_height="500dp" >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white" >
 
     <LinearLayout
-        android:layout_width="800dp"
+        android:layout_width="802dp"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
@@ -15,22 +16,43 @@
             android:background="@android:color/white"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="물품위치 &amp; 현재 내 위치"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center|left"
+                    android:text="    물품위치 &amp; 현재 내 위치"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <Button
+                    android:id="@+id/button1"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="닫기" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@drawable/img_map" />
+            android:id="@+id/iv_map"
+            android:layout_width="802dp"
+            android:layout_height="358dp"
+            android:background="@drawable/background_map2" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_productpicture2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/img_maparea_user2"
+        android:visibility="invisible" />
 
 </AbsoluteLayout>

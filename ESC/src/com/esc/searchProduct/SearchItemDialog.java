@@ -238,12 +238,13 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 				}
 			});
 			
+			final String type = receiveData.get(i).getType();
 			mButtonPositionConfirm.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
 				    
 					// 작성해야할 부분
-					MapDialog map = new MapDialog(mContext);
+					MapDialog map = new MapDialog(mContext, type);
 					map.show();
 
 				}
