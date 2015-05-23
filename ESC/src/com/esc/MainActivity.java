@@ -5,19 +5,24 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ListFragment;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.Button;
+import android.widget.ListView;
 
 import com.esc.CustomerService.CustomerServiceMainFragment;
+import com.esc.MainAdvertise.BestProductAdapter_Fifty;
+import com.esc.MainAdvertise.BestProductAdapter_Forty;
+import com.esc.MainAdvertise.BestProductAdapter_Ten;
+import com.esc.MainAdvertise.BestProductAdapter_Thirty;
+import com.esc.MainAdvertise.BestProductAdapter_Twenty;
 import com.esc.printLocation.NavigationFragment;
 import com.esc.productManager.ProductManager;
 import com.esc.productManager.ProductManagerFragment;
@@ -162,26 +167,41 @@ public class MainActivity extends Activity {
 		/** inflater한 fragment레이아웃 정보 **/
 		private View mView;
 		
+		private ListView mListView;
+		private Button mButtonTen;
+		private Button mButtonTwenty;
+		private Button mButtonThirty;
+		private Button mButtonForty;
+		private Button mButtonFifty;
+		
+		private BestProductAdapter_Ten mAdapter_Ten;
+		private BestProductAdapter_Twenty mAdapter_Twenty;
+		private BestProductAdapter_Thirty mAdapter_Thirty;
+		private BestProductAdapter_Forty mAdapter_Forty;
+		private BestProductAdapter_Fifty mAdapter_Fifty;
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
 			// TODO Auto-generated method stub
 			mView = inflater.inflate(R.layout.fragment_main, container, false);
+			dataSetting();
 			
-//			final LinearLayout layout = (LinearLayout) findViewById(R.id.main_ad_haed1);
-			final ImageView layout = (ImageView)mView.findViewById(R.id.main_ad_haed1);
-			layout.post(new Runnable() {
-
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					Log.e("MainActivity", String.valueOf(layout.getWidth()));
-					Log.e("MainActivity", String.valueOf(layout.getHeight()));
-				}
-			});
-
 			return mView;
+		}
+		
+		private void dataSetting() {
+			
+			mListView = (ListView) mView.findViewById(R.id.listview_main_bestproduct);
+			mButtonTen = (Button) mView.findViewById(R.id.btn_ten);
+			mButtonTwenty = (Button) mView.findViewById(R.id.btn_twenty);
+			mButtonThirty = (Button) mView.findViewById(R.id.btn_thirty);
+			mButtonForty = (Button) mView.findViewById(R.id.btn_forty);
+			mButtonFifty = (Button) mView.findViewById(R.id.btn_fifty);
+			
+			mAdapter_Ten = new BestProductAdapter_Ten(getActivity().getApplicationContext());
+			mListView.setAdapter(mAdapter_Ten);
+			
 		}
 	
 	}

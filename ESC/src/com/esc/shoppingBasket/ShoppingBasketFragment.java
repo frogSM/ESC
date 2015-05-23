@@ -41,7 +41,7 @@ public class ShoppingBasketFragment extends ListFragment {
 		return mView;
 	}
 	
-	public void dataLoding() {
+	private void dataLoding() {
 		
 		mAdapter = new ShoppingBasketListAdaptor(getActivity().getApplicationContext());
 		mListView.setAdapter(mAdapter);

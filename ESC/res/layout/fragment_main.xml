@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+<LinearLayout android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +34,7 @@
                     android:padding="2dp" >
 
                     <ImageView
-                        android:id="@+id/imageView1"
+                        android:id="@+id/iv_ad_image"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -54,12 +53,11 @@
                             android:src="@drawable/ic_launcher" />
 
                         <TextView
-                            android:id="@+id/textView1"
+                            android:id="@+id/tv_ad_title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="TextView" />
-
                     </LinearLayout>
 
                     <View
@@ -80,7 +78,7 @@
                             android:orientation="vertical" >
 
                             <TextView
-                                android:id="@+id/textView2"
+                                android:id="@+id/tv_ad_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="TextView" />
@@ -90,18 +88,15 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="TextView" />
-
                         </LinearLayout>
 
                         <Button
-                            android:id="@+id/button1"
+                            android:id="@+id/btn_ad_addbasket"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="Button" />
-
                     </LinearLayout>
-
                 </LinearLayout>
 
                 <View
@@ -183,7 +178,6 @@
                             android:text="Button" />
                     </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
 
             <View
@@ -351,7 +345,6 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
 
         <View
@@ -372,69 +365,61 @@
                 android:layout_height="50dp"
                 android:background="@drawable/img_adhead2" />
 
-            <ScrollView
-                android:id="@+id/scrollView1"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/btn_ten"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10대"
+                    android:textSize="10dp" />
+
+                <Button
+                    android:id="@+id/btn_twenty"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="20대"
+                    android:textSize="10dp" />
+
+                <Button
+                    android:id="@+id/btn_thirty"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="30대"
+                    android:textSize="10dp" />
+
+                <Button
+                    android:id="@+id/btn_forty"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="40대"
+                    android:textSize="10dp" />
+
+                <Button
+                    android:id="@+id/btn_fifty"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="50대"
+                    android:textSize="10dp" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/listview_main_bestproduct"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical" >
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" >
-
-                        <Button
-                            android:id="@+id/button2"
-                            style="?android:attr/buttonStyleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="10대"
-                            android:textSize="10dp" />
-
-                        <Button
-                            android:id="@+id/button3"
-                            style="?android:attr/buttonStyleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="20대"
-                            android:textSize="10dp" />
-
-                        <Button
-                            android:id="@+id/button4"
-                            style="?android:attr/buttonStyleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="30대"
-                            android:textSize="10dp" />
-
-                        <Button
-                            android:id="@+id/button5"
-                            style="?android:attr/buttonStyleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="40대"
-                            android:textSize="10dp" />
-
-                        <Button
-                            android:id="@+id/button6"
-                            style="?android:attr/buttonStyleSmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="50대"
-                            android:textSize="10dp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </ScrollView>
+            </ListView>
 
         </LinearLayout>
     </LinearLayout>

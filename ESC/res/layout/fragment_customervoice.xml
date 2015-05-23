@@ -58,7 +58,7 @@
                     android:textSize="20dp" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tv_ad_price"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
