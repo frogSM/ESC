@@ -20,7 +20,7 @@ public class BeaconHelper implements RECOServiceConnectListener {
 	private ArrayList<RECOBeaconRegion> mRegions;
 	private ArrayList<RECOBeacon> mRangedBeacons;
 	
-	private BeaconInfo GreenBeacon, YellowBeacon, RedBeacon;
+	private BeaconInfo GreenBeacon, YellowBeacon, RedBeacon, WhiteBeacon;
 	
 	public BeaconHelper(Context context) {
 		// TODO Auto-generated constructor stub
@@ -33,6 +33,7 @@ public class BeaconHelper implements RECOServiceConnectListener {
 		GreenBeacon = new BeaconInfo(18250, 18001, 0, 0);
 		YellowBeacon = new BeaconInfo(18250, 18001, 0, 0);
 		RedBeacon = new BeaconInfo(18250, 18001, 0, 0);
+		WhiteBeacon = new BeaconInfo(18250, 18001, 0, 0);
 		
 		mBeaconManager = RECOBeaconManager.getInstance(mContext);
 		mBeaconManager.setDiscontinuousScan(true);
@@ -48,6 +49,7 @@ public class BeaconHelper implements RECOServiceConnectListener {
 		classifiedBeacons.add(0, null);
 		classifiedBeacons.add(1, null);
 		classifiedBeacons.add(2, null);
+		classifiedBeacons.add(3, null);
 		
 		updateAllBeacons(beacons);
 		
@@ -64,6 +66,10 @@ public class BeaconHelper implements RECOServiceConnectListener {
 			case 18003 :
 				RedBeacon = new BeaconInfo(recoBeacon.getMajor(), recoBeacon.getMinor(), recoBeacon.getRssi(), revisionAccuracy(recoBeacon));
 				classifiedBeacons.set(2, RedBeacon);
+				break;
+			case 18004 :
+				WhiteBeacon = new BeaconInfo(recoBeacon.getMajor(), recoBeacon.getMinor(), recoBeacon.getRssi(), revisionAccuracy(recoBeacon));
+				classifiedBeacons.set(3, WhiteBeacon);
 				break;
 			}
 		}

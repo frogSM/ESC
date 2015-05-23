@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.esc.R;
+import com.esc.getDiscountInfo.GreenDialog;
+import com.esc.getDiscountInfo.RedDialog;
+import com.esc.getDiscountInfo.WhiteDialog;
+import com.esc.getDiscountInfo.YellowDialog;
 import com.perples.recosdk.RECOBeacon;
 import com.perples.recosdk.RECOBeaconManager;
 import com.perples.recosdk.RECOBeaconRegion;
@@ -21,7 +25,6 @@ import android.view.View.MeasureSpec;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.view.animation.Animation.AnimationListener;
-import android.webkit.WebView.FindListener;
 import android.widget.AbsoluteLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -54,6 +57,9 @@ public class MapFragment extends Fragment implements RECORangingListener {
 	private ImageView mMarker;				//마커 그림
 	private float screenWidth = 0;			// mImage 뷰 가로 길이
 	private float screenHeight = 0;			// mImage 뷰 세로 길이
+	
+	// 영역별 한번만 출력할 수 있게끔 하는 변수
+	private static int greenCnt = 0, yellowCnt = 0, redCnt = 0, whiteCnt = 0 ;
 	
 	/** 애니메이션 전역변수 **/
 	private TranslateAnimation animation;
@@ -152,6 +158,11 @@ public class MapFragment extends Fragment implements RECORangingListener {
 		mTemp = mBeaconHelper.getBeaconInfo(beacons);
 		
 		if(mTemp.get(0) != null && (-75 <= mTemp.get(0).getRssi()) && (mTemp.get(0).getRssi() <= -5)) {
+			if (greenCnt != 1) { 
+				GreenDialog green = new GreenDialog(getActivity().getApplicationContext());
+				green.show();
+				greenCnt++;
+			}
 			markerX = 124;
 			markerY = 503;
 			mMarker.setX(markerX);
@@ -159,6 +170,11 @@ public class MapFragment extends Fragment implements RECORangingListener {
 			mMarker.setVisibility(View.VISIBLE);
 		}
 		else if(mTemp.get(1) != null && (-75 <= mTemp.get(1).getRssi()) && (mTemp.get(1).getRssi() <= -5)) {
+			if (yellowCnt != 1) {
+				YellowDialog yellow = new YellowDialog(getActivity().getApplicationContext());
+				yellow.show();
+				yellowCnt++;
+			}
 			markerX = 567;
 			markerY = 503;
 			mMarker.setX(markerX);
@@ -166,13 +182,29 @@ public class MapFragment extends Fragment implements RECORangingListener {
 			mMarker.setVisibility(View.VISIBLE);
 		}
 		else if(mTemp.get(2) != null  && (-75 <= mTemp.get(2).getRssi()) && (mTemp.get(2).getRssi() <= -5)) {
+			if (redCnt != 1) {
+				RedDialog red = new RedDialog(getActivity().getApplicationContext());
+				red.show();
+				redCnt++;
+			}
 			markerX = 1011;
 			markerY = 503;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);
 		}
-			
+		else if(mTemp.get(3) != null  && (-75 <= mTemp.get(3).getRssi()) && (mTemp.get(3).getRssi() <= -5)) {
+			if (whiteCnt != 1) {
+				WhiteDialog white = new WhiteDialog(getActivity().getApplicationContext());
+				white.show();
+				whiteCnt++;
+			}
+			markerX = 1454;
+			markerY = 503;
+			mMarker.setX(markerX);
+			mMarker.setY(markerY);
+			mMarker.setVisibility(View.VISIBLE);
+		}
 	}
 
 	/** 현재 Map을 그린 레이아웃 정보 받기 **/

@@ -114,52 +114,17 @@ public class BeaconMonitoringService extends Service implements
 
 	@Override
 	public void didEnterRegion(RECOBeaconRegion region) {
-		Intent intent;
-		// TODO Auto-generated method stub
-		// this.popupNotification("Inside of " + region.getUniqueIdentifier());
-
-		switch (region.getUniqueIdentifier()) {
-		case "Green Region":
-			if (greenCnt != 1) { 
-				GreenDialog green = new GreenDialog(this);
-				green.show();
-				greenCnt++;
-			}
-			break;
-
-		case "Yellow Region":
-			if (yellowCnt != 1) {
-				YellowDialog yellow = new YellowDialog(this);
-				yellow.show();
-				yellowCnt++;
-			}
-			break;
-
-		case "Red Region":
-			if (redCnt != 1) {
-				RedDialog red = new RedDialog(this);
-				red.show();
-				redCnt++;
-			}
-			break;
-		}
+//		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void didExitRegion(RECOBeaconRegion region) {
 		// TODO Auto-generated method stub
-		// this.popupNotification("Outside of " + region.getUniqueIdentifier());
-
-		// Intent intent = new Intent(this, RegionEnterActivity.class);
-		// intent.putExtra("Exit", "비콘 영역에서 나갔습니다.ㅠ.ㅠ");
-		// intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-		// startActivity(intent);
 	}
 
 	@Override
 	public void didStartMonitoringForRegion(RECOBeaconRegion arg0) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override

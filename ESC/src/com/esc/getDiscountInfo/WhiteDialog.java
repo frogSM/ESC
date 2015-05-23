@@ -1,14 +1,5 @@
 package com.esc.getDiscountInfo;
 
-/** GreenDialog 클래스
- * 		이 클래스는 BeaconMonitoringService 서비스를 실행 시켰을때 
- * 		Red 비콘 영역안에 들어오게 되었을때 호출되는 다이얼로그이며
- * 		본래 서비스단에서 다이얼로그를 띄우는거 자체가 허용되지않지만
- * 		매니페스트에 SYSTEM_ALERT_WINDOW 퍼미션을 부여하고
- * 		getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT); 을 이용하여
- * 		다이얼로그를 최상위 단에 올려주므로써 해결하였다.
- * **/
-
 import com.esc.R;
 
 import android.app.Dialog;
@@ -23,18 +14,17 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class RedDialog extends Dialog implements OnClickListener {
-
+public class WhiteDialog extends Dialog implements OnClickListener {
 	/** 다이얼로그 레이아웃 정보 **/
 	private View mView;
-	
+
 	/** 종료버튼 **/
 	private Button mButton_end;
-	
+
 	/** 이미지 띄우는 이미지뷰 **/
 	private ImageView mImageView;
-	
-	public RedDialog(Context context) {
+
+	public WhiteDialog(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
 	}
@@ -46,25 +36,24 @@ public class RedDialog extends Dialog implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 		getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-		mView = getLayoutInflater().inflate(R.layout.dialog_discountinfo, null);  
+		mView = getLayoutInflater().inflate(R.layout.dialog_discountinfo, null);
 		setContentView(mView);
-		
+
 		mImageView = (ImageView) mView.findViewById(R.id.enterImage);
-		mImageView.setImageResource(R.drawable.img_redarea);
-		
-		mButton_end = (Button)mView.findViewById(R.id.btn_exit);
+		mImageView.setImageResource(R.drawable.img_whitearea);
+
+		mButton_end = (Button) mView.findViewById(R.id.btn_exit);
 		mButton_end.setOnClickListener(this);
-		
+
 	}
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		switch(v.getId()) {
-		case R.id.btn_exit :
+		switch (v.getId()) {
+		case R.id.btn_exit:
 			dismiss();
 			break;
 		}
 	}
-
 }

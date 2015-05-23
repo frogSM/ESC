@@ -36,6 +36,7 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.esc.R;
+import com.esc.printLocation.MapDialog;
 import com.esc.productManager.Product;
 import com.esc.shoppingBasket.BasketManager;
 import com.perples.recosdk.v;
@@ -242,6 +243,8 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 				public void onClick(View v) {
 				    
 					// 작성해야할 부분
+					MapDialog map = new MapDialog(mContext);
+					map.show();
 
 				}
 			});
