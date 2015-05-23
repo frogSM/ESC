@@ -18,7 +18,7 @@ import android.widget.ListView;
 
 import com.esc.CustomerService.CustomerServiceMainFragment;
 import com.esc.MainAdvertise.BestProductAdapter;
-import com.esc.printLocation.NavigationFragment;
+import com.esc.printLocation.MapFragment;
 import com.esc.productManager.ProductManager;
 import com.esc.productManager.ProductManagerFragment;
 import com.esc.searchProduct.SearchFragment;
@@ -142,7 +142,7 @@ public class MainActivity extends Activity {
 			fm  = new mainFragment();
 			break;
 		case R.id.btn_navi :
-			fm = new NavigationFragment();
+			fm = new MapFragment();
 			break;
 		case R.id.btn_product :
 			fm = new ProductManagerFragment(this.productManager);

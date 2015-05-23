@@ -26,7 +26,7 @@ import android.widget.AbsoluteLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class NavigationFragment extends Fragment implements RECORangingListener {
+public class MapFragment extends Fragment implements RECORangingListener {
 	
 	/** inflater한 fragment레이아웃 정보 **/
 	private View mView;
@@ -62,7 +62,7 @@ public class NavigationFragment extends Fragment implements RECORangingListener 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		mView = inflater.inflate(R.layout.fragment_navigation, container, false);
+		mView = inflater.inflate(R.layout.fragment_map, container, false);
 		
 		mBeaconHelper = new BeaconHelper(getActivity().getApplicationContext());
 		mBeaconManager = mBeaconHelper.getBeaconManager();
