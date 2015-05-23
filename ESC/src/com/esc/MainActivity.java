@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.app.ListFragment;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
@@ -18,11 +17,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.esc.CustomerService.CustomerServiceMainFragment;
-import com.esc.MainAdvertise.BestProductAdapter_Fifty;
-import com.esc.MainAdvertise.BestProductAdapter_Forty;
-import com.esc.MainAdvertise.BestProductAdapter_Ten;
-import com.esc.MainAdvertise.BestProductAdapter_Thirty;
-import com.esc.MainAdvertise.BestProductAdapter_Twenty;
+import com.esc.MainAdvertise.BestProductAdapter;
 import com.esc.printLocation.NavigationFragment;
 import com.esc.productManager.ProductManager;
 import com.esc.productManager.ProductManagerFragment;
@@ -162,7 +157,7 @@ public class MainActivity extends Activity {
 		mFragmentTransaction.commit();
 	}
 	
-	public class mainFragment extends Fragment {
+	public class mainFragment extends Fragment implements android.view.View.OnClickListener{
 		
 		/** inflater한 fragment레이아웃 정보 **/
 		private View mView;
@@ -174,11 +169,7 @@ public class MainActivity extends Activity {
 		private Button mButtonForty;
 		private Button mButtonFifty;
 		
-		private BestProductAdapter_Ten mAdapter_Ten;
-		private BestProductAdapter_Twenty mAdapter_Twenty;
-		private BestProductAdapter_Thirty mAdapter_Thirty;
-		private BestProductAdapter_Forty mAdapter_Forty;
-		private BestProductAdapter_Fifty mAdapter_Fifty;
+		private BestProductAdapter mAdapter;
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -194,15 +185,36 @@ public class MainActivity extends Activity {
 			
 			mListView = (ListView) mView.findViewById(R.id.listview_main_bestproduct);
 			mButtonTen = (Button) mView.findViewById(R.id.btn_ten);
+			mButtonTen.setOnClickListener(this);
 			mButtonTwenty = (Button) mView.findViewById(R.id.btn_twenty);
+			mButtonTwenty.setOnClickListener(this);
 			mButtonThirty = (Button) mView.findViewById(R.id.btn_thirty);
+			mButtonThirty.setOnClickListener(this);
 			mButtonForty = (Button) mView.findViewById(R.id.btn_forty);
+			mButtonForty.setOnClickListener(this);
 			mButtonFifty = (Button) mView.findViewById(R.id.btn_fifty);
+			mButtonFifty.setOnClickListener(this);
 			
-			mAdapter_Ten = new BestProductAdapter_Ten(getActivity().getApplicationContext());
-			mListView.setAdapter(mAdapter_Ten);
+			mAdapter = new BestProductAdapter(getActivity().getApplicationContext(), 10);
+			mListView.setAdapter(mAdapter);
 			
 		}
-	
+
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			if(v.getId()  == R.id.btn_ten) {
+				mAdapter = new BestProductAdapter(getActivity().getApplicationContext(), 10);
+			} else if(v.getId() == R.id.btn_twenty) {
+				mAdapter = new BestProductAdapter(getActivity().getApplicationContext(), 20);
+			} else if(v.getId() == R.id.btn_thirty) {
+				mAdapter = new BestProductAdapter(getActivity().getApplicationContext(), 30);
+			} else if(v.getId() == R.id.btn_forty) {
+				mAdapter = new BestProductAdapter(getActivity().getApplicationContext(), 40);
+			} else if(v.getId() == R.id.btn_fifty) {
+				mAdapter = new BestProductAdapter(getActivity().getApplicationContext(), 50);
+			}
+			mListView.setAdapter(mAdapter);
+		}
 	}
 }
