@@ -234,8 +234,8 @@
 
                         <ImageView
                             android:id="@+id/iv_ad_image1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:layout_height="150dp"
                             android:layout_weight="1"
                             android:clickable="false"
                             android:src="@drawable/ic_launcher" />
@@ -274,8 +274,8 @@
 
                         <ImageView
                             android:id="@+id/iv_ad_image2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:layout_height="150dp"
                             android:layout_weight="1"
                             android:src="@drawable/ic_launcher" />
 
@@ -310,8 +310,8 @@
 
                         <ImageView
                             android:id="@+id/iv_ad_image3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:layout_height="150dp"
                             android:layout_weight="1"
                             android:src="@drawable/ic_launcher" />
 
@@ -346,8 +346,8 @@
 
                         <ImageView
                             android:id="@+id/iv_ad_image4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:layout_height="150dp"
                             android:layout_weight="1"
                             android:src="@drawable/ic_launcher" />
 
@@ -382,8 +382,8 @@
 
                         <ImageView
                             android:id="@+id/iv_ad_image5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="100dp"
+                            android:layout_height="150dp"
                             android:layout_weight="1"
                             android:src="@drawable/ic_launcher" />
 

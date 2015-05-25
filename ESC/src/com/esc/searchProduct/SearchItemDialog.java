@@ -126,36 +126,49 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 			if (msg.what == Constants.THREAD_MESSAGE) {
 				mRecommendProduct = (ArrayList<RecommendProduct>) mJsonHelper.parserJsonMessage(msg.obj.toString());
 				
+				ImageView reco1_img = (ImageView)ll.findViewById(R.id.iv_ad_image1);
 				TextView reco1_title = (TextView)ll.findViewById(R.id.tv_ad_title1);
 				TextView reco1_price = (TextView)ll.findViewById(R.id.tv_ad_price1);
+				ImageView reco2_img = (ImageView)ll.findViewById(R.id.iv_ad_image2);
 				TextView reco2_title = (TextView)ll.findViewById(R.id.tv_ad_title2);
 				TextView reco2_price = (TextView)ll.findViewById(R.id.tv_ad_price2);
+				ImageView reco3_img = (ImageView)ll.findViewById(R.id.iv_ad_image3);
 				TextView reco3_title = (TextView)ll.findViewById(R.id.tv_ad_title3);
 				TextView reco3_price = (TextView)ll.findViewById(R.id.tv_ad_price3);
+				ImageView reco4_img = (ImageView)ll.findViewById(R.id.iv_ad_image4);
 				TextView reco4_title = (TextView)ll.findViewById(R.id.tv_ad_title4);
 				TextView reco4_price = (TextView)ll.findViewById(R.id.tv_ad_price4);
+				ImageView reco5_img = (ImageView)ll.findViewById(R.id.iv_ad_image5);
 				TextView reco5_title = (TextView)ll.findViewById(R.id.tv_ad_title5);
 				TextView reco5_price = (TextView)ll.findViewById(R.id.tv_ad_price5);
 				
 				for(int i=0 ; i<mRecommendProduct.size() ; i++) {
+					
+					int id = mContext.getResources().getIdentifier(mRecommendProduct.get(i).getImgURI(), "drawable", mContext.getPackageName());
+					
 					switch(i) {
 					case 0 :
+						reco1_img.setImageResource(id);
 						reco1_title.setText(mRecommendProduct.get(0).name);
 						reco1_price.setText(mRecommendProduct.get(0).price);
 						break;
 					case 1 :
+						reco2_img.setImageResource(id);
 						reco2_title.setText(mRecommendProduct.get(1).name);
 						reco2_price.setText(mRecommendProduct.get(1).price);
 						break;
 					case 2 :
+						reco3_img.setImageResource(id);
 						reco3_title.setText(mRecommendProduct.get(2).name);
 						reco3_price.setText(mRecommendProduct.get(2).price);
 						break;
 					case 3 :
+						reco4_img.setImageResource(id);
 						reco4_title.setText(mRecommendProduct.get(3).name);
 						reco4_price.setText(mRecommendProduct.get(3).price);
 						break;
 					case 4 :
+						reco5_img.setImageResource(id);
 						reco5_title.setText(mRecommendProduct.get(4).name);
 						reco5_price.setText(mRecommendProduct.get(4).price);
 						break;
