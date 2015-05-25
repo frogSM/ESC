@@ -238,23 +238,21 @@
                             android:layout_height="150dp"
                             android:layout_weight="1"
                             android:clickable="false"
-                            android:src="@drawable/ic_launcher" />
+                            android:src="@android:color/transparent" />
 
                         <TextView
                             android:id="@+id/tv_ad_title1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:clickable="false"
-                            android:text="TextView" />
+                            android:clickable="false" />
 
                         <TextView
                             android:id="@+id/tv_ad_price1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:clickable="false"
-                            android:text="TextView" />
+                            android:clickable="false" />
 
                     </LinearLayout>
 
@@ -277,21 +275,20 @@
                             android:layout_width="100dp"
                             android:layout_height="150dp"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_launcher" />
+                            android:src="@android:color/transparent" />
 
                         <TextView
                             android:id="@+id/tv_ad_title2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="TextView" />
+                            android:layout_weight="1" />
 
                         <TextView
                             android:id="@+id/tv_ad_price2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="TextView" />
+                            android:layout_weight="1" />
+
                     </LinearLayout>
 
                     <View
@@ -313,21 +310,20 @@
                             android:layout_width="100dp"
                             android:layout_height="150dp"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_launcher" />
+                            android:src="@android:color/transparent" />
 
                         <TextView
                             android:id="@+id/tv_ad_title3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="TextView" />
+                            android:layout_weight="1" />
 
                         <TextView
                             android:id="@+id/tv_ad_price3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="TextView" />
+                            android:layout_weight="1" />
+
                     </LinearLayout>
 
                     <View
@@ -349,21 +345,20 @@
                             android:layout_width="100dp"
                             android:layout_height="150dp"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_launcher" />
+                            android:src="@android:color/transparent" />
 
                         <TextView
                             android:id="@+id/tv_ad_title4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="TextView" />
+                            android:layout_weight="1" />
 
                         <TextView
                             android:id="@+id/tv_ad_price4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="TextView" />
+                            android:layout_weight="1" />
+
                     </LinearLayout>
 
                     <View
@@ -385,21 +380,20 @@
                             android:layout_width="100dp"
                             android:layout_height="150dp"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_launcher" />
+                            android:src="@android:color/transparent" />
 
                         <TextView
                             android:id="@+id/tv_ad_title5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="TextView" />
+                            android:layout_weight="1" />
 
                         <TextView
                             android:id="@+id/tv_ad_price5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="TextView" />
+                            android:layout_weight="1" />
+
                     </LinearLayout>
 
                     <View
