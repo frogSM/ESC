@@ -11,6 +11,7 @@ import com.esc.Constants;
 import com.esc.CustomerNotice.Notice;
 import com.esc.CustomerQuestionAndAnswer.QuestionAndAnswer;
 import com.esc.productManager.Product;
+import com.esc.searchProduct.RecommendProduct;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -58,8 +59,14 @@ public class JsonHelper extends Observable {
 		case Constants.requestNoticeDB :
 			jsonObj.put("type", "requestNoticeDB");
 			break;
+			
 		case Constants.requestBest5QADB :
 			jsonObj.put("type", "requestBest5QADB");
+			break;
+			
+		case Constants.RecommendedProduct_Info2 :
+			jsonObj.put("type", "RecommendedProduct_Info2");
+			jsonObj.put("number", (int)data);
 			break;
 		
 		}
@@ -105,11 +112,11 @@ public class JsonHelper extends Observable {
 			mObject = questionAndAndswers;
 			break;
 		
-		
-		
-		
-		
-		
+		case Constants.RecommendedProduct_Info2 :
+			List<RecommendProduct> recommendProducts = new ArrayList<RecommendProduct>();
+			recommendProducts = gson.fromJson(object.get("Object"), new TypeToken<List<RecommendProduct>>(){}.getType());
+			mObject = recommendProducts;
+			break;
 		}
 		
 		return mObject;

@@ -32,7 +32,6 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	private SearchView mSearchView;
 	private ListView mListView;
 	private ProgressDialog mProgressDialog;
-//	private ArrayAdapter<String> adapter;
 	
 	/** 소켓 및 Json 도우미**/
 	private SocketHelper mSocketHelper;
@@ -40,8 +39,10 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	
 	/** 리스트에 보여줄 상품들 이름 **/
 	private String[] mProductsName;
+	
 	/** DB에서 불러올 전체 상품 **/
 	private ArrayList<Product> products;
+	
 	/** SearchView에 입력하여 필터링된 상품들 **/
 	private ArrayList<Product> searchProducts;
 	
@@ -78,11 +79,13 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	private Handler mHandler = new Handler() {
 		
 		@Override
-		public void handleMessage(android.os.Message msg) throws NullPointerException {
-			if(msg.what == Constants.THREAD_MESSAGE) {
+		public void handleMessage(android.os.Message msg)
+				throws NullPointerException {
+			if (msg.what == Constants.THREAD_MESSAGE) {
 				searchProducts = new ArrayList<Product>();
-				products = (ArrayList<Product>)mJsonHelper.parserJsonMessage(msg.obj.toString());
+				products = (ArrayList<Product>) mJsonHelper	.parserJsonMessage(msg.obj.toString());
 				dataLoding();
+				mProgressDialog.dismiss();
 			}
 		};
 	};
@@ -95,7 +98,6 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 			searchProducts.add(products.get(i));
 		}
 		
-//		adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, mProductsName);
 		adapter = new SearchListAdapter(getActivity().getApplicationContext(), products);
 		
 		mListView.setAdapter(adapter);
@@ -103,16 +105,12 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 		
 		mListView.setOnItemClickListener(this);
 		mSearchView.setOnQueryTextListener(this);
-		
-		mProgressDialog.dismiss();
 	}
 	
 	/** SearchProducts 배열 갱신시키는 메소드 **/
-//	public void updateSearchProducts(ArrayAdapter<String> updateAdapter) {
 	public void updateSearchProducts(SearchListAdapter updateAdapter) {
 		for(int i=0 ; i<updateAdapter.getCount() ; i++) {
 			for(int j=0 ; j<products.size() ; j++) {
-//				if(updateAdapter.getItem(i) == products.get(j).getName())
 				if(updateAdapter.getItem(i).getName() == products.get(j).getName())
 					searchProducts.add(products.get(j));
 			}
@@ -174,7 +172,11 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		// TODO Auto-generated method stub
-		SearchItemDialog dialog = new SearchItemDialog(getActivity(), searchProducts, position);
+		// 모든데이터를 이용하여ViewFlipper를 구성했지만 그냥 하나만 선택해서 생성하도록 변경한 부분  
+		ArrayList<Product> temp = new ArrayList<Product>();
+		temp.add(searchProducts.get(position));
+		
+		SearchItemDialog dialog = new SearchItemDialog(getActivity(), temp, position);
 		dialog.show();
 	}
 	

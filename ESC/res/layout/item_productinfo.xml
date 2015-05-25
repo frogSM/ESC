@@ -25,7 +25,7 @@
         android:padding="1dp" />
 
     <ScrollView
-        android:id="@+id/scrollView1"
+        android:id="@+id/scv_contents"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_weight="1"
@@ -233,7 +233,7 @@
                         android:orientation="vertical" >
 
                         <ImageView
-                            android:id="@+id/iv_ad_image"
+                            android:id="@+id/iv_ad_image1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -241,7 +241,7 @@
                             android:src="@drawable/ic_launcher" />
 
                         <TextView
-                            android:id="@+id/tv_ad_title"
+                            android:id="@+id/tv_ad_title1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -249,7 +249,7 @@
                             android:text="TextView" />
 
                         <TextView
-                            android:id="@+id/textView11"
+                            android:id="@+id/tv_ad_price1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -273,21 +273,21 @@
                         android:orientation="vertical" >
 
                         <ImageView
-                            android:id="@+id/ImageView01"
+                            android:id="@+id/iv_ad_image2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:src="@drawable/ic_launcher" />
 
                         <TextView
-                            android:id="@+id/TextView01"
+                            android:id="@+id/tv_ad_title2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="TextView" />
 
                         <TextView
-                            android:id="@+id/TextView02"
+                            android:id="@+id/tv_ad_price2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -309,21 +309,21 @@
                         android:orientation="vertical" >
 
                         <ImageView
-                            android:id="@+id/ImageView02"
+                            android:id="@+id/iv_ad_image3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:src="@drawable/ic_launcher" />
 
                         <TextView
-                            android:id="@+id/TextView03"
+                            android:id="@+id/tv_ad_title3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="TextView" />
 
                         <TextView
-                            android:id="@+id/TextView04"
+                            android:id="@+id/tv_ad_price3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -345,21 +345,21 @@
                         android:orientation="vertical" >
 
                         <ImageView
-                            android:id="@+id/ImageView03"
+                            android:id="@+id/iv_ad_image4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:src="@drawable/ic_launcher" />
 
                         <TextView
-                            android:id="@+id/TextView05"
+                            android:id="@+id/tv_ad_title4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="TextView" />
 
                         <TextView
-                            android:id="@+id/TextView06"
+                            android:id="@+id/tv_ad_price4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -381,21 +381,21 @@
                         android:orientation="vertical" >
 
                         <ImageView
-                            android:id="@+id/ImageView04"
+                            android:id="@+id/iv_ad_image5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:src="@drawable/ic_launcher" />
 
                         <TextView
-                            android:id="@+id/TextView08"
+                            android:id="@+id/tv_ad_title5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="TextView" />
 
                         <TextView
-                            android:id="@+id/TextView07"
+                            android:id="@+id/tv_ad_price5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

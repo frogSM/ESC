@@ -22,6 +22,7 @@ import android.graphics.Color;
 import android.graphics.Paint.Align;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,11 +34,15 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.esc.Constants;
 import com.esc.R;
+import com.esc.Connection.JsonHelper;
+import com.esc.Connection.SocketHelper;
 import com.esc.printLocation.MapDialog;
 import com.esc.productManager.Product;
 import com.esc.shoppingBasket.BasketManager;
@@ -56,6 +61,8 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	
 	private LayoutInflater mLayoutInflater;
 	
+	private ProgressDialog mProgressDialog;
+	
 	/** 장바구니 객체 **/
 	private BasketManager mBasketManager;
 	
@@ -68,6 +75,15 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	
 	/** 애니메이션을 위한변수(처음 터치위치 저장) **/
 	private int m_nPreTouchPosX = 0;
+	
+	/** 추천받을 DB데이터 **/
+	private ArrayList<RecommendProduct> mRecommendProduct;
+	
+	/** 소켓 및 Json 도우미**/
+	private SocketHelper mSocketHelper;
+	private JsonHelper mJsonHelper;
+	
+	private LinearLayout ll;
 	
 	/** 추가 시킬 상품 추천 데이터 변수 **/
 	//
@@ -91,9 +107,64 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		mBasketManager = BasketManager.getInstance();
 		
+		mSocketHelper = SocketHelper.getInstance(mContext);
+		mJsonHelper = JsonHelper.getInstance(mContext);
+		
+		mRecommendProduct = new ArrayList<RecommendProduct>();
+		
 		dialogSetting();
 		addDynamicViewFlipper();
+		
 	}
+	
+	/** Socket에서 받아온 JSON형식 문장을 파싱하여 객체에 저장하는 핸들러**/
+	private Handler mHandler = new Handler() {
+		
+		@Override
+		public void handleMessage(android.os.Message msg)
+				throws NullPointerException {
+			if (msg.what == Constants.THREAD_MESSAGE) {
+				mRecommendProduct = (ArrayList<RecommendProduct>) mJsonHelper.parserJsonMessage(msg.obj.toString());
+				
+				TextView reco1_title = (TextView)ll.findViewById(R.id.tv_ad_title1);
+				TextView reco1_price = (TextView)ll.findViewById(R.id.tv_ad_price1);
+				TextView reco2_title = (TextView)ll.findViewById(R.id.tv_ad_title2);
+				TextView reco2_price = (TextView)ll.findViewById(R.id.tv_ad_price2);
+				TextView reco3_title = (TextView)ll.findViewById(R.id.tv_ad_title3);
+				TextView reco3_price = (TextView)ll.findViewById(R.id.tv_ad_price3);
+				TextView reco4_title = (TextView)ll.findViewById(R.id.tv_ad_title4);
+				TextView reco4_price = (TextView)ll.findViewById(R.id.tv_ad_price4);
+				TextView reco5_title = (TextView)ll.findViewById(R.id.tv_ad_title5);
+				TextView reco5_price = (TextView)ll.findViewById(R.id.tv_ad_price5);
+				
+				for(int i=0 ; i<mRecommendProduct.size() ; i++) {
+					switch(i) {
+					case 0 :
+						reco1_title.setText(mRecommendProduct.get(0).name);
+						reco1_price.setText(mRecommendProduct.get(0).price);
+						break;
+					case 1 :
+						reco2_title.setText(mRecommendProduct.get(1).name);
+						reco2_price.setText(mRecommendProduct.get(1).price);
+						break;
+					case 2 :
+						reco3_title.setText(mRecommendProduct.get(2).name);
+						reco3_price.setText(mRecommendProduct.get(2).price);
+						break;
+					case 3 :
+						reco4_title.setText(mRecommendProduct.get(3).name);
+						reco4_price.setText(mRecommendProduct.get(3).price);
+						break;
+					case 4 :
+						reco5_title.setText(mRecommendProduct.get(4).name);
+						reco5_price.setText(mRecommendProduct.get(4).price);
+						break;
+					}
+				}
+				
+			}
+		};
+	};
 	
 	private void dialogSetting() {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -205,7 +276,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	
 	private void addDynamicViewFlipper() {
 		for(int i=0 ; i<receiveData.size() ; i++) {
-			LinearLayout ll = (LinearLayout)mLayoutInflater.inflate(R.layout.item_productinfo, null);
+			ll = (LinearLayout)mLayoutInflater.inflate(R.layout.item_productinfo, null);
 			TextView mTextViewName= (TextView)ll.findViewById(R.id.tv_name);
 			TextView mTextViewPrice= (TextView)ll.findViewById(R.id.tv_price);
 			TextView mTextViewType = (TextView)ll.findViewById(R.id.tv_type);
@@ -228,6 +299,9 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 			
 			int id = mContext.getResources().getIdentifier(receiveData.get(i).getImgURL(), "drawable", mContext.getPackageName());
 			mImageView.setImageResource(id);
+			
+			/** 스크롤 했을 시 동적으로 데이터 받아오는 부분 **/
+			ScrollView scrollView = (ScrollView)ll.findViewById(R.id.scv_contents);
 			
 			
 			/** 이 상품과 구매한 상품 쪽 버튼 구현 **/
@@ -266,6 +340,9 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 					map.show();
 				}
 			});
+			
+			String str_json = mJsonHelper.makeJsonMessage(Constants.RecommendedProduct_Info2, receiveData.get(0).getNumber());
+			mSocketHelper.sendMessage(mHandler, str_json);
 			
 			mViewFlipper.addView(ll);
 		}

@@ -195,8 +195,8 @@ public class BestProductAdapter extends BaseAdapter  {
 			LayoutInflater inflater = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.item_adproduct, parent, false);
 			
-			mViewHolder.image = (ImageView)convertView.findViewById(R.id.iv_ad_image);
-			mViewHolder.title = (TextView)convertView.findViewById(R.id.tv_ad_title);
+			mViewHolder.image = (ImageView)convertView.findViewById(R.id.iv_ad_image1);
+			mViewHolder.title = (TextView)convertView.findViewById(R.id.tv_ad_title1);
 			mViewHolder.price = (TextView)convertView.findViewById(R.id.tv_ad_price);
 			
 			convertView.setTag(mViewHolder);
