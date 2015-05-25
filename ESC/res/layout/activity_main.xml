@@ -14,10 +14,17 @@
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/view1"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
     <LinearLayout
         android:id="@+id/layout_tab"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:background="@drawable/img_main_tab"
         android:gravity="center" >
 
         <Button
@@ -25,32 +32,32 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="onButtonClick"
-            android:text="ESC몰" />
+            android:background="@android:color/transparent"
+            android:onClick="onButtonClick" />
 
         <Button
             android:id="@+id/btn_navi"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="onButtonClick"
-            android:text="지도" />
+            android:background="@android:color/transparent"
+            android:onClick="onButtonClick" />
 
         <Button
             android:id="@+id/btn_product"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="onButtonClick"
-            android:text="카트" />
+            android:background="@android:color/transparent"
+            android:onClick="onButtonClick" />
 
         <Button
             android:id="@+id/btn_customerService"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="onButtonClick"
-            android:text="고객센터" />
+            android:background="@android:color/transparent"
+            android:onClick="onButtonClick" />
 
     </LinearLayout>
 

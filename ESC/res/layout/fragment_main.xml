@@ -101,7 +101,7 @@
 
                 <View
                     android:id="@+id/View01"
-                    android:layout_width="2dp"
+                    android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="@android:color/black" />
 
@@ -183,7 +183,7 @@
             <View
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:background="@android:color/black" />
 
             <LinearLayout
@@ -267,7 +267,7 @@
 
                 <View
                     android:id="@+id/View03"
-                    android:layout_width="2dp"
+                    android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="@android:color/black" />
 

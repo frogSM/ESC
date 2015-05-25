@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
@@ -228,6 +229,25 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 			int id = mContext.getResources().getIdentifier(receiveData.get(i).getImgURL(), "drawable", mContext.getPackageName());
 			mImageView.setImageResource(id);
 			
+			
+			/** 이 상품과 구매한 상품 쪽 버튼 구현 **/
+			ViewGroup recomandation1 = (ViewGroup)ll.findViewById(R.id.ll_recomandation1);
+			ViewGroup recomandation2 = (ViewGroup)ll.findViewById(R.id.ll_recomandation2);
+			ViewGroup recomandation3 = (ViewGroup)ll.findViewById(R.id.ll_recomandation3);
+			ViewGroup recomandation4 = (ViewGroup)ll.findViewById(R.id.ll_recomandation4);
+			ViewGroup recomandation5 = (ViewGroup)ll.findViewById(R.id.ll_recomandation5);
+			
+			recomandation1.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					SearchItemDialog dialog = new SearchItemDialog(mContext, receiveData, 0);
+					dialog.show();
+				}
+			});
+			
+			/** [장바구니 추가] [위치정보 확인] 버튼 OnClickListener인터페이스 추가 부분**/
 			final int loopValue = i;
 			mButtonBasketAdd.setOnClickListener(new View.OnClickListener() {
 				@Override

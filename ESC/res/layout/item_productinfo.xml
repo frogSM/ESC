@@ -218,7 +218,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
 
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+
                     <LinearLayout
+                        android:id="@+id/ll_recomandation1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -230,6 +237,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:clickable="false"
                             android:src="@drawable/ic_launcher" />
 
                         <TextView
@@ -237,6 +245,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:clickable="false"
                             android:text="TextView" />
 
                         <TextView
@@ -244,11 +253,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:clickable="false"
                             android:text="TextView" />
 
                     </LinearLayout>
 
+                    <View
+                        android:id="@+id/View01"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+
                     <LinearLayout
+                        android:id="@+id/ll_recomandation2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -277,7 +294,14 @@
                             android:text="TextView" />
                     </LinearLayout>
 
+                    <View
+                        android:id="@+id/View02"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+
                     <LinearLayout
+                        android:id="@+id/ll_recomandation3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -306,7 +330,14 @@
                             android:text="TextView" />
                     </LinearLayout>
 
+                    <View
+                        android:id="@+id/View03"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+
                     <LinearLayout
+                        android:id="@+id/ll_recomandation4"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -335,7 +366,14 @@
                             android:text="TextView" />
                     </LinearLayout>
 
+                    <View
+                        android:id="@+id/View04"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
+
                     <LinearLayout
+                        android:id="@+id/ll_recomandation5"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -363,6 +401,12 @@
                             android:layout_weight="1"
                             android:text="TextView" />
                     </LinearLayout>
+
+                    <View
+                        android:id="@+id/View05"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/darker_gray" />
 
                 </LinearLayout>
 
