@@ -5,6 +5,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import android.app.ListFragment;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,8 @@ public class ShoppingBasketFragment extends ListFragment implements Observer {
 	private ListView mListView;
 	private TextView mGoalPrice;
 	private TextView mPredictPrice;
+	private TextView mGoalSumPredict_Title;
+	private TextView mGoalSumPredict;
 	
 	/** BasketManager 인스턴스**/
 	private BasketManager mBasketManager;
@@ -45,6 +48,8 @@ public class ShoppingBasketFragment extends ListFragment implements Observer {
 		mListView = (ListView)mView.findViewById(android.R.id.list);
 		mGoalPrice = (TextView)mView.findViewById(R.id.tv_goalprice);
 		mPredictPrice = (TextView)mView.findViewById(R.id.tv_predictprice);
+		mGoalSumPredict_Title = (TextView)mView.findViewById(R.id.tv_goalsumpredict_title);
+		mGoalSumPredict = (TextView)mView.findViewById(R.id.tv_goalsumpredict);
 		
 		mBasketManager = BasketManager.getInstance();
 		
@@ -91,6 +96,16 @@ public class ShoppingBasketFragment extends ListFragment implements Observer {
 			mSumPrice += Integer.parseInt(mAdapter.getItem(i).getPriceNow());
 		}
 		mPredictPrice.setText(String.valueOf(mSumPrice));
+		
+		int sumprice = mBasketManager.getGoalPrice()-mSumPrice;
+		if(sumprice > 0 ) {
+			mGoalSumPredict_Title.setText("잔여금액 : ");
+			mGoalSumPredict.setTextColor(Color.BLUE);
+		} else {
+			mGoalSumPredict_Title.setText("초과금액 : ");
+			mGoalSumPredict.setTextColor(Color.RED);
+		}
+		mGoalSumPredict.setText(String.valueOf(Math.abs(sumprice)));
 	}
 
 	@Override
@@ -99,6 +114,16 @@ public class ShoppingBasketFragment extends ListFragment implements Observer {
 		if(observable instanceof BasketManager) {
 			BasketManager basketManager = (BasketManager)data;
 			mGoalPrice.setText(String.valueOf(mBasketManager.getGoalPrice()));
+			
+			int sumprice = mBasketManager.getGoalPrice()-mSumPrice;
+			if(sumprice > 0 ) {
+				mGoalSumPredict_Title.setText("잔여금액 : ");
+				mGoalSumPredict.setTextColor(Color.BLUE);
+			} else {
+				mGoalSumPredict_Title.setText("초과금액 : ");
+				mGoalSumPredict.setTextColor(Color.RED);
+			}
+			mGoalSumPredict.setText(String.valueOf(Math.abs(sumprice)));
 		}
 	}
 }

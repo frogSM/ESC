@@ -34,7 +34,7 @@
             android:gravity="center"
             android:text="목표금액 : "
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/tv_goalprice"
@@ -42,7 +42,7 @@
             android:layout_height="match_parent"
             android:text="Text"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="50dp" />
+            android:textSize="45dp" />
 
         <TextView
             android:id="@+id/TextView02"
@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text=" 원"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -65,7 +65,7 @@
             android:gravity="center"
             android:text="총 예상 금액 : "
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/tv_predictprice"
@@ -73,7 +73,7 @@
             android:layout_height="match_parent"
             android:text="Text"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="50dp" />
+            android:textSize="45dp" />
 
         <TextView
             android:id="@+id/textView1"
@@ -81,7 +81,39 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text=" 원"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/TextView03"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="   " />
+
+        <TextView
+            android:id="@+id/tv_goalsumpredict_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="초과금액 : "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/tv_goalsumpredict"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="45dp" />
+
+        <TextView
+            android:id="@+id/TextView04"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text=" 원"
+            android:textSize="25dp" />
     </LinearLayout>
 
 </LinearLayout>

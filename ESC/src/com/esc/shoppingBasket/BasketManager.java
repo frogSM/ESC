@@ -14,6 +14,9 @@ public class BasketManager extends Observable {
 	/** 쇼핑 목표 금액 **/
 	private int goalPrice ;
 	
+	/** 장바구니 총 금액**/
+	private int allProductPrice = 0;
+	
 	/** 장바구니에 담긴 상품들 **/
 	private ArrayList<Product> mBasket;
 
@@ -40,13 +43,34 @@ public class BasketManager extends Observable {
 		return goalPrice;
 	}
 	
+	public int getAllProductPrice() {
+		return allProductPrice;
+	}
+	
+	private void calculateAllProductPrice() {
+		int tempAllProductPrice = 0;
+		
+		for(int i=0 ; i<mBasket.size() ; i++) {
+			tempAllProductPrice += Integer.parseInt(mBasket.get(i).getPriceNow());
+		}
+		allProductPrice = tempAllProductPrice;
+	}
+	
 	public void addBasketProduct(Product product) {
 		mBasket.add(product);
 		removeDuplicationElement();
+		calculateAllProductPrice();
+		
+		setChanged();
+		notifyObservers();
 	}
 	
 	public void removeBasketProduct(Product product) {
 		mBasket.remove(product);
+		calculateAllProductPrice();
+		
+		setChanged();
+		notifyObservers();
 	}
 	
 	public ArrayList<Product> getBasket() {
