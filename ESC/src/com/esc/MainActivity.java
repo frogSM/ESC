@@ -1,7 +1,10 @@
 package com.esc;
 
+import java.util.zip.Inflater;
+
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -14,7 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.esc.CustomerService.CustomerServiceMainFragment;
 import com.esc.MainAdvertise.BestProductAdapter;
@@ -46,6 +52,8 @@ public class MainActivity extends Activity {
 		mFragmentTransaction = mFragmentManager.beginTransaction();
 		mFragmentTransaction.replace(R.id.layout_fragment, mMainFragment);
 		mFragmentTransaction.commit();	
+		
+		createDialog();
 		
 		mBasketManager = BasketManager.getInstance();
 		productManager = new ProductManager(this);
@@ -155,6 +163,28 @@ public class MainActivity extends Activity {
 		mFragmentTransaction.replace(R.id.layout_fragment, fm);
 		mFragmentTransaction.addToBackStack(null);
 		mFragmentTransaction.commit();
+	}
+	
+	/** 쇼핑 목표금액 설정하는 다이얼로그 **/
+	private void createDialog() {
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
+		View layout = getLayoutInflater().inflate(R.layout.dialog_goalprice, null);
+		
+		builder.setTitle("쇼핑 목표금액 설정");
+		builder.setView(layout);
+		builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		AlertDialog dialog = builder.create();
+		dialog.show();
+		
 	}
 	
 	public class mainFragment extends Fragment implements android.view.View.OnClickListener{

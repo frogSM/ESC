@@ -172,7 +172,7 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		// TODO Auto-generated method stub
-		SearchItemDialog dialog = new SearchItemDialog(getActivity(), searchProducts, position);
+		SearchItemDialog dialog = new SearchItemDialog(getActivity(), products, searchProducts, position);
 		dialog.show();
 	}
 	

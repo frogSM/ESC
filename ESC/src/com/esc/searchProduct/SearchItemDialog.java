@@ -7,17 +7,13 @@ import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
 import org.achartengine.chart.BarChart.Type;
 import org.achartengine.model.CategorySeries;
-import org.achartengine.model.RangeCategorySeries;
 import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.app.AlertDialog.Builder;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Paint.Align;
 import android.graphics.drawable.ColorDrawable;
@@ -26,15 +22,14 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -46,7 +41,6 @@ import com.esc.Connection.SocketHelper;
 import com.esc.printLocation.MapDialog;
 import com.esc.productManager.Product;
 import com.esc.shoppingBasket.BasketManager;
-import com.perples.recosdk.v;
 
 
 public class SearchItemDialog extends Dialog implements OnClickListener{
@@ -67,6 +61,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	private BasketManager mBasketManager;
 	
 	/** SearchFragment로부터 전달받은 데이터 **/
+	private ArrayList<Product> allReceiveData;
 	private ArrayList<Product> receiveData;
 	
 	/** 현재 열려있는 상품객체 **/
@@ -89,10 +84,11 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	/** ViewFlipper에 쓰이는 레이아웃 **/
 	private LinearLayout ll;
 	
-	public SearchItemDialog(Context context, ArrayList<Product> data, int position) {
+	public SearchItemDialog(Context context, ArrayList<Product> allData, ArrayList<Product> data, int position) {
 		super(context);
 		// TODO Auto-generated constructor stub
 		mContext = context;
+		allReceiveData = allData;
 		receiveData = data;
 		mProduct = receiveData.get(position);
 		selectNum = position;
@@ -139,6 +135,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 				TextView reco5_title = (TextView)ll.findViewById(R.id.tv_ad_title5);
 				TextView reco5_price = (TextView)ll.findViewById(R.id.tv_ad_price5);
 				
+				/** 이 상품과 구매한 상품 데이터 삽입 **/
 				for(int i=0 ; i<mRecommendProduct.size() ; i++) {
 					
 					int id = mContext.getResources().getIdentifier(mRecommendProduct.get(i).getImgURI(), "drawable", mContext.getPackageName());
@@ -148,27 +145,123 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 						reco1_img.setImageResource(id);
 						reco1_title.setText(mRecommendProduct.get(0).name);
 						reco1_price.setText(mRecommendProduct.get(0).price);
+						
+						/** 이 상품과 구매한 상품 쪽 버튼 구현 **/
+						ViewGroup recomandation1 = (ViewGroup) ll.findViewById(R.id.ll_recomandation1);
+						recomandation1.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								for(int i=0 ; i<allReceiveData.size() ; i++) {
+									if(allReceiveData.get(i).getName().equals(mRecommendProduct.get(0).getName())) {
+										ArrayList<Product> data = new ArrayList<Product>();
+										data.add(allReceiveData.get(i));
+										
+										SearchItemDialog dialog = new SearchItemDialog(mContext, allReceiveData, data, 0);
+										dialog.show();
+									}
+								}
+							}
+						});
 						break;
+						
 					case 1 :
 						reco2_img.setImageResource(id);
 						reco2_title.setText(mRecommendProduct.get(1).name);
 						reco2_price.setText(mRecommendProduct.get(1).price);
+						
+						ViewGroup recomandation2 = (ViewGroup) ll.findViewById(R.id.ll_recomandation2);
+						recomandation2.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								for(int i=0 ; i<allReceiveData.size() ; i++) {
+									if(allReceiveData.get(i).getName().equals(mRecommendProduct.get(1).getName())) {
+										ArrayList<Product> data = new ArrayList<Product>();
+										data.add(allReceiveData.get(i));
+										
+										SearchItemDialog dialog = new SearchItemDialog(mContext, allReceiveData, data, 0);
+										dialog.show();
+									}
+								}
+							}
+						});
 						break;
+						
 					case 2 :
 						reco3_img.setImageResource(id);
 						reco3_title.setText(mRecommendProduct.get(2).name);
 						reco3_price.setText(mRecommendProduct.get(2).price);
+						
+						ViewGroup recomandation3 = (ViewGroup) ll.findViewById(R.id.ll_recomandation3);
+						recomandation3.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								for(int i=0 ; i<allReceiveData.size() ; i++) {
+									if(allReceiveData.get(i).getName().equals(mRecommendProduct.get(2).getName())) {
+										ArrayList<Product> data = new ArrayList<Product>();
+										data.add(allReceiveData.get(i));
+										
+										SearchItemDialog dialog = new SearchItemDialog(mContext, allReceiveData, data, 0);
+										dialog.show();
+									}
+								}
+							}
+						});
 						break;
+						
 					case 3 :
 						reco4_img.setImageResource(id);
 						reco4_title.setText(mRecommendProduct.get(3).name);
 						reco4_price.setText(mRecommendProduct.get(3).price);
+						
+						ViewGroup recomandation4 = (ViewGroup) ll.findViewById(R.id.ll_recomandation4);
+						recomandation4.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								for(int i=0 ; i<allReceiveData.size() ; i++) {
+									if(allReceiveData.get(i).getName().equals(mRecommendProduct.get(3).getName())) {
+										ArrayList<Product> data = new ArrayList<Product>();
+										data.add(allReceiveData.get(i));
+										
+										SearchItemDialog dialog = new SearchItemDialog(mContext, allReceiveData, data, 0);
+										dialog.show();
+									}
+								}
+							}
+						});
 						break;
+						
 					case 4 :
 						reco5_img.setImageResource(id);
 						reco5_title.setText(mRecommendProduct.get(4).name);
 						reco5_price.setText(mRecommendProduct.get(4).price);
+						
+						ViewGroup recomandation5 = (ViewGroup) ll.findViewById(R.id.ll_recomandation5);
+						recomandation5.setOnClickListener(new View.OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								for(int i=0 ; i<allReceiveData.size() ; i++) {
+									if(allReceiveData.get(i).getName().equals(mRecommendProduct.get(4).getName())) {
+										ArrayList<Product> data = new ArrayList<Product>();
+										data.add(allReceiveData.get(i));
+										
+										SearchItemDialog dialog = new SearchItemDialog(mContext, allReceiveData, data, 0);
+										dialog.show();
+									}
+								}
+							}
+						});
 						break;
+						
 					}
 				}
 				
@@ -312,22 +405,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 				"drawable", mContext.getPackageName());
 		mImageView.setImageResource(id);
 
-		/** 이 상품과 구매한 상품 쪽 버튼 구현 **/
-		ViewGroup recomandation1 = (ViewGroup) ll.findViewById(R.id.ll_recomandation1);
-		ViewGroup recomandation2 = (ViewGroup) ll.findViewById(R.id.ll_recomandation2);
-		ViewGroup recomandation3 = (ViewGroup) ll.findViewById(R.id.ll_recomandation3);
-		ViewGroup recomandation4 = (ViewGroup) ll.findViewById(R.id.ll_recomandation4);
-		ViewGroup recomandation5 = (ViewGroup) ll.findViewById(R.id.ll_recomandation5);
-
-		recomandation1.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-//				SearchItemDialog dialog = new SearchItemDialog(mContext,receiveData, 0);
-//				dialog.show();
-			}
-		});
+		
 
 		/** [장바구니 추가] [위치정보 확인] 버튼 OnClickListener인터페이스 추가 부분 **/
 		mButtonBasketAdd.setOnClickListener(new View.OnClickListener() {
@@ -339,11 +417,10 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 			}
 		});
 
-		final String type = mProduct.getType();
 		mButtonPositionConfirm.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				MapDialog map = new MapDialog(mContext, type);
+				MapDialog map = new MapDialog(mContext, mProduct.getType());
 				map.show();
 			}
 		});
@@ -353,7 +430,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 
 		mViewFlipper.addView(ll);
 
-		mViewFlipper.setDisplayedChild(selectNum);
+//		mViewFlipper.setDisplayedChild(selectNum);
 		mViewFlipper.setOnTouchListener(MyTouchListener);
 	}
 	
