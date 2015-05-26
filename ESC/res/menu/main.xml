@@ -10,12 +10,17 @@
     
     <item
         android:id="@+id/action_Search"
-        android:title="search"
+        android:title="상품검색"
+        android:showAsAction="always"/>
+    
+    <item
+        android:id="@+id/action_setGoalPrice"
+        android:title="목표금액 설정"
         android:showAsAction="always"/>
     
     <item
         android:id="@+id/action_Cart"
-        android:title="cart"
+        android:title="장바구니"
         android:showAsAction= "always"/>
     
     <item

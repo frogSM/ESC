@@ -38,7 +38,7 @@
                 android:gravity="bottom" >
 
                 <TextView
-                    android:id="@+id/tv_ad_price"
+                    android:id="@+id/tv_cancel_line1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Large Text"

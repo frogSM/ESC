@@ -123,16 +123,16 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 				TextView reco1_title = (TextView)ll.findViewById(R.id.tv_ad_title1);
 				TextView reco1_price = (TextView)ll.findViewById(R.id.tv_ad_price1);
 				ImageView reco2_img = (ImageView)ll.findViewById(R.id.iv_ad_image2);
-				TextView reco2_title = (TextView)ll.findViewById(R.id.tv_ad_title2);
+				TextView reco2_title = (TextView)ll.findViewById(R.id.tv_cancel_line2);
 				TextView reco2_price = (TextView)ll.findViewById(R.id.tv_ad_price2);
 				ImageView reco3_img = (ImageView)ll.findViewById(R.id.iv_ad_image3);
 				TextView reco3_title = (TextView)ll.findViewById(R.id.tv_ad_title3);
-				TextView reco3_price = (TextView)ll.findViewById(R.id.tv_ad_price3);
+				TextView reco3_price = (TextView)ll.findViewById(R.id.tv_cancel_line3);
 				ImageView reco4_img = (ImageView)ll.findViewById(R.id.iv_ad_image4);
 				TextView reco4_title = (TextView)ll.findViewById(R.id.tv_ad_title4);
 				TextView reco4_price = (TextView)ll.findViewById(R.id.tv_ad_price4);
 				ImageView reco5_img = (ImageView)ll.findViewById(R.id.iv_ad_image5);
-				TextView reco5_title = (TextView)ll.findViewById(R.id.tv_ad_title5);
+				TextView reco5_title = (TextView)ll.findViewById(R.id.tv_cancel_line4);
 				TextView reco5_price = (TextView)ll.findViewById(R.id.tv_ad_price5);
 				
 				/** 이 상품과 구매한 상품 데이터 삽입 **/

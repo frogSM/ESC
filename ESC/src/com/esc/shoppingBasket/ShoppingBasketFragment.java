@@ -1,6 +1,8 @@
 package com.esc.shoppingBasket;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 import android.app.ListFragment;
 import android.os.Bundle;
@@ -13,11 +15,15 @@ import android.widget.TextView;
 import com.esc.R;
 import com.esc.productManager.Product;
 
-public class ShoppingBasketFragment extends ListFragment {
+public class ShoppingBasketFragment extends ListFragment implements Observer {
+	
+	/** 옵저버 패턴 **/
+	private Observable mObservable;
 	
 	/** 프레그먼트 레이아웃 정보 **/
 	private View mView;
 	private ListView mListView;
+	private TextView mGoalPrice;
 	private TextView mPredictPrice;
 	
 	/** BasketManager 인스턴스**/
@@ -37,9 +43,15 @@ public class ShoppingBasketFragment extends ListFragment {
 		// TODO Auto-generated method stub
 		mView = inflater.inflate(R.layout.fragment_shoppingbasket, container, false);
 		mListView = (ListView)mView.findViewById(android.R.id.list);
+		mGoalPrice = (TextView)mView.findViewById(R.id.tv_goalprice);
 		mPredictPrice = (TextView)mView.findViewById(R.id.tv_predictprice);
 		
 		mBasketManager = BasketManager.getInstance();
+		
+		// 옵저버 등록 내용
+		this.mObservable = mBasketManager;
+		mObservable.addObserver(this);
+		
 		dataLoding();
 		
 		return mView;
@@ -73,10 +85,20 @@ public class ShoppingBasketFragment extends ListFragment {
 		mListView.setOnTouchListener(touchListener);
 		mListView.setOnScrollListener(touchListener.makeScrollListener());
 		
+		mGoalPrice.setText(String.valueOf(mBasketManager.getGoalPrice()));
 		
 		for(int i=0 ; i<mAdapter.getCount() ; i++) {
 			mSumPrice += Integer.parseInt(mAdapter.getItem(i).getPriceNow());
 		}
 		mPredictPrice.setText(String.valueOf(mSumPrice));
+	}
+
+	@Override
+	public void update(Observable observable, Object data) {
+		// TODO Auto-generated method stub
+		if(observable instanceof BasketManager) {
+			BasketManager basketManager = (BasketManager)data;
+			mGoalPrice.setText(String.valueOf(mBasketManager.getGoalPrice()));
+		}
 	}
 }

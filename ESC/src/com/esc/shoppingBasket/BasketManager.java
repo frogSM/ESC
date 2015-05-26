@@ -2,16 +2,17 @@ package com.esc.shoppingBasket;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Observable;
 
 import com.esc.productManager.Product;
 
-public class BasketManager {
+public class BasketManager extends Observable {
 	
 	/** Basket 싱글톤 인스턴스 **/
 	private static BasketManager instance;
 	
 	/** 쇼핑 목표 금액 **/
-	private int goalPrice = 0;
+	private int goalPrice ;
 	
 	/** 장바구니에 담긴 상품들 **/
 	private ArrayList<Product> mBasket;
@@ -26,10 +27,13 @@ public class BasketManager {
 	public BasketManager() {
 		// TODO Auto-generated constructor stub
 		mBasket = new ArrayList<Product>();
+		goalPrice = 0;
 	}
 	
 	public void setGoalPrice(int price) {
 		this.goalPrice = price;
+		setChanged();
+		notifyObservers();
 	}
 	
 	public int getGoalPrice() {

@@ -1,16 +1,16 @@
 package com.esc;
 
-import java.util.zip.Inflater;
-
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.Selection;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -99,6 +98,10 @@ public class MainActivity extends Activity {
 			mFragmentTransaction.replace(R.id.layout_fragment, fm);
 			mFragmentTransaction.addToBackStack(null);
 			mFragmentTransaction.commit();
+		} else if (id == R.id.action_setGoalPrice) {
+			
+			createDialog();
+			
 		} else if (id == R.id.action_Cart) {
 			setTitle("장바구니");
 			Fragment fm = new ShoppingBasketFragment();
@@ -173,6 +176,13 @@ public class MainActivity extends Activity {
 		
 		final View layout = getLayoutInflater().inflate(R.layout.dialog_goalprice, null);
 		
+		// 금액 초기화
+		final EditText edittext = (EditText)layout.findViewById(R.id.et_price);
+		edittext.setText(String.valueOf(mBasketManager.getGoalPrice()));
+		// 포커스 가장 뒤로 이동
+		Editable etext = edittext.getText();
+		Selection.setSelection(etext, etext.length());
+		
 		builder.setTitle("쇼핑 목표금액 설정");
 		builder.setView(layout);
 		builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -180,7 +190,6 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				EditText edittext = (EditText)layout.findViewById(R.id.et_price);
 				mBasketManager.setGoalPrice(Integer.valueOf(edittext.getText().toString()));
 			}
 		});
@@ -229,6 +238,16 @@ public class MainActivity extends Activity {
 			
 			mAdapter = new BestProductAdapter(getActivity().getApplicationContext(), 10);
 			mListView.setAdapter(mAdapter);
+			
+			// 취소선 추가
+			TextView tv_cancelline1 =  (TextView)mView.findViewById(R.id.tv_cancel_line1);
+			tv_cancelline1.setPaintFlags(tv_cancelline1.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+			TextView tv_cancelline2 =  (TextView)mView.findViewById(R.id.tv_cancel_line2);
+			tv_cancelline2.setPaintFlags(tv_cancelline2.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+			TextView tv_cancelline3 =  (TextView)mView.findViewById(R.id.tv_cancel_line3);
+			tv_cancelline3.setPaintFlags(tv_cancelline3.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+			TextView tv_cancelline4 =  (TextView)mView.findViewById(R.id.tv_cancel_line4);
+			tv_cancelline4.setPaintFlags(tv_cancelline4.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 			
 		}
 
