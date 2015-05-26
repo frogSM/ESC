@@ -53,10 +53,11 @@ public class MainActivity extends Activity {
 		mFragmentTransaction.replace(R.id.layout_fragment, mMainFragment);
 		mFragmentTransaction.commit();	
 		
-		createDialog();
-		
 		mBasketManager = BasketManager.getInstance();
 		productManager = new ProductManager(this);
+		
+		createDialog();
+		
 //		productManager.OpenSerialPort();
 		
 	}
@@ -170,7 +171,7 @@ public class MainActivity extends Activity {
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		
-		View layout = getLayoutInflater().inflate(R.layout.dialog_goalprice, null);
+		final View layout = getLayoutInflater().inflate(R.layout.dialog_goalprice, null);
 		
 		builder.setTitle("쇼핑 목표금액 설정");
 		builder.setView(layout);
@@ -179,7 +180,8 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				
+				EditText edittext = (EditText)layout.findViewById(R.id.et_price);
+				mBasketManager.setGoalPrice(Integer.valueOf(edittext.getText().toString()));
 			}
 		});
 		AlertDialog dialog = builder.create();

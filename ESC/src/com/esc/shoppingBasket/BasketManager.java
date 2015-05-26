@@ -10,6 +10,9 @@ public class BasketManager {
 	/** Basket 싱글톤 인스턴스 **/
 	private static BasketManager instance;
 	
+	/** 쇼핑 목표 금액 **/
+	private int goalPrice = 0;
+	
 	/** 장바구니에 담긴 상품들 **/
 	private ArrayList<Product> mBasket;
 
@@ -23,6 +26,14 @@ public class BasketManager {
 	public BasketManager() {
 		// TODO Auto-generated constructor stub
 		mBasket = new ArrayList<Product>();
+	}
+	
+	public void setGoalPrice(int price) {
+		this.goalPrice = price;
+	}
+	
+	public int getGoalPrice() {
+		return goalPrice;
 	}
 	
 	public void addBasketProduct(Product product) {
