@@ -13,12 +13,12 @@
     </ListView>
 
     <TextView
-        android:id="@+id/empty"
+        android:id="@id/android:empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_weight="1"
-        android:gravity="center|top"
+        android:gravity="center"
         android:text="장바구니에 아무것도 담겨있지 않습니다."
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25dp" />
@@ -30,16 +30,28 @@
         <TextView
             android:id="@+id/tv_map_title"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:text="총 예상 금액 : "
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="30dp" />
 
         <TextView
             android:id="@+id/tv_predictprice"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="50dp" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text=" 원"
+            android:textSize="30dp" />
+
     </LinearLayout>
 
 </LinearLayout>

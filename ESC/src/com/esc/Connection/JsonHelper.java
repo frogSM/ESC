@@ -64,8 +64,8 @@ public class JsonHelper extends Observable {
 			jsonObj.put("type", "requestBest5QADB");
 			break;
 			
-		case Constants.RecommendedProduct_Info2 :
-			jsonObj.put("type", "RecommendedProduct_Info2");
+		case Constants.RecommendedProduct_Info :
+			jsonObj.put("type", "RecommendedProduct_Info");
 			jsonObj.put("number", (int)data);
 			break;
 		
@@ -112,7 +112,7 @@ public class JsonHelper extends Observable {
 			mObject = questionAndAndswers;
 			break;
 		
-		case Constants.RecommendedProduct_Info2 :
+		case Constants.RecommendedProduct_Info :
 			List<RecommendProduct> recommendProducts = new ArrayList<RecommendProduct>();
 			recommendProducts = gson.fromJson(object.get("Object"), new TypeToken<List<RecommendProduct>>(){}.getType());
 			mObject = recommendProducts;

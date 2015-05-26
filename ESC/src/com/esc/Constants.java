@@ -5,7 +5,7 @@ public class Constants {
 	/**  JSONHelper Constants **/
 	public final static String Uid_Info = "Uid_Info";
 	public final static String All_Product_Info = "All_Product_Info";
-	public final static String RecommendedProduct_Info2 = "RecommendedProduct_Info2";
+	public final static String RecommendedProduct_Info = "RecommendedProduct_Info";
 	
 	/** 공지사항 데이터베이스 요청 **/
 	public final static String requestNoticeDB = "requestNoticeDB";

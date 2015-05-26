@@ -172,11 +172,7 @@ public class SearchFragment extends Fragment implements OnItemClickListener, OnQ
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		// TODO Auto-generated method stub
-		// 모든데이터를 이용하여ViewFlipper를 구성했지만 그냥 하나만 선택해서 생성하도록 변경한 부분  
-		ArrayList<Product> temp = new ArrayList<Product>();
-		temp.add(searchProducts.get(position));
-		
-		SearchItemDialog dialog = new SearchItemDialog(getActivity(), temp, position);
+		SearchItemDialog dialog = new SearchItemDialog(getActivity(), searchProducts, position);
 		dialog.show();
 	}
 	

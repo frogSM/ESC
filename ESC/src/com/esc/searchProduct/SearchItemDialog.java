@@ -69,6 +69,9 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	/** SearchFragment로부터 전달받은 데이터 **/
 	private ArrayList<Product> receiveData;
 	
+	/** 현재 열려있는 상품객체 **/
+	private Product mProduct;
+	
 	/** SearchFragment에서 선택된 Position
 	 *  다이얼로그에서 가장먼저 보여주기 위한 변수 **/
 	private int selectNum;
@@ -83,21 +86,15 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	private SocketHelper mSocketHelper;
 	private JsonHelper mJsonHelper;
 	
+	/** ViewFlipper에 쓰이는 레이아웃 **/
 	private LinearLayout ll;
-	
-	/** 추가 시킬 상품 추천 데이터 변수 **/
-	//
-	//
-	//
-	//
-	//
-	
 	
 	public SearchItemDialog(Context context, ArrayList<Product> data, int position) {
 		super(context);
 		// TODO Auto-generated constructor stub
 		mContext = context;
 		receiveData = data;
+		mProduct = receiveData.get(position);
 		selectNum = position;
 	}
 
@@ -288,78 +285,74 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 	}
 	
 	private void addDynamicViewFlipper() {
-		for(int i=0 ; i<receiveData.size() ; i++) {
-			ll = (LinearLayout)mLayoutInflater.inflate(R.layout.item_productinfo, null);
-			TextView mTextViewName= (TextView)ll.findViewById(R.id.tv_name);
-			TextView mTextViewPrice= (TextView)ll.findViewById(R.id.tv_price);
-			TextView mTextViewType = (TextView)ll.findViewById(R.id.tv_type);
-			TextView mTextViewManufacturer = (TextView)ll.findViewById(R.id.tv_manufacturer);
-			TextView mTextViewDescription = (TextView)ll.findViewById(R.id.tv_description);
-			ImageView mImageView = (ImageView)ll.findViewById(R.id.iv_productpicture);
-			Button mButtonBasketAdd = (Button)ll.findViewById(R.id.btn_basket_add);
-			Button mButtonPositionConfirm = (Button)ll.findViewById(R.id.btn_position_confirm);
-			LinearLayout mGraph = (LinearLayout)ll.findViewById(R.id.ll_graph);
-			
-			mTextViewName.setText(receiveData.get(i).getName());
-			mTextViewPrice.setText(String.valueOf(receiveData.get(i).getPriceNow()));
-			mTextViewType.setText(receiveData.get(i).getType());
-			mTextViewManufacturer.setText(receiveData.get(i).getManufacturer());
-			mTextViewDescription.setText(receiveData.get(i).getDescription());
-			
-			mGraph.addView(getGraph(receiveData.get(i).getPriceBeforeOne(), receiveData.get(i).getPriceBeforeTwo(),
-					receiveData.get(i).getPriceBeforeThree(), receiveData.get(i).getPriceBeforeFour(),
-					receiveData.get(i).getPriceBeforeFive(), receiveData.get(i).getPriceBeforeSix()));
-			
-			int id = mContext.getResources().getIdentifier(receiveData.get(i).getImgURL(), "drawable", mContext.getPackageName());
-			mImageView.setImageResource(id);
-			
-			/** 스크롤 했을 시 동적으로 데이터 받아오는 부분 **/
-			ScrollView scrollView = (ScrollView)ll.findViewById(R.id.scv_contents);
-			
-			
-			/** 이 상품과 구매한 상품 쪽 버튼 구현 **/
-			ViewGroup recomandation1 = (ViewGroup)ll.findViewById(R.id.ll_recomandation1);
-			ViewGroup recomandation2 = (ViewGroup)ll.findViewById(R.id.ll_recomandation2);
-			ViewGroup recomandation3 = (ViewGroup)ll.findViewById(R.id.ll_recomandation3);
-			ViewGroup recomandation4 = (ViewGroup)ll.findViewById(R.id.ll_recomandation4);
-			ViewGroup recomandation5 = (ViewGroup)ll.findViewById(R.id.ll_recomandation5);
-			
-			recomandation1.setOnClickListener(new View.OnClickListener() {
+		ll = (LinearLayout) mLayoutInflater.inflate(R.layout.item_productinfo,
+				null);
+		TextView mTextViewName = (TextView) ll.findViewById(R.id.tv_name);
+		TextView mTextViewPrice = (TextView) ll.findViewById(R.id.tv_price);
+		TextView mTextViewType = (TextView) ll.findViewById(R.id.tv_type);
+		TextView mTextViewManufacturer = (TextView) ll.findViewById(R.id.tv_manufacturer);
+		TextView mTextViewDescription = (TextView) ll.findViewById(R.id.tv_description);
+		ImageView mImageView = (ImageView) ll	.findViewById(R.id.iv_productpicture);
+		Button mButtonBasketAdd = (Button) ll.findViewById(R.id.btn_basket_add);
+		Button mButtonPositionConfirm = (Button) ll.findViewById(R.id.btn_position_confirm);
+		LinearLayout mGraph = (LinearLayout) ll.findViewById(R.id.ll_graph);
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					SearchItemDialog dialog = new SearchItemDialog(mContext, receiveData, 0);
-					dialog.show();
-				}
-			});
-			
-			/** [장바구니 추가] [위치정보 확인] 버튼 OnClickListener인터페이스 추가 부분**/
-			final int loopValue = i;
-			mButtonBasketAdd.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					mBasketManager.addBasketProduct(receiveData.get(loopValue));
-					Toast.makeText(getContext(), "장바구니에 추가되었습니다.", Toast.LENGTH_SHORT).show();
-				}
-			});
-			
-			final String type = receiveData.get(i).getType();
-			mButtonPositionConfirm.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					MapDialog map = new MapDialog(mContext, type);
-					map.show();
-				}
-			});
-			
-			String str_json = mJsonHelper.makeJsonMessage(Constants.RecommendedProduct_Info2, receiveData.get(0).getNumber());
-			mSocketHelper.sendMessage(mHandler, str_json);
-			
-			mViewFlipper.addView(ll);
-		}
-		
+		mTextViewName.setText(mProduct.getName());
+		mTextViewPrice.setText(String.valueOf(mProduct.getPriceNow()));
+		mTextViewType.setText(mProduct.getType());
+		mTextViewManufacturer.setText(mProduct.getManufacturer());
+		mTextViewDescription.setText(mProduct.getDescription());
+
+		mGraph.addView(getGraph(mProduct.getPriceBeforeOne(),
+				mProduct.getPriceBeforeTwo(), mProduct.getPriceBeforeThree(),
+				mProduct.getPriceBeforeFour(), mProduct.getPriceBeforeFive(),
+				mProduct.getPriceBeforeSix()));
+
+		int id = mContext.getResources().getIdentifier(mProduct.getImgURL(),
+				"drawable", mContext.getPackageName());
+		mImageView.setImageResource(id);
+
+		/** 이 상품과 구매한 상품 쪽 버튼 구현 **/
+		ViewGroup recomandation1 = (ViewGroup) ll.findViewById(R.id.ll_recomandation1);
+		ViewGroup recomandation2 = (ViewGroup) ll.findViewById(R.id.ll_recomandation2);
+		ViewGroup recomandation3 = (ViewGroup) ll.findViewById(R.id.ll_recomandation3);
+		ViewGroup recomandation4 = (ViewGroup) ll.findViewById(R.id.ll_recomandation4);
+		ViewGroup recomandation5 = (ViewGroup) ll.findViewById(R.id.ll_recomandation5);
+
+		recomandation1.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+//				SearchItemDialog dialog = new SearchItemDialog(mContext,receiveData, 0);
+//				dialog.show();
+			}
+		});
+
+		/** [장바구니 추가] [위치정보 확인] 버튼 OnClickListener인터페이스 추가 부분 **/
+		mButtonBasketAdd.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				mBasketManager.addBasketProduct(mProduct);
+				Toast.makeText(getContext(), "장바구니에 추가되었습니다.",Toast.LENGTH_SHORT).show();
+			}
+		});
+
+		final String type = mProduct.getType();
+		mButtonPositionConfirm.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				MapDialog map = new MapDialog(mContext, type);
+				map.show();
+			}
+		});
+
+		String str_json = mJsonHelper.makeJsonMessage(Constants.RecommendedProduct_Info, mProduct.getNumber());
+		mSocketHelper.sendMessage(mHandler, str_json);
+
+		mViewFlipper.addView(ll);
+
 		mViewFlipper.setDisplayedChild(selectNum);
 		mViewFlipper.setOnTouchListener(MyTouchListener);
 	}
