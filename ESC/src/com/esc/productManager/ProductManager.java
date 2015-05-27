@@ -119,26 +119,6 @@ public class ProductManager {
 		} catch ( IOException | InterruptedException e ) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		//카트에 상품이 추가되었을때.
-		if( numBytesPreviousRead < numBytesCurrnetRead ) { 
-			this.addProductCount = ( numBytesCurrnetRead - numBytesPreviousRead ) / 12;
-			this.isCartChanged = true;
-		}
-		
-		//카트에서 상품을 뺐을때.
-		else if( numBytesPreviousRead > numBytesCurrnetRead ) { 
-			this.subtractProductCount = ( numBytesPreviousRead - numBytesCurrnetRead ) / 12;
-			this.isCartChanged = true;
-		}
-		
-		//카트 상품이 변함 없을
-		else if( numBytesPreviousRead == numBytesCurrnetRead ){
-			this.isCartChanged = false;
-		}
 	
 		byte[ ] [ ] dividedByteBuffer = new byte [20][12];
 		
@@ -172,4 +152,56 @@ public class ProductManager {
 	public boolean GetIsCartChanged ( ) { 
 		return this.isCartChanged;
 	}
+	
+	/** 카트에 담긴 모든 상품의 가격 계산 **/
+	public String GetTotalAccount ( ArrayList< Product > products ) {
+		
+		String totalAccount = null;
+		
+		/** 1. 태그된 상품들을 입력받는다. **/
+		int productLength = products.size();
+		int totalAccountInteger = 0;
+		int eachPriceInteger;
+		
+		String eachPrice;
+		
+		/** 2. 태그된 상품들의 개수만큼 반복한다. **/
+		for ( int i = 0 ; i < productLength ; i ++ ) { 
+			
+			/** 3. 상품의 가격을 구한다. **/
+			eachPrice = products.get(i).getPriceNow();
+			eachPriceInteger = Integer.parseInt(eachPrice);
+			
+			/** 4. 누적하여 더한다. **/
+			totalAccountInteger += eachPriceInteger;
+		}
+		
+		totalAccount = Integer.toString(totalAccountInteger);
+		
+		/** 5. 상품 가격을 출력한다. **/
+		return totalAccount;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

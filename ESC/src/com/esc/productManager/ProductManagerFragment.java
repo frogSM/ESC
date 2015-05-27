@@ -1,7 +1,6 @@
 package com.esc.productManager;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.app.Fragment;
 import android.os.AsyncTask;
@@ -12,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.esc.Constants;
 import com.esc.R;
@@ -27,6 +27,7 @@ public class ProductManagerFragment extends Fragment{
 	ProductListAdaptor productListAdapter;
 	ArrayList<Product> products;
 	ListView productList;
+	TextView totalAccount;
 	RenewHandler renewHandler;
 	JsonHelper jsonHelper;
 	
@@ -45,6 +46,8 @@ public class ProductManagerFragment extends Fragment{
 		mSocketHelper = mSocketHelper.getInstance(getActivity().getApplicationContext());
 		
 		productList = (ListView)view.findViewById(R.id.productList);
+		//상품 총 합계를 표시하는 TextView
+		totalAccount = ( TextView ) view.findViewById(R.id.TEXTVIEW_TOTALACCOUNT);
 		products = new ArrayList<Product> ();
 	    
 		productListAdapter = new ProductListAdaptor(getActivity().getApplicationContext(),products);
@@ -114,6 +117,9 @@ public class ProductManagerFragment extends Fragment{
             	products = (ArrayList<Product>)jsonHelper.parserJsonMessage(msg.obj.toString());
             	productListAdapter.updateProducts(products);
             	productListAdapter.notifyDataSetChanged();
+            	
+            	/** 물품의 총 합계 금액을 출력한다. **/
+            	totalAccount.setText( productManager.GetTotalAccount(products) );
             	break;
             default:
                 break;

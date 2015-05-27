@@ -26,7 +26,7 @@ import android.widget.Toast;
 public class SocketHelper {
 	
 	/** ServerAddress & ServerPort define **/
-	private final String serverAddress = "117.16.244.137";
+	private final String serverAddress = "175.253.91.204";
 	private final int serverPort = 8081;
 	
 	private Context mContext;

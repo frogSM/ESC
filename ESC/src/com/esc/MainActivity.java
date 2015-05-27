@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 		
 		createDialog();
 		
-//		productManager.OpenSerialPort();
+		productManager.OpenSerialPort();
 		
 	}
 	
