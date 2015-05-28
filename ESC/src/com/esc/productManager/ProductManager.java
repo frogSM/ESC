@@ -132,9 +132,23 @@ public class ProductManager {
 				tagCount++;
 				k = 0;
 			}
+			/** 중복 처리 **/
+			
 		}
 		
 		for ( int i = 0 ; i < tagCount -1 ; i ++ ) { 
+			
+			/*
+			//HexString 으로 변환한다.
+			HexDump.toHexString( dividedByteBuffer [ i ] );
+			
+			// 공책2라면 
+			if( dividedByteBuffer [ i ].equals("0C0000D509A859000104E0FF") == true  ) {
+				dividedByteBuffer [ i ] = "0C0000B3BAA759000104E0FF";
+			}
+			
+			//*/
+			
 			this.taggedUIDs.add( HexDump.toHexString( dividedByteBuffer[ i ] ) ) ;
 		}
 		
@@ -181,6 +195,9 @@ public class ProductManager {
 		/** 5. 상품 가격을 출력한다. **/
 		return totalAccount;
 	}
+	
+	/** Uid 중복 처리 함수 **/
+	
 	
 	
 	

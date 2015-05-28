@@ -18,13 +18,14 @@ public class Product {
 	String type;
 	String x;
 	String y;
+	int count;
 
 	public Product(int number, String name, String price_now,
 			String priceBeforeOne, String priceBeforeTwo,
 			String priceBeforeThree, String priceBeforeFour,
 			String priceBeforeFive, String priceBeforeSix, String score,
 			String description, String manufacturer, String imgURL,
-			String type, String x, String y) {
+			String type, String x, String y , int count) {
 		// TODO Auto-generated constructor stub
 
 		this.number = number;
@@ -43,6 +44,7 @@ public class Product {
 		this.type = type;
 		this.x = x;
 		this.y = y;
+		this.count = count;
 	}
 
 	public void setNumber(int number) {
@@ -168,6 +170,13 @@ public class Product {
 
 	public String getY() {
 		return this.y;
+	}
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 }
