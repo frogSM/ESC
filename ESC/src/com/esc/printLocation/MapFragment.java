@@ -157,11 +157,11 @@ public class MapFragment extends Fragment implements RECORangingListener {
 		mTemp = mBeaconHelper.getBeaconInfo(beacons);
 		
 		if(mTemp.get(0) != null && (-75 <= mTemp.get(0).getRssi()) && (mTemp.get(0).getRssi() <= -5)) {
-			if (greenCnt != 1) { 
-				GreenDialog green = new GreenDialog(getActivity().getApplicationContext());
-				green.show();
-				greenCnt++;
-			}
+//			if (greenCnt != 1) { 
+//				GreenDialog green = new GreenDialog(getActivity().getApplicationContext());
+//				green.show();
+//				greenCnt++;
+//			}
 			markerX = 129;
 			markerY = 459;
 			mMarker.setX(markerX);
@@ -181,11 +181,11 @@ public class MapFragment extends Fragment implements RECORangingListener {
 			mMarker.setVisibility(View.VISIBLE);
 		}
 		else if(mTemp.get(2) != null  && (-75 <= mTemp.get(2).getRssi()) && (mTemp.get(2).getRssi() <= -5)) {
-			if (redCnt != 1) {
-				RedDialog red = new RedDialog(getActivity().getApplicationContext());
-				red.show();
-				redCnt++;
-			}
+//			if (redCnt != 1) {
+//				RedDialog red = new RedDialog(getActivity().getApplicationContext());
+//				red.show();
+//				redCnt++;
+//			}
 			markerX = 1023;
 			markerY = 459;
 			mMarker.setX(markerX);
@@ -193,11 +193,11 @@ public class MapFragment extends Fragment implements RECORangingListener {
 			mMarker.setVisibility(View.VISIBLE);
 		}
 		else if(mTemp.get(3) != null  && (-75 <= mTemp.get(3).getRssi()) && (mTemp.get(3).getRssi() <= -5)) {
-			if (whiteCnt != 1) {
-				WhiteDialog white = new WhiteDialog(getActivity().getApplicationContext());
-				white.show();
-				whiteCnt++;
-			}
+//			if (whiteCnt != 1) {
+//				WhiteDialog white = new WhiteDialog(getActivity().getApplicationContext());
+//				white.show();
+//				whiteCnt++;
+//			}
 			markerX = 1473;
 			markerY = 459;
 			mMarker.setX(markerX);

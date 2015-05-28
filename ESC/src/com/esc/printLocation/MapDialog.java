@@ -77,13 +77,13 @@ public class MapDialog extends Dialog implements OnClickListener, RECORangingLis
 		case "과자류" :
 			mMap.setBackgroundResource(R.drawable.background_map2_area1);
 			break;
-		case "라면류" :
+		case "우유류" :
 			mMap.setBackgroundResource(R.drawable.background_map2_area2);
 			break;
 		case "문구류" :
 			mMap.setBackgroundResource(R.drawable.background_map2_area3);
 			break;
-		case "우유류" : 
+		case "라면류" : 
 			mMap.setBackgroundResource(R.drawable.background_map2_area4);
 			break;
 		}
