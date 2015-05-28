@@ -146,13 +146,12 @@ public class MapFragment extends Fragment implements RECORangingListener {
 		DisplayMetrics dm = new DisplayMetrics();
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
 		
-		/** 현재 위치 표시하는 원 342*342 생성 후 INVISIBLE 처리. **/
-		mMarker.setLayoutParams(new AbsoluteLayout.LayoutParams(342, 342, 0, 0));
+		mMarker.setLayoutParams(new AbsoluteLayout.LayoutParams(99, 117, 0, 0));
 		mMarker.setVisibility(View.INVISIBLE);
 		
-		/** 반투명 효과 적용 **/
-		Drawable alpha = mMarker.getDrawable();
-		alpha.setAlpha(100);
+//		/** 반투명 효과 적용 **/
+//		Drawable alpha = mMarker.getDrawable();
+//		alpha.setAlpha(100);
 		
 		ArrayList<BeaconInfo> mTemp = new ArrayList<BeaconInfo>();
 		mTemp = mBeaconHelper.getBeaconInfo(beacons);
@@ -163,8 +162,8 @@ public class MapFragment extends Fragment implements RECORangingListener {
 				green.show();
 				greenCnt++;
 			}
-			markerX = 124;
-			markerY = 503;
+			markerX = 129;
+			markerY = 459;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);
@@ -175,8 +174,8 @@ public class MapFragment extends Fragment implements RECORangingListener {
 				yellow.show();
 				yellowCnt++;
 			}
-			markerX = 567;
-			markerY = 503;
+			markerX = 573;
+			markerY = 459;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);
@@ -187,8 +186,8 @@ public class MapFragment extends Fragment implements RECORangingListener {
 				red.show();
 				redCnt++;
 			}
-			markerX = 1011;
-			markerY = 503;
+			markerX = 1023;
+			markerY = 459;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);
@@ -199,8 +198,8 @@ public class MapFragment extends Fragment implements RECORangingListener {
 				white.show();
 				whiteCnt++;
 			}
-			markerX = 1454;
-			markerY = 503;
+			markerX = 1473;
+			markerY = 459;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);

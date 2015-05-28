@@ -96,41 +96,40 @@ public class MapDialog extends Dialog implements OnClickListener, RECORangingLis
 		float markerX;
 		float markerY;
 		
-		/** 현재 위치 표시하는 원 285*285 생성 후 INVISIBLE 처리. **/
-		mMarker.setLayoutParams(new AbsoluteLayout.LayoutParams(285, 285, 0, 0));
+		mMarker.setLayoutParams(new AbsoluteLayout.LayoutParams(84, 98, 0, 0));
 		mMarker.setVisibility(View.INVISIBLE);
 		
-		/** 반투명 효과 적용 **/
-		Drawable alpha = mMarker.getDrawable();
-		alpha.setAlpha(100);
+//		/** 반투명 효과 적용 **/
+//		Drawable alpha = mMarker.getDrawable();
+//		alpha.setAlpha(100);
 		
 		ArrayList<BeaconInfo> mTemp = new ArrayList<BeaconInfo>();
 		mTemp = mBeaconHelper.getBeaconInfo(beacons);
 		
 		if(mTemp.get(0) != null && (-75 <= mTemp.get(0).getRssi()) && (mTemp.get(0).getRssi() <= -5)) {
-			markerX = 104;
-			markerY = 100+407; // 100+ 해주는 이유 -> 상위 레이아웃 높이 50dp 때문에
+			markerX = 125;
+			markerY = 100+385; // 100+ 해주는 이유 -> 상위 레이아웃 높이 50dp 때문에
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);
 		}
 		else if(mTemp.get(1) != null && (-75 <= mTemp.get(1).getRssi()) && (mTemp.get(1).getRssi() <= -5)) {
-			markerX = 474;
-			markerY = 100+407;
+			markerX = 503;
+			markerY = 100+385;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);
 		}
 		else if(mTemp.get(2) != null  && (-75 <= mTemp.get(2).getRssi()) && (mTemp.get(2).getRssi() <= -5)) {
-			markerX = 844;
-			markerY = 100+407;
+			markerX = 875;
+			markerY = 100+385;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);
 		}
 		else if(mTemp.get(3) != null  && (-75 <= mTemp.get(3).getRssi()) && (mTemp.get(3).getRssi() <= -5)) {
-			markerX = 1215;
-			markerY = 100+407;
+			markerX = 1251;
+			markerY = 100+385;
 			mMarker.setX(markerX);
 			mMarker.setY(markerY);
 			mMarker.setVisibility(View.VISIBLE);

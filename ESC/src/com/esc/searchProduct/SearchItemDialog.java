@@ -144,7 +144,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 					case 0 :
 						reco1_img.setImageResource(id);
 						reco1_title.setText(mRecommendProduct.get(0).name);
-						reco1_price.setText(mRecommendProduct.get(0).price);
+						reco1_price.setText(mRecommendProduct.get(0).price + "원");
 						
 						/** 이 상품과 구매한 상품 쪽 버튼 구현 **/
 						ViewGroup recomandation1 = (ViewGroup) ll.findViewById(R.id.ll_recomandation1);
@@ -169,7 +169,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 					case 1 :
 						reco2_img.setImageResource(id);
 						reco2_title.setText(mRecommendProduct.get(1).name);
-						reco2_price.setText(mRecommendProduct.get(1).price);
+						reco2_price.setText(mRecommendProduct.get(1).price + "원");
 						
 						ViewGroup recomandation2 = (ViewGroup) ll.findViewById(R.id.ll_recomandation2);
 						recomandation2.setOnClickListener(new View.OnClickListener() {
@@ -193,7 +193,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 					case 2 :
 						reco3_img.setImageResource(id);
 						reco3_title.setText(mRecommendProduct.get(2).name);
-						reco3_price.setText(mRecommendProduct.get(2).price);
+						reco3_price.setText(mRecommendProduct.get(2).price + "원");
 						
 						ViewGroup recomandation3 = (ViewGroup) ll.findViewById(R.id.ll_recomandation3);
 						recomandation3.setOnClickListener(new View.OnClickListener() {
@@ -217,7 +217,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 					case 3 :
 						reco4_img.setImageResource(id);
 						reco4_title.setText(mRecommendProduct.get(3).name);
-						reco4_price.setText(mRecommendProduct.get(3).price);
+						reco4_price.setText(mRecommendProduct.get(3).price + "원");
 						
 						ViewGroup recomandation4 = (ViewGroup) ll.findViewById(R.id.ll_recomandation4);
 						recomandation4.setOnClickListener(new View.OnClickListener() {
@@ -241,7 +241,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 					case 4 :
 						reco5_img.setImageResource(id);
 						reco5_title.setText(mRecommendProduct.get(4).name);
-						reco5_price.setText(mRecommendProduct.get(4).price);
+						reco5_price.setText(mRecommendProduct.get(4).price + "원");
 						
 						ViewGroup recomandation5 = (ViewGroup) ll.findViewById(R.id.ll_recomandation5);
 						recomandation5.setOnClickListener(new View.OnClickListener() {

@@ -18,8 +18,8 @@
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:background="@drawable/ic_launcher" />
         </LinearLayout>
 
@@ -131,6 +131,7 @@
                     android:text="TextView"
                     android:textColor="#000000"
                     android:textSize="23sp" />
+
             </LinearLayout>
 
         </LinearLayout>

@@ -73,13 +73,15 @@ public class JsonHelper extends Observable {
 		case Constants.CustomerCart_Info_STORE :
 			jsonObj.put("type", "CustomerCart_Info_STORE");
 			
-			ArrayList<CustomerCart> temp = new ArrayList<CustomerCart>();
-			temp.add(new CustomerCart("1", "상현1", "1000", "1", "상현컴퍼니1", "과자류1"));
+			ArrayList<CustomerCart> cus = new ArrayList<CustomerCart>();
+			cus = (ArrayList<CustomerCart>)data;
 			
-//			ArrayList<String> temp1 = new ArrayList<String>();
-//			temp1.add("hi~~");
+			ArrayList<String> temp = new ArrayList<String>();
+			for(int i=0 ; i<cus.size() ; i++) {
+				temp.add(cus.get(i).getNumber());
+			}
+			jsonObj.put("number", temp);
 			
-//			jsonObj.put("Object", temp1);
 			break;
 		
 		}

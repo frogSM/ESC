@@ -17,13 +17,15 @@ public class ProductListAdaptor extends BaseAdapter {
 	private Context mContext;
 	private LayoutInflater mLayoutInflater;
 	private ArrayList<Product> products;
+	private ArrayList<CustomerCart> productsInCart;
 	private ViewHolder viewHolder;
 	
-	public ProductListAdaptor(Context context, ArrayList<Product> products ) {
+	public ProductListAdaptor(Context context, ArrayList<Product> products , ArrayList<CustomerCart> productsInCart ) {
 		// TODO Auto-generated constructor stub
 		mContext = context;
 		mLayoutInflater = LayoutInflater.from(context);
 		this.products = products;
+		this.productsInCart = productsInCart;
 	}
 	
 	@Override
@@ -59,6 +61,7 @@ public class ProductListAdaptor extends BaseAdapter {
             holder.type = (TextView) convertView.findViewById(R.id.type);
             holder.description = (TextView)  convertView.findViewById(R.id.description);
             holder.manufacturer = (TextView)  convertView.findViewById(R.id.manufacturer);
+            holder.count = (TextView) convertView.findViewById(R.id.count);
      
             convertView.setTag(holder);
         } else{
@@ -68,10 +71,12 @@ public class ProductListAdaptor extends BaseAdapter {
 		holder.image.setImageResource(imageURL);
 		holder.image.setScaleType(ImageView.ScaleType.FIT_XY);
         holder.name.setText(this.products.get(position).getName());
-        holder.price.setText(this.products.get(position).getPriceNow());
+        holder.price.setText(this.products.get(position).getPriceNow() + "¿ø");
         holder.type.setText(this.products.get(position).getType());
         holder.description.setText(this.products.get(position).getDescription());
         holder.manufacturer.setText(this.products.get(position).getManufacturer() );
+    //    holder.count.setText(this.productsInCart.get(position).getCount() + "°³");
+        holder.count.setText("1°³");
 		
 		return convertView;
 	}
@@ -83,6 +88,7 @@ public class ProductListAdaptor extends BaseAdapter {
 		TextView type;
 		TextView description;
 		TextView manufacturer;
+		TextView count;
 	};
 
 }

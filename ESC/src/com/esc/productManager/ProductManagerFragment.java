@@ -50,7 +50,7 @@ public class ProductManagerFragment extends Fragment{
 		totalAccount = ( TextView ) view.findViewById(R.id.TEXTVIEW_TOTALACCOUNT);
 		products = new ArrayList<Product> ();
 	    
-		productListAdapter = new ProductListAdaptor(getActivity().getApplicationContext(),products);
+		productListAdapter = new ProductListAdaptor(getActivity().getApplicationContext(),products , this.productManager.getCustomerCart());
 	    
 	    renewHandler = new RenewHandler ();
 	    mSubAsyncTask = new subAsyncTask();
@@ -105,7 +105,7 @@ public class ProductManagerFragment extends Fragment{
 		
 	}
 	
-    // Handler 클래스
+	// Handler 클래스
     class RenewHandler extends Handler {
          
         @Override
@@ -114,13 +114,27 @@ public class ProductManagerFragment extends Fragment{
              
             switch (msg.what) {
             case Constants.THREAD_MESSAGE:
+            	//products는 계속 갱신되는 배열.
             	products = (ArrayList<Product>)jsonHelper.parserJsonMessage(msg.obj.toString());
-            	productListAdapter.updateProducts(products);
+            	
+            	//notRenewedProducts는 갱신되지 않고 현 물품의 개수를 가지고 있는 출력되는 배열.
+            	ArrayList<Product> notRenewdProducts = new ArrayList< > ();
+            	
+            	//갱신된 배열 products가 현재 갱신되지 않고 현 물품의 개수를 가지고 있는 출력되는 배열보다 크다면
+            	if(notRenewdProducts.size() < products.size() ) {
+            		//갱신되지 않고 현 물품의 개수를 가지고 있는 출력되는 배열에 갱신된 배열을 치환한다.
+            		notRenewdProducts = products;
+            	}
+            	
+//            	renewdProducts = productManager.RenewalProductsInCart(products);
+            	productListAdapter.updateProducts(notRenewdProducts);
             	productListAdapter.notifyDataSetChanged();
             	
             	/** 물품의 총 합계 금액을 출력한다. **/
-            	totalAccount.setText( productManager.GetTotalAccount(products) );
+            	totalAccount.setText( productManager.GetTotalAccount(notRenewdProducts) );
             	break;
+            	
+            	
             default:
                 break;
             }

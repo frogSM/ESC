@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -67,9 +68,9 @@ public class MainActivity extends Activity {
 		
 		createDialog();
 		
-		//productManager.OpenSerialPort();
+		productManager.OpenSerialPort();
 		
-        
+         
 	}
 	
 	@Override
@@ -80,15 +81,10 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {	
-		/*
-        View layoutMainView = (View)this.findViewById(R.id.main_ad_haed1);
-        //*/
-		//View saleButton = (View)this.findViewById(R.id.iv_ad_image1_left);
-
-				/*
-        Log.w("LayoutSize", String.valueOf(saleButton.getWidth()));
-        Log.w("LayoutSize", String.valueOf(saleButton.getHeight()));
-        //*/
+//        View layoutMainView = (View)this.findViewById(R.id.testsize);
+//
+//        Log.w("LayoutSize", String.valueOf(layoutMainView.getWidth()));
+//        Log.w("LayoutSize", String.valueOf(layoutMainView.getHeight()));
         
         
 		getMenuInflater().inflate(R.menu.main, menu);
@@ -132,21 +128,45 @@ public class MainActivity extends Activity {
 			mFragmentTransaction.commit();
 		} else if(id == R.id.action_exit) {
 			
-			ArrayList<CustomerCart> products = new ArrayList<CustomerCart>();
-//			products = productManager.getCustomerCart();
-			// 임시데이터
-			products.add(new CustomerCart("1", "상현1", "10000", "1", "상현컴퍼니1", "과자류1"));
-			products.add(new CustomerCart("2", "상현2", "20000", "1", "상현컴퍼니2", "과자류2"));
-			products.add(new CustomerCart("3", "상현3", "30000", "1", "상현컴퍼니3", "과자류3"));
-			products.add(new CustomerCart("4", "상현4", "40000", "1", "상현컴퍼니4", "과자류4"));
-			
-			mSocketHelper = SocketHelper.getInstance(getApplicationContext());
-			mJsonHelper = JsonHelper.getInstance(getApplicationContext());
-			
-			String str_json = mJsonHelper.makeJsonMessage(Constants.CustomerCart_Info_STORE, products);
-			mSocketHelper.sendMessage(null, str_json);
-			
+			AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+			dialog.setTitle("종료 대화상자");
+			dialog.setMessage("쇼핑을 끝내시겠습니까?");
+			dialog.setPositiveButton("네", new OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					
+					ArrayList<CustomerCart> products = new ArrayList<CustomerCart>();
+				// products = productManager.getCustomerCart();
+					// 임시데이터
+					products.add(new CustomerCart("204", "상현1", "10000", "1", "상현컴퍼니1", "과자류1"));
+					products.add(new CustomerCart("68", "상현2", "20000", "1", "상현컴퍼니2", "과자류2"));
+					products.add(new CustomerCart("181", "상현3", "30000", "1", "상현컴퍼니3", "과자류3"));
+					products.add(new CustomerCart("14", "상현4", "40000", "1", "상현컴퍼니4", "과자류4"));
+					
+					mSocketHelper = SocketHelper.getInstance(getApplicationContext());
+					mJsonHelper = JsonHelper.getInstance(getApplicationContext());
+					
+					String str_json = mJsonHelper.makeJsonMessage(Constants.CustomerCart_Info_STORE, products);
+					mSocketHelper.sendMessage(null, str_json);
+					
+				}
+			});
+			dialog.setNegativeButton("아니요", new OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					return;
+				}
+			});
+			AlertDialog ad = dialog.create();
+			ad.show();
 		}
+			
+			
+		
 		return super.onOptionsItemSelected(item);
 	}
 	
@@ -294,6 +314,7 @@ public class MainActivity extends Activity {
 			tv_cancelline3.setPaintFlags(tv_cancelline3.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 			TextView tv_cancelline4 =  (TextView)mView.findViewById(R.id.tv_cancel_line4);
 			tv_cancelline4.setPaintFlags(tv_cancelline4.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+			
 			
 		}
 

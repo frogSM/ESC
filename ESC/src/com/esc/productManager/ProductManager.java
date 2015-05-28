@@ -24,12 +24,14 @@ public class ProductManager {
 	Context context;
 	
 	ArrayList<String> taggedUIDs;
+	ArrayList<CustomerCart> productsInCart;
 	private boolean isCartChanged;
 	private int addProductCount;
 	private int subtractProductCount;
 	
 	//Constructor
 	public ProductManager( Context context ) {
+		
 		this.context = context;
 	}
 	
@@ -37,7 +39,6 @@ public class ProductManager {
 	public boolean OpenSerialPort ( )  {
 		
 		boolean ret = false;
-
 		// Find all available drivers from attached devices.
 		usbManager = (UsbManager) this.context.getSystemService(Context.USB_SERVICE);
 		
@@ -114,7 +115,7 @@ public class ProductManager {
 		
 		try { 
 			port.write( txBuffer, 1000 );
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 			numBytesCurrnetRead = port.read(currentRxBuffer, 1000) ;
 		} catch ( IOException | InterruptedException e ) {
 			e.printStackTrace();
@@ -137,17 +138,6 @@ public class ProductManager {
 		}
 		
 		for ( int i = 0 ; i < tagCount -1 ; i ++ ) { 
-			
-			/*
-			//HexString 으로 변환한다.
-			HexDump.toHexString( dividedByteBuffer [ i ] );
-			
-			// 공책2라면 
-			if( dividedByteBuffer [ i ].equals("0C0000D509A859000104E0FF") == true  ) {
-				dividedByteBuffer [ i ] = "0C0000B3BAA759000104E0FF";
-			}
-			
-			//*/
 			
 			this.taggedUIDs.add( HexDump.toHexString( dividedByteBuffer[ i ] ) ) ;
 		}
@@ -196,7 +186,56 @@ public class ProductManager {
 		return totalAccount;
 	}
 	
-	/** Uid 중복 처리 함수 **/
+	/** productsInCart 갱신 **/
+	public ArrayList<Product> RenewalProductsInCart ( ArrayList<Product> products ) {
+		
+		productsInCart = new ArrayList<CustomerCart> ( );
+		
+		
+		ArrayList<Product> returnProducts = products;
+		int flag = 0;
+		
+		for ( int i = 0 ; i < products.size() ; i ++ ) {
+			
+			
+			Product product = products.get(i);
+			String strNumber = Integer.toString(product.getNumber());
+			
+			CustomerCart customerCart = new CustomerCart ( strNumber, 
+					product.getName() , 
+					product.getPriceNow() ,
+					"1",
+					product.getManufacturer(),
+					product.getType() );
+			
+			/** 미니공책2가 들어오면 미니공책 수량을 하나 증가시킨다.
+			 * 	그리고 미니공책2는 입력받은 products에서 미니공책2를 제거한다.
+			 * 	마찬가지로 productsInCart에 추가시키지 않는다. **/
+			/*
+			if( product.getName().equals("미니공책2") == true ) {
+				customerCart.setCount("2");
+				returnProducts.remove(i);
+				flag = 1;
+			}
+
+			if( flag == 0 ) {
+			}
+			//*/
+			this.productsInCart.add(customerCart);
+		}
+		
+		return returnProducts;
+	}
+	
+	
+	/** 현재 카트에 저장된 상품 반환 **/
+	public ArrayList<CustomerCart> getCustomerCart (  ) {
+		
+		
+		return this.productsInCart;
+	}
+
+	
 	
 	
 	
