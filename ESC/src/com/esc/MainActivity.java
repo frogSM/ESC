@@ -138,13 +138,14 @@ public class MainActivity extends Activity {
 					// TODO Auto-generated method stub
 					
 					ArrayList<CustomerCart> products = new ArrayList<CustomerCart>();
-				// products = productManager.getCustomerCart();
-					// 임시데이터
-					products.add(new CustomerCart("204", "상현1", "10000", "1", "상현컴퍼니1", "과자류1"));
-					products.add(new CustomerCart("68", "상현2", "20000", "1", "상현컴퍼니2", "과자류2"));
-					products.add(new CustomerCart("181", "상현3", "30000", "1", "상현컴퍼니3", "과자류3"));
-					products.add(new CustomerCart("14", "상현4", "40000", "1", "상현컴퍼니4", "과자류4"));
+				    products = productManager.getCustomerCart();
 					
+					// 임시데이터
+//					products.add(new CustomerCart("204", "상현1", "10000", "1", "상현컴퍼니1", "과자류1"));
+//					products.add(new CustomerCart("68", "상현2", "20000", "1", "상현컴퍼니2", "과자류2"));
+//					products.add(new CustomerCart("181", "상현3", "30000", "1", "상현컴퍼니3", "과자류3"));
+//					products.add(new CustomerCart("14", "상현4", "40000", "1", "상현컴퍼니4", "과자류4"));
+//					
 					mSocketHelper = SocketHelper.getInstance(getApplicationContext());
 					mJsonHelper = JsonHelper.getInstance(getApplicationContext());
 					
