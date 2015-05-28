@@ -119,7 +119,7 @@ public class SearchItemDialog extends Dialog implements OnClickListener{
 			if (msg.what == Constants.THREAD_MESSAGE) {
 				mRecommendProduct = (ArrayList<RecommendProduct>) mJsonHelper.parserJsonMessage(msg.obj.toString());
 				
-				ImageView reco1_img = (ImageView)ll.findViewById(R.id.iv_ad_image1);
+				ImageView reco1_img = (ImageView)ll.findViewById(R.id.iv_ad_image99);
 				TextView reco1_title = (TextView)ll.findViewById(R.id.tv_ad_title1);
 				TextView reco1_price = (TextView)ll.findViewById(R.id.tv_ad_price1);
 				ImageView reco2_img = (ImageView)ll.findViewById(R.id.iv_ad_image2);

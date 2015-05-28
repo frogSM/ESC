@@ -38,4 +38,7 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+    <style name="styleName">
+        <item name="android:background">@drawable/img_adhead2</item>
+    </style>
 </resources>

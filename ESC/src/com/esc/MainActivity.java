@@ -11,6 +11,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Selection;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -57,8 +58,9 @@ public class MainActivity extends Activity {
 		
 		createDialog();
 		
-		productManager.OpenSerialPort();
+//		productManager.OpenSerialPort();
 		
+        
 	}
 	
 	@Override
@@ -68,8 +70,18 @@ public class MainActivity extends Activity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
+	public boolean onCreateOptionsMenu(Menu menu) {	
+		/*
+        View layoutMainView = (View)this.findViewById(R.id.main_ad_haed1);
+        //*/
+		//View saleButton = (View)this.findViewById(R.id.iv_ad_image1_left);
+
+				/*
+        Log.w("LayoutSize", String.valueOf(saleButton.getWidth()));
+        Log.w("LayoutSize", String.valueOf(saleButton.getHeight()));
+        //*/
+        
+        
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
@@ -179,6 +191,15 @@ public class MainActivity extends Activity {
 		// 금액 초기화
 		final EditText edittext = (EditText)layout.findViewById(R.id.et_price);
 		edittext.setText(String.valueOf(mBasketManager.getGoalPrice()));
+		edittext.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				edittext.setText("");
+			}
+		});
+		
 		// 포커스 가장 뒤로 이동
 		Editable etext = edittext.getText();
 		Selection.setSelection(etext, etext.length());
@@ -267,5 +288,7 @@ public class MainActivity extends Activity {
 			}
 			mListView.setAdapter(mAdapter);
 		}
+		
+	
 	}
 }

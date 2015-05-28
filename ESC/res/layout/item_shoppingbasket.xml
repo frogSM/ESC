@@ -19,7 +19,6 @@
                 android:layout_width="80dp"
                 android:layout_height="100dp"
                 android:src="@drawable/ic_launcher" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -49,7 +48,6 @@
                     android:layout_gravity="right"
                     android:text="가격 : "
                     android:textColor="#000000" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -71,9 +69,7 @@
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textColor="#000000" />
-
             </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
@@ -103,7 +99,6 @@
                     android:layout_gravity="right"
                     android:text="제품군 : "
                     android:textColor="#000000" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -125,9 +120,7 @@
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     android:textColor="#000000" />
-
             </LinearLayout>
-
         </LinearLayout>
 
         <LinearLayout
@@ -143,9 +136,7 @@
                 android:background="@android:drawable/btn_default"
                 android:text="위치정보 확인"
                 android:textColor="@android:color/holo_red_dark" />
-
         </LinearLayout>
-
     </LinearLayout>
 
 </LinearLayout>

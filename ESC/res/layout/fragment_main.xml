@@ -34,7 +34,7 @@
                     android:padding="2dp" >
 
                     <ImageView
-                        android:id="@+id/iv_ad_image1"
+                        android:id="@+id/iv_ad_image_"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
@@ -132,7 +132,7 @@
                         </LinearLayout>
 
                         <Button
-                            android:id="@+id/btn_ad_addbasket"
+                            android:id="@+id/ad_btn_01"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -253,7 +253,7 @@
                         </LinearLayout>
 
                         <Button
-                            android:id="@+id/Button01"
+                            android:id="@+id/ad_button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
