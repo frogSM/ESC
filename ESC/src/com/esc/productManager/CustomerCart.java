@@ -8,7 +8,7 @@ public class CustomerCart {
 	String manufacturer;
 	String type;
 
-	public CustomerCart(String number, String name, String price,
+	public CustomerCart(String number, String name, String price, String count,
 			String manufacturer, String type) {
 		// TODO Auto-generated constructor stub
 		this.number = number;
@@ -29,6 +29,10 @@ public class CustomerCart {
 	public void setPrice(String price) {
 		this.price = price;
 	}
+	
+	public void setCount(String count) {
+		this.count = count;
+	}
 
 	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
@@ -48,6 +52,10 @@ public class CustomerCart {
 
 	public String getPrice() {
 		return price;
+	}
+	
+	public String getCount() {
+		return count;
 	}
 
 	public String getManufacturer() {
