@@ -6,6 +6,7 @@ public class Constants {
 	public final static String Uid_Info = "Uid_Info";
 	public final static String All_Product_Info = "All_Product_Info";
 	public final static String RecommendedProduct_Info = "RecommendedProduct_Info";
+	public final static String CustomerCart_Info_STORE = "CustomerCart_Info_STORE";
 	
 	/** 공지사항 데이터베이스 요청 **/
 	public final static String requestNoticeDB = "requestNoticeDB";

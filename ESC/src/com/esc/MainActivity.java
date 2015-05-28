@@ -1,5 +1,7 @@
 package com.esc;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -22,9 +24,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.esc.Connection.JsonHelper;
+import com.esc.Connection.SocketHelper;
 import com.esc.CustomerService.CustomerServiceMainFragment;
 import com.esc.MainAdvertise.BestProductAdapter;
 import com.esc.printLocation.MapFragment;
+import com.esc.productManager.CustomerCart;
 import com.esc.productManager.ProductManager;
 import com.esc.productManager.ProductManagerFragment;
 import com.esc.searchProduct.SearchFragment;
@@ -37,6 +42,10 @@ public class MainActivity extends Activity {
 	private Fragment mMainFragment;
 	private FragmentManager mFragmentManager; 
 	private FragmentTransaction mFragmentTransaction;
+	
+	/** 소켓 및 Json 도우미**/
+	private SocketHelper mSocketHelper;
+	private JsonHelper mJsonHelper;
 	
 	private ProductManager productManager;
 	private BasketManager mBasketManager;
@@ -121,6 +130,22 @@ public class MainActivity extends Activity {
 			mFragmentTransaction.replace(R.id.layout_fragment, fm);
 			mFragmentTransaction.addToBackStack(null);
 			mFragmentTransaction.commit();
+		} else if(id == R.id.action_exit) {
+			
+			ArrayList<CustomerCart> products = new ArrayList<CustomerCart>();
+//			products = productManager.getCustomerCart();
+			// 임시데이터
+			products.add(new CustomerCart("1", "상현1", "10000", "1", "상현컴퍼니1", "과자류1"));
+			products.add(new CustomerCart("2", "상현2", "20000", "1", "상현컴퍼니2", "과자류2"));
+			products.add(new CustomerCart("3", "상현3", "30000", "1", "상현컴퍼니3", "과자류3"));
+			products.add(new CustomerCart("4", "상현4", "40000", "1", "상현컴퍼니4", "과자류4"));
+			
+			mSocketHelper = SocketHelper.getInstance(getApplicationContext());
+			mJsonHelper = JsonHelper.getInstance(getApplicationContext());
+			
+			String str_json = mJsonHelper.makeJsonMessage(Constants.CustomerCart_Info_STORE, products);
+			mSocketHelper.sendMessage(null, str_json);
+			
 		}
 		return super.onOptionsItemSelected(item);
 	}

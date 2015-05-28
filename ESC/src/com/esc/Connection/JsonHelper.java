@@ -10,6 +10,7 @@ import android.database.Observable;
 import com.esc.Constants;
 import com.esc.CustomerNotice.Notice;
 import com.esc.CustomerQuestionAndAnswer.QuestionAndAnswer;
+import com.esc.productManager.CustomerCart;
 import com.esc.productManager.Product;
 import com.esc.searchProduct.RecommendProduct;
 import com.google.gson.Gson;
@@ -68,10 +69,21 @@ public class JsonHelper extends Observable {
 			jsonObj.put("type", "RecommendedProduct_Info");
 			jsonObj.put("number", (int)data);
 			break;
+			
+		case Constants.CustomerCart_Info_STORE :
+			jsonObj.put("type", "CustomerCart_Info_STORE");
+			
+			ArrayList<CustomerCart> temp = new ArrayList<CustomerCart>();
+			temp.add(new CustomerCart("1", "상현1", "1000", "1", "상현컴퍼니1", "과자류1"));
+			
+//			ArrayList<String> temp1 = new ArrayList<String>();
+//			temp1.add("hi~~");
+			
+//			jsonObj.put("Object", temp1);
+			break;
 		
 		}
 		
-
 		return jsonObj.toString();
 	}
 	
