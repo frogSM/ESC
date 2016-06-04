@@ -46,6 +46,7 @@ import com.esc.shoppingBasket.BasketManager;
 public class SearchItemDialog extends Dialog implements OnClickListener{
 
 	/** 다이얼로그 레이아웃 정보 **/
+	private String test;
 	private View mView;
 	private Context mContext;
 	
